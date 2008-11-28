@@ -9,5 +9,9 @@ public class PuFException extends Exception {
 	public PuFException(String message) {
 		super(message);
 	}
+
+	public PuFException(Throwable cause) {
+		super(cause);
+	}
 	
 }

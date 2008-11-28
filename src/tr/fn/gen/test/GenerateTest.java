@@ -15,12 +15,12 @@ import tr.fn.gen.Environment;
 import tr.fn.gen.GenerateException;
 import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
-import tr.fn.grammar.test.TestUtil;
+import tr.fn.util.TreeUtil;
 
 public class GenerateTest extends TestCase {
 	
 	public void testMainFArgCall() throws PuFException, IOException {
-		Tree tree = TestUtil.getTree("test/fmainfarg.fn");
+		Tree tree = TreeUtil.getTree("test/fmainfarg.fn");
 		System.out.println(tree.toStringTree());
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);
@@ -33,7 +33,7 @@ public class GenerateTest extends TestCase {
 	}
 	
 	public void testMain2FArgCall() throws PuFException, IOException {
-		Tree tree = TestUtil.getTree("test/fmain2farg.fn");
+		Tree tree = TreeUtil.getTree("test/fmain2farg.fn");
 		System.out.println(tree.toStringTree());
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);
@@ -49,7 +49,7 @@ public class GenerateTest extends TestCase {
 	
 	
 	public void testIfThenElse() throws GenerateException, IOException {
-		Tree tree = TestUtil.getTree("test/mainifthen.fn");
+		Tree tree = TreeUtil.getTree("test/mainifthen.fn");
 		System.out.println(tree.toStringTree());
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);
@@ -64,7 +64,7 @@ public class GenerateTest extends TestCase {
 	}
 	
 	public void testIfThenElseF() throws GenerateException, IOException {
-		Tree tree = TestUtil.getTree("test/mainifthenf.fn");
+		Tree tree = TreeUtil.getTree("test/mainifthenf.fn");
 		System.out.println(tree.toStringTree());
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);
@@ -79,7 +79,7 @@ public class GenerateTest extends TestCase {
 	}
 	
 	public void testIfThenElseFR() throws GenerateException, IOException {
-		Tree tree = TestUtil.getTree("test/mainifthenfr.fn");
+		Tree tree = TreeUtil.getTree("test/mainifthenfr.fn");
 		System.out.println(tree.toStringTree());
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);

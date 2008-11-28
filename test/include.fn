@@ -1,0 +1,3 @@
+#include f2p3.fn
+
+main = f;
