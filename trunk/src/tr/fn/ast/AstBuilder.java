@@ -67,12 +67,9 @@ public class AstBuilder {
 			
 			return new Declaration(tree.getLine(), new Identifier(tree.getChild(0).getLine(), tree.getChild(0).getText()), expression);
 		case FunParser.LETREC: 
-			Expression inExpression = buildExpression(tree.getChild(0));
-			List<Declaration> declarations = new ArrayList<Declaration>();
-			for (int i = 1; i < tree.getChildCount(); i++) {
-				declarations.add((Declaration) buildExpression(tree));
-			}
-			return new LetRec(tree.getLine(), declarations, inExpression);
+			return new LetRec(tree.getLine(), buildLetLikeDeclarations(tree), buildExpression(tree.getChild(0)));
+		case FunParser.LET: 
+			return new Let(tree.getLine(), buildLetLikeDeclarations(tree), buildExpression(tree.getChild(0)));
 		case FunParser.ID:
 			return new Identifier(tree.getLine(), tree.getText());
 		case FunParser.INT:
@@ -98,6 +95,16 @@ public class AstBuilder {
 				throw new IllegalArgumentException("Unknown expression type: " + tree.getType());
 			}
 		}
+	}
+	
+	private List<Declaration> buildLetLikeDeclarations(Tree tree) {
+		List<Declaration> declarations = new ArrayList<Declaration>();
+		
+		for (int i = 1; i < tree.getChildCount(); i++) {
+			declarations.add((Declaration) buildExpression(tree.getChild(i)));
+		}
+		
+		return declarations;
 	}
 	
 	private Expression buildIfThenElse(Tree tree) {

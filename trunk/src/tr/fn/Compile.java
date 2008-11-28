@@ -65,7 +65,7 @@ public class Compile {
 		LetRec program = builder.buildProgram(tree);
 		
 		// Optimizations
-		OptimizationContext optimizationContext = new OptimizationContext(program);
+		OptimizationContext optimizationContext = new OptimizationContext(program, debug);
 		if (nodead) {
 			new DeadCodeEliminator(optimizationContext).execute();
 		}
@@ -85,7 +85,6 @@ public class Compile {
 		formatter.printHelp("puf-compile", options);
 	}
 	
-	// TODO add debug switch
 	private static class CompileOptions extends Options {
 		public static final String OPTION_IN = "in";
 		public static final String OPTION_OUT = "out";
@@ -95,8 +94,8 @@ public class Compile {
 		public CompileOptions() {
 			addOption(OPTION_IN, true, "Input file for the PuF code");
 			addOption(OPTION_OUT, true, "Output file");
-			addOption(OPTION_DEBUG, false, "If present, excessively verbose debug info is written to output");
-			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate the unused declarations");
+			addOption(OPTION_DEBUG, false, "If present, excessively verbose debug info is written to the output");
+			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate unused declarations");
 		}
 	}
 }

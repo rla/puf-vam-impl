@@ -60,6 +60,7 @@ arith      : term ((PLUS | MINUS)^ term)* ;
 term       : factor ((STAR | SLASH | PERCENT)^ factor)* ;
 
 factor     : fapp
+           | LEFTPAREN or RIGHTPAREN -> ^(or)
            | PLUS factor
            | MINUS factor
            | INT
