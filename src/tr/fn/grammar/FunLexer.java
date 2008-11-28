@@ -1,4 +1,4 @@
-// $ANTLR 3.1 /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g 2008-11-28 02:45:09
+// $ANTLR 3.1.1 src/tr/fn/grammar/Fun.g 2008-11-28 05:00:31
 
 package tr.fn.grammar;
 
@@ -62,15 +62,15 @@ public class FunLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "/home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g"; }
+    public String getGrammarFileName() { return "src/tr/fn/grammar/Fun.g"; }
 
     // $ANTLR start "DEFINE"
     public final void mDEFINE() throws RecognitionException {
         try {
             int _type = DEFINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:75:12: ( '=' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:75:14: '='
+            // src/tr/fn/grammar/Fun.g:75:12: ( '=' )
+            // src/tr/fn/grammar/Fun.g:75:14: '='
             {
             match('='); 
 
@@ -89,8 +89,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LAMBDA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:76:12: ( 'fn' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:76:14: 'fn'
+            // src/tr/fn/grammar/Fun.g:76:12: ( 'fn' )
+            // src/tr/fn/grammar/Fun.g:76:14: 'fn'
             {
             match("fn"); 
 
@@ -110,8 +110,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = RIGHTARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:77:12: ( '->' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:77:14: '->'
+            // src/tr/fn/grammar/Fun.g:77:12: ( '->' )
+            // src/tr/fn/grammar/Fun.g:77:14: '->'
             {
             match("->"); 
 
@@ -131,8 +131,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:78:12: ( 'let' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:78:14: 'let'
+            // src/tr/fn/grammar/Fun.g:78:12: ( 'let' )
+            // src/tr/fn/grammar/Fun.g:78:14: 'let'
             {
             match("let"); 
 
@@ -152,8 +152,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LETREC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:79:12: ( 'letrec' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:79:14: 'letrec'
+            // src/tr/fn/grammar/Fun.g:79:12: ( 'letrec' )
+            // src/tr/fn/grammar/Fun.g:79:14: 'letrec'
             {
             match("letrec"); 
 
@@ -173,8 +173,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = IN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:80:12: ( 'in' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:80:14: 'in'
+            // src/tr/fn/grammar/Fun.g:80:12: ( 'in' )
+            // src/tr/fn/grammar/Fun.g:80:14: 'in'
             {
             match("in"); 
 
@@ -194,8 +194,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = HASH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:81:12: ( '#' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:81:14: '#'
+            // src/tr/fn/grammar/Fun.g:81:12: ( '#' )
+            // src/tr/fn/grammar/Fun.g:81:14: '#'
             {
             match('#'); 
 
@@ -214,8 +214,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = ENDEXPR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:82:12: ( ';' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:82:14: ';'
+            // src/tr/fn/grammar/Fun.g:82:12: ( ';' )
+            // src/tr/fn/grammar/Fun.g:82:14: ';'
             {
             match(';'); 
 
@@ -234,8 +234,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LEFTPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:83:12: ( '(' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:83:14: '('
+            // src/tr/fn/grammar/Fun.g:83:12: ( '(' )
+            // src/tr/fn/grammar/Fun.g:83:14: '('
             {
             match('('); 
 
@@ -254,8 +254,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = RIGHTPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:84:12: ( ')' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:84:14: ')'
+            // src/tr/fn/grammar/Fun.g:84:12: ( ')' )
+            // src/tr/fn/grammar/Fun.g:84:14: ')'
             {
             match(')'); 
 
@@ -274,8 +274,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LESS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:86:14: ( '<' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:86:16: '<'
+            // src/tr/fn/grammar/Fun.g:86:14: ( '<' )
+            // src/tr/fn/grammar/Fun.g:86:16: '<'
             {
             match('<'); 
 
@@ -294,8 +294,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = GREATER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:87:14: ( '>' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:87:16: '>'
+            // src/tr/fn/grammar/Fun.g:87:14: ( '>' )
+            // src/tr/fn/grammar/Fun.g:87:16: '>'
             {
             match('>'); 
 
@@ -314,8 +314,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:88:14: ( '==' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:88:16: '=='
+            // src/tr/fn/grammar/Fun.g:88:14: ( '==' )
+            // src/tr/fn/grammar/Fun.g:88:16: '=='
             {
             match("=="); 
 
@@ -335,8 +335,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = NOTEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:89:14: ( '!=' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:89:16: '!='
+            // src/tr/fn/grammar/Fun.g:89:14: ( '!=' )
+            // src/tr/fn/grammar/Fun.g:89:16: '!='
             {
             match("!="); 
 
@@ -356,8 +356,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LESSEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:90:14: ( '<=' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:90:16: '<='
+            // src/tr/fn/grammar/Fun.g:90:14: ( '<=' )
+            // src/tr/fn/grammar/Fun.g:90:16: '<='
             {
             match("<="); 
 
@@ -377,8 +377,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = GREATEREQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:91:14: ( '>=' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:91:16: '>='
+            // src/tr/fn/grammar/Fun.g:91:14: ( '>=' )
+            // src/tr/fn/grammar/Fun.g:91:16: '>='
             {
             match(">="); 
 
@@ -398,8 +398,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:93:12: ( 'if' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:93:14: 'if'
+            // src/tr/fn/grammar/Fun.g:93:12: ( 'if' )
+            // src/tr/fn/grammar/Fun.g:93:14: 'if'
             {
             match("if"); 
 
@@ -419,8 +419,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:94:12: ( 'then' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:94:14: 'then'
+            // src/tr/fn/grammar/Fun.g:94:12: ( 'then' )
+            // src/tr/fn/grammar/Fun.g:94:14: 'then'
             {
             match("then"); 
 
@@ -440,8 +440,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:95:12: ( 'else' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:95:14: 'else'
+            // src/tr/fn/grammar/Fun.g:95:12: ( 'else' )
+            // src/tr/fn/grammar/Fun.g:95:14: 'else'
             {
             match("else"); 
 
@@ -461,8 +461,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:97:12: ( 'not' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:97:14: 'not'
+            // src/tr/fn/grammar/Fun.g:97:12: ( 'not' )
+            // src/tr/fn/grammar/Fun.g:97:14: 'not'
             {
             match("not"); 
 
@@ -482,8 +482,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:98:12: ( '&&' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:98:14: '&&'
+            // src/tr/fn/grammar/Fun.g:98:12: ( '&&' )
+            // src/tr/fn/grammar/Fun.g:98:14: '&&'
             {
             match("&&"); 
 
@@ -503,8 +503,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:99:12: ( '||' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:99:14: '||'
+            // src/tr/fn/grammar/Fun.g:99:12: ( '||' )
+            // src/tr/fn/grammar/Fun.g:99:14: '||'
             {
             match("||"); 
 
@@ -524,8 +524,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:100:12: ( '+' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:100:14: '+'
+            // src/tr/fn/grammar/Fun.g:100:12: ( '+' )
+            // src/tr/fn/grammar/Fun.g:100:14: '+'
             {
             match('+'); 
 
@@ -544,8 +544,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:101:12: ( '-' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:101:14: '-'
+            // src/tr/fn/grammar/Fun.g:101:12: ( '-' )
+            // src/tr/fn/grammar/Fun.g:101:14: '-'
             {
             match('-'); 
 
@@ -564,8 +564,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = STAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:102:12: ( '*' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:102:14: '*'
+            // src/tr/fn/grammar/Fun.g:102:12: ( '*' )
+            // src/tr/fn/grammar/Fun.g:102:14: '*'
             {
             match('*'); 
 
@@ -584,8 +584,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = SLASH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:103:12: ( '/' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:103:14: '/'
+            // src/tr/fn/grammar/Fun.g:103:12: ( '/' )
+            // src/tr/fn/grammar/Fun.g:103:14: '/'
             {
             match('/'); 
 
@@ -604,8 +604,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = PERCENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:104:12: ( '%' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:104:14: '%'
+            // src/tr/fn/grammar/Fun.g:104:12: ( '%' )
+            // src/tr/fn/grammar/Fun.g:104:14: '%'
             {
             match('%'); 
 
@@ -624,10 +624,10 @@ public class FunLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:12: ( ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+ )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+
+            // src/tr/fn/grammar/Fun.g:105:12: ( ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+ )
+            // src/tr/fn/grammar/Fun.g:105:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+
             {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+
+            // src/tr/fn/grammar/Fun.g:105:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+
             int cnt1=0;
             loop1:
             do {
@@ -644,10 +644,10 @@ public class FunLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:15: ( 'a' .. 'z' )
+            	    // src/tr/fn/grammar/Fun.g:105:15: ( 'a' .. 'z' )
             	    {
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:15: ( 'a' .. 'z' )
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:16: 'a' .. 'z'
+            	    // src/tr/fn/grammar/Fun.g:105:15: ( 'a' .. 'z' )
+            	    // src/tr/fn/grammar/Fun.g:105:16: 'a' .. 'z'
             	    {
             	    matchRange('a','z'); 
 
@@ -657,10 +657,10 @@ public class FunLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:30: ( 'A' .. 'Z' )
+            	    // src/tr/fn/grammar/Fun.g:105:30: ( 'A' .. 'Z' )
             	    {
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:30: ( 'A' .. 'Z' )
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:105:31: 'A' .. 'Z'
+            	    // src/tr/fn/grammar/Fun.g:105:30: ( 'A' .. 'Z' )
+            	    // src/tr/fn/grammar/Fun.g:105:31: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -695,10 +695,10 @@ public class FunLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:106:12: ( ( '0' .. '9' )+ )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:106:14: ( '0' .. '9' )+
+            // src/tr/fn/grammar/Fun.g:106:12: ( ( '0' .. '9' )+ )
+            // src/tr/fn/grammar/Fun.g:106:14: ( '0' .. '9' )+
             {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:106:14: ( '0' .. '9' )+
+            // src/tr/fn/grammar/Fun.g:106:14: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -712,7 +712,7 @@ public class FunLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:106:14: '0' .. '9'
+            	    // src/tr/fn/grammar/Fun.g:106:14: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -744,10 +744,10 @@ public class FunLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:107:12: ( ( ' ' | '\\t' )+ )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:107:14: ( ' ' | '\\t' )+
+            // src/tr/fn/grammar/Fun.g:107:12: ( ( ' ' | '\\t' )+ )
+            // src/tr/fn/grammar/Fun.g:107:14: ( ' ' | '\\t' )+
             {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:107:14: ( ' ' | '\\t' )+
+            // src/tr/fn/grammar/Fun.g:107:14: ( ' ' | '\\t' )+
             int cnt3=0;
             loop3:
             do {
@@ -761,7 +761,7 @@ public class FunLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:
+            	    // src/tr/fn/grammar/Fun.g:
             	    {
             	    if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -802,10 +802,10 @@ public class FunLexer extends Lexer {
         try {
             int _type = NL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:108:12: ( ( ( '\\r' )? '\\n' )+ )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:108:14: ( ( '\\r' )? '\\n' )+
+            // src/tr/fn/grammar/Fun.g:108:12: ( ( ( '\\r' )? '\\n' )+ )
+            // src/tr/fn/grammar/Fun.g:108:14: ( ( '\\r' )? '\\n' )+
             {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:108:14: ( ( '\\r' )? '\\n' )+
+            // src/tr/fn/grammar/Fun.g:108:14: ( ( '\\r' )? '\\n' )+
             int cnt5=0;
             loop5:
             do {
@@ -819,9 +819,9 @@ public class FunLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:108:15: ( '\\r' )? '\\n'
+            	    // src/tr/fn/grammar/Fun.g:108:15: ( '\\r' )? '\\n'
             	    {
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:108:15: ( '\\r' )?
+            	    // src/tr/fn/grammar/Fun.g:108:15: ( '\\r' )?
             	    int alt4=2;
             	    int LA4_0 = input.LA(1);
 
@@ -830,7 +830,7 @@ public class FunLexer extends Lexer {
             	    }
             	    switch (alt4) {
             	        case 1 :
-            	            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:108:15: '\\r'
+            	            // src/tr/fn/grammar/Fun.g:108:15: '\\r'
             	            {
             	            match('\r'); 
 
@@ -870,12 +870,12 @@ public class FunLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:110:12: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:110:14: '/*' ( options {greedy=false; } : . )* '*/'
+            // src/tr/fn/grammar/Fun.g:110:12: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // src/tr/fn/grammar/Fun.g:110:14: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:110:19: ( options {greedy=false; } : . )*
+            // src/tr/fn/grammar/Fun.g:110:19: ( options {greedy=false; } : . )*
             loop6:
             do {
                 int alt6=2;
@@ -887,20 +887,20 @@ public class FunLexer extends Lexer {
                     if ( (LA6_1=='/') ) {
                         alt6=2;
                     }
-                    else if ( ((LA6_1>='\u0000' && LA6_1<='.')||(LA6_1>='0' && LA6_1<='\uFFFE')) ) {
+                    else if ( ((LA6_1>='\u0000' && LA6_1<='.')||(LA6_1>='0' && LA6_1<='\uFFFF')) ) {
                         alt6=1;
                     }
 
 
                 }
-                else if ( ((LA6_0>='\u0000' && LA6_0<=')')||(LA6_0>='+' && LA6_0<='\uFFFE')) ) {
+                else if ( ((LA6_0>='\u0000' && LA6_0<=')')||(LA6_0>='+' && LA6_0<='\uFFFF')) ) {
                     alt6=1;
                 }
 
 
                 switch (alt6) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:110:46: .
+            	    // src/tr/fn/grammar/Fun.g:110:46: .
             	    {
             	    matchAny(); 
 
@@ -931,31 +931,31 @@ public class FunLexer extends Lexer {
         try {
             int _type = SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:12: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* )
+            // src/tr/fn/grammar/Fun.g:111:12: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* )
             int alt10=2;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:14: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' )
+                    // src/tr/fn/grammar/Fun.g:111:14: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' )
                     {
                     match("//"); 
 
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:19: (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Fun.g:111:19: (~ ( '\\n' | '\\r' ) )*
                     loop7:
                     do {
                         int alt7=2;
                         int LA7_0 = input.LA(1);
 
-                        if ( ((LA7_0>='\u0000' && LA7_0<='\t')||(LA7_0>='\u000B' && LA7_0<='\f')||(LA7_0>='\u000E' && LA7_0<='\uFFFE')) ) {
+                        if ( ((LA7_0>='\u0000' && LA7_0<='\t')||(LA7_0>='\u000B' && LA7_0<='\f')||(LA7_0>='\u000E' && LA7_0<='\uFFFF')) ) {
                             alt7=1;
                         }
 
 
                         switch (alt7) {
                     	case 1 :
-                    	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:19: ~ ( '\\n' | '\\r' )
+                    	    // src/tr/fn/grammar/Fun.g:111:19: ~ ( '\\n' | '\\r' )
                     	    {
-                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
+                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
 
                     	    }
@@ -973,7 +973,7 @@ public class FunLexer extends Lexer {
                         }
                     } while (true);
 
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:33: ( '\\r\\n' | '\\r' | '\\n' )
+                    // src/tr/fn/grammar/Fun.g:111:33: ( '\\r\\n' | '\\r' | '\\n' )
                     int alt8=3;
                     int LA8_0 = input.LA(1);
 
@@ -997,7 +997,7 @@ public class FunLexer extends Lexer {
                     }
                     switch (alt8) {
                         case 1 :
-                            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:34: '\\r\\n'
+                            // src/tr/fn/grammar/Fun.g:111:34: '\\r\\n'
                             {
                             match("\r\n"); 
 
@@ -1005,14 +1005,14 @@ public class FunLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:43: '\\r'
+                            // src/tr/fn/grammar/Fun.g:111:43: '\\r'
                             {
                             match('\r'); 
 
                             }
                             break;
                         case 3 :
-                            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:111:50: '\\n'
+                            // src/tr/fn/grammar/Fun.g:111:50: '\\n'
                             {
                             match('\n'); 
 
@@ -1026,26 +1026,26 @@ public class FunLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:112:14: '//' (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Fun.g:112:14: '//' (~ ( '\\n' | '\\r' ) )*
                     {
                     match("//"); 
 
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:112:19: (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Fun.g:112:19: (~ ( '\\n' | '\\r' ) )*
                     loop9:
                     do {
                         int alt9=2;
                         int LA9_0 = input.LA(1);
 
-                        if ( ((LA9_0>='\u0000' && LA9_0<='\t')||(LA9_0>='\u000B' && LA9_0<='\f')||(LA9_0>='\u000E' && LA9_0<='\uFFFE')) ) {
+                        if ( ((LA9_0>='\u0000' && LA9_0<='\t')||(LA9_0>='\u000B' && LA9_0<='\f')||(LA9_0>='\u000E' && LA9_0<='\uFFFF')) ) {
                             alt9=1;
                         }
 
 
                         switch (alt9) {
                     	case 1 :
-                    	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:112:19: ~ ( '\\n' | '\\r' )
+                    	    // src/tr/fn/grammar/Fun.g:112:19: ~ ( '\\n' | '\\r' )
                     	    {
-                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
+                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
 
                     	    }
@@ -1078,236 +1078,236 @@ public class FunLexer extends Lexer {
     // $ANTLR end "SL_COMMENT"
 
     public void mTokens() throws RecognitionException {
-        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:8: ( DEFINE | LAMBDA | RIGHTARROW | LET | LETREC | IN | HASH | ENDEXPR | LEFTPAREN | RIGHTPAREN | LESS | GREATER | EQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | IF | THEN | ELSE | NOT | AND | OR | PLUS | MINUS | STAR | SLASH | PERCENT | ID | INT | WS | NL | ML_COMMENT | SL_COMMENT )
+        // src/tr/fn/grammar/Fun.g:1:8: ( DEFINE | LAMBDA | RIGHTARROW | LET | LETREC | IN | HASH | ENDEXPR | LEFTPAREN | RIGHTPAREN | LESS | GREATER | EQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | IF | THEN | ELSE | NOT | AND | OR | PLUS | MINUS | STAR | SLASH | PERCENT | ID | INT | WS | NL | ML_COMMENT | SL_COMMENT )
         int alt11=33;
         alt11 = dfa11.predict(input);
         switch (alt11) {
             case 1 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:10: DEFINE
+                // src/tr/fn/grammar/Fun.g:1:10: DEFINE
                 {
                 mDEFINE(); 
 
                 }
                 break;
             case 2 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:17: LAMBDA
+                // src/tr/fn/grammar/Fun.g:1:17: LAMBDA
                 {
                 mLAMBDA(); 
 
                 }
                 break;
             case 3 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:24: RIGHTARROW
+                // src/tr/fn/grammar/Fun.g:1:24: RIGHTARROW
                 {
                 mRIGHTARROW(); 
 
                 }
                 break;
             case 4 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:35: LET
+                // src/tr/fn/grammar/Fun.g:1:35: LET
                 {
                 mLET(); 
 
                 }
                 break;
             case 5 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:39: LETREC
+                // src/tr/fn/grammar/Fun.g:1:39: LETREC
                 {
                 mLETREC(); 
 
                 }
                 break;
             case 6 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:46: IN
+                // src/tr/fn/grammar/Fun.g:1:46: IN
                 {
                 mIN(); 
 
                 }
                 break;
             case 7 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:49: HASH
+                // src/tr/fn/grammar/Fun.g:1:49: HASH
                 {
                 mHASH(); 
 
                 }
                 break;
             case 8 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:54: ENDEXPR
+                // src/tr/fn/grammar/Fun.g:1:54: ENDEXPR
                 {
                 mENDEXPR(); 
 
                 }
                 break;
             case 9 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:62: LEFTPAREN
+                // src/tr/fn/grammar/Fun.g:1:62: LEFTPAREN
                 {
                 mLEFTPAREN(); 
 
                 }
                 break;
             case 10 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:72: RIGHTPAREN
+                // src/tr/fn/grammar/Fun.g:1:72: RIGHTPAREN
                 {
                 mRIGHTPAREN(); 
 
                 }
                 break;
             case 11 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:83: LESS
+                // src/tr/fn/grammar/Fun.g:1:83: LESS
                 {
                 mLESS(); 
 
                 }
                 break;
             case 12 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:88: GREATER
+                // src/tr/fn/grammar/Fun.g:1:88: GREATER
                 {
                 mGREATER(); 
 
                 }
                 break;
             case 13 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:96: EQUAL
+                // src/tr/fn/grammar/Fun.g:1:96: EQUAL
                 {
                 mEQUAL(); 
 
                 }
                 break;
             case 14 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:102: NOTEQUAL
+                // src/tr/fn/grammar/Fun.g:1:102: NOTEQUAL
                 {
                 mNOTEQUAL(); 
 
                 }
                 break;
             case 15 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:111: LESSEQUAL
+                // src/tr/fn/grammar/Fun.g:1:111: LESSEQUAL
                 {
                 mLESSEQUAL(); 
 
                 }
                 break;
             case 16 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:121: GREATEREQUAL
+                // src/tr/fn/grammar/Fun.g:1:121: GREATEREQUAL
                 {
                 mGREATEREQUAL(); 
 
                 }
                 break;
             case 17 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:134: IF
+                // src/tr/fn/grammar/Fun.g:1:134: IF
                 {
                 mIF(); 
 
                 }
                 break;
             case 18 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:137: THEN
+                // src/tr/fn/grammar/Fun.g:1:137: THEN
                 {
                 mTHEN(); 
 
                 }
                 break;
             case 19 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:142: ELSE
+                // src/tr/fn/grammar/Fun.g:1:142: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
             case 20 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:147: NOT
+                // src/tr/fn/grammar/Fun.g:1:147: NOT
                 {
                 mNOT(); 
 
                 }
                 break;
             case 21 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:151: AND
+                // src/tr/fn/grammar/Fun.g:1:151: AND
                 {
                 mAND(); 
 
                 }
                 break;
             case 22 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:155: OR
+                // src/tr/fn/grammar/Fun.g:1:155: OR
                 {
                 mOR(); 
 
                 }
                 break;
             case 23 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:158: PLUS
+                // src/tr/fn/grammar/Fun.g:1:158: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
             case 24 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:163: MINUS
+                // src/tr/fn/grammar/Fun.g:1:163: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
             case 25 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:169: STAR
+                // src/tr/fn/grammar/Fun.g:1:169: STAR
                 {
                 mSTAR(); 
 
                 }
                 break;
             case 26 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:174: SLASH
+                // src/tr/fn/grammar/Fun.g:1:174: SLASH
                 {
                 mSLASH(); 
 
                 }
                 break;
             case 27 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:180: PERCENT
+                // src/tr/fn/grammar/Fun.g:1:180: PERCENT
                 {
                 mPERCENT(); 
 
                 }
                 break;
             case 28 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:188: ID
+                // src/tr/fn/grammar/Fun.g:1:188: ID
                 {
                 mID(); 
 
                 }
                 break;
             case 29 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:191: INT
+                // src/tr/fn/grammar/Fun.g:1:191: INT
                 {
                 mINT(); 
 
                 }
                 break;
             case 30 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:195: WS
+                // src/tr/fn/grammar/Fun.g:1:195: WS
                 {
                 mWS(); 
 
                 }
                 break;
             case 31 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:198: NL
+                // src/tr/fn/grammar/Fun.g:1:198: NL
                 {
                 mNL(); 
 
                 }
                 break;
             case 32 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:201: ML_COMMENT
+                // src/tr/fn/grammar/Fun.g:1:201: ML_COMMENT
                 {
                 mML_COMMENT(); 
 
                 }
                 break;
             case 33 :
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:1:212: SL_COMMENT
+                // src/tr/fn/grammar/Fun.g:1:212: SL_COMMENT
                 {
                 mSL_COMMENT(); 
 
@@ -1328,16 +1328,16 @@ public class FunLexer extends Lexer {
     static final String DFA10_minS =
         "\2\57\2\0\2\uffff";
     static final String DFA10_maxS =
-        "\2\57\2\ufffe\2\uffff";
+        "\2\57\2\uffff\2\uffff";
     static final String DFA10_acceptS =
         "\4\uffff\1\2\1\1";
     static final String DFA10_specialS =
-        "\6\uffff}>";
+        "\2\uffff\1\0\1\1\2\uffff}>";
     static final String[] DFA10_transitionS = {
             "\1\1",
             "\1\2",
-            "\12\3\1\5\2\3\1\5\ufff1\3",
-            "\12\3\1\5\2\3\1\5\ufff1\3",
+            "\12\3\1\5\2\3\1\5\ufff2\3",
+            "\12\3\1\5\2\3\1\5\ufff2\3",
             "",
             ""
     };
@@ -1373,6 +1373,40 @@ public class FunLexer extends Lexer {
         }
         public String getDescription() {
             return "111:1: SL_COMMENT : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* );";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            IntStream input = _input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA10_2 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA10_2>='\u0000' && LA10_2<='\t')||(LA10_2>='\u000B' && LA10_2<='\f')||(LA10_2>='\u000E' && LA10_2<='\uFFFF')) ) {s = 3;}
+
+                        else if ( (LA10_2=='\n'||LA10_2=='\r') ) {s = 5;}
+
+                        else s = 4;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA10_3 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA10_3=='\n'||LA10_3=='\r') ) {s = 5;}
+
+                        else if ( ((LA10_3>='\u0000' && LA10_3<='\t')||(LA10_3>='\u000B' && LA10_3<='\f')||(LA10_3>='\u000E' && LA10_3<='\uFFFF')) ) {s = 3;}
+
+                        else s = 4;
+
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 10, _s, input);
+            error(nvae);
+            throw nvae;
         }
     }
     static final String DFA11_eotS =
