@@ -40,4 +40,15 @@ public class LetRec extends Expression {
 		return free;
 	}
 
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		Set<Identifier> identifiers = new HashSet<Identifier>(inExpression.getIdentifiers());
+		
+		for (Declaration declaration : declarations) {
+			identifiers.addAll(declaration.getExpression().getIdentifiers());
+		}
+		
+		return identifiers;
+	}
+
 }

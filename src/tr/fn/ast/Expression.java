@@ -19,4 +19,9 @@ public abstract class Expression {
 	 * Get the free variables of this expression.
 	 */
 	public abstract Set<Identifier> getFreeVariables();
+	
+	/**
+	 * Get the identifiers used occurring in this expression.
+	 */
+	public abstract Set<Identifier> getIdentifiers();
 }

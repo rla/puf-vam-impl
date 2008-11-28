@@ -53,4 +53,9 @@ public class Lambda extends Expression {
 		return builder.toString();
 	}
 
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		return expression.getIdentifiers();
+	}
+
 }

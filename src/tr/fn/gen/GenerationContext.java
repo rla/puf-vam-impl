@@ -63,7 +63,7 @@ public class GenerationContext {
 			throw new GenerateException("Last normal instruction must be halt");
 		}
 		
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
 		String newline = System.getProperty("line.separator");
 		try {
 			for (Instruction instruction : instructions) {

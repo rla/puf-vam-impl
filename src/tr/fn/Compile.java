@@ -18,6 +18,9 @@ import tr.fn.gen.Environment;
 import tr.fn.gen.GenerateException;
 import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
+import tr.fn.opt.DeadCodeEliminator;
+import tr.fn.opt.OptimizationContext;
+import tr.fn.opt.OptimizationException;
 import tr.fn.pre.IncludePreprocessor;
 import tr.fn.pre.PreprocessContext;
 import tr.fn.pre.PreprocessorException;
@@ -27,7 +30,7 @@ import tr.fn.pre.PreprocessorException;
  */
 public class Compile {
 	
-	public static void main(String[] args) throws PreprocessorException, GenerateException, IOException {
+	public static void main(String[] args) throws PreprocessorException, GenerateException, IOException, OptimizationException {
 		CommandLineParser parser = new GnuParser();
 		Options options = new CompileOptions();
 		CommandLine command = null;
@@ -46,8 +49,12 @@ public class Compile {
 		File inputFile = new File(options.getOption(CompileOptions.OPTION_IN).getValue());
 		File outputFile = new File(options.getOption(CompileOptions.OPTION_OUT).getValue());
 		
+		compile(inputFile, outputFile, command.hasOption(CompileOptions.OPTION_DEBUG), command.hasOption(CompileOptions.OPTION_DEADCODE));
+	}
+	
+	public static void compile(File inputFile, File outputFile, boolean debug, boolean nodead) throws PreprocessorException, GenerateException, IOException, OptimizationException {
 		// Executing "#include"
-		PreprocessContext preprocessContext = new PreprocessContext(inputFile);
+		PreprocessContext preprocessContext = new PreprocessContext(inputFile, debug);
 		new IncludePreprocessor(preprocessContext).execute();
 		
 		// Concrete syntax tree
@@ -57,10 +64,16 @@ public class Compile {
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);
 		
+		// Optimizations
+		OptimizationContext optimizationContext = new OptimizationContext(program);
+		if (nodead) {
+			new DeadCodeEliminator(optimizationContext).execute();
+		}
+		
 		// Generate output code
 		GenerationContext generationContext = new GenerationContext();
-		generationContext.setDebug(false);
-		CodeV.codeV(new Environment(null), generationContext, program, 0);
+		generationContext.setDebug(debug);
+		CodeV.codeV(new Environment(null), generationContext, optimizationContext.getProgram(), 0);
 		generationContext.addInstruction(new Halt());
 		
 		// Save it to file
@@ -76,10 +89,14 @@ public class Compile {
 	private static class CompileOptions extends Options {
 		public static final String OPTION_IN = "in";
 		public static final String OPTION_OUT = "out";
+		public static final String OPTION_DEBUG = "debug";
+		public static final String OPTION_DEADCODE = "nodead";
 		
 		public CompileOptions() {
 			addOption(OPTION_IN, true, "Input file for the PuF code");
 			addOption(OPTION_OUT, true, "Output file");
+			addOption(OPTION_DEBUG, false, "If present, excessively verbose debug info is written to output");
+			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate the unused declarations");
 		}
 	}
 }

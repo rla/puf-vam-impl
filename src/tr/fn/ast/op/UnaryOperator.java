@@ -16,5 +16,11 @@ public class UnaryOperator extends Expression {
 		// FIXME unimplemented
 		return null;
 	}
+
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		// FIXME unimplemented
+		return null;
+	}
 	
 }
