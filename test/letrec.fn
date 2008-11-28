@@ -1,0 +1,4 @@
+fact n =
+	letrec
+		factt n = if n == 0 then 1 else n * factt (n - 1);
+	in fact n;

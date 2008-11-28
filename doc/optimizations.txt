@@ -1,0 +1,7 @@
+= Optimizations
+
+1. Tail recursion
+2. Removal of sphagetti code
+3. Avoidance of constructing closures (strictness)
+4. Recycling global vectors
+5. Top level variables with absolute addresses

@@ -1,0 +1,8 @@
+Testsuite: tr.fn.ast.test.AstTest
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.174 sec
+------------- Standard Output ---------------
+EMMA: collecting runtime coverage data ...
+(= main (APP f 2)) (= f (+ x 3) x) (= h (+ x 5) x)
+------------- ---------------- ---------------
+
+Testcase: testProgram took 0.116 sec
