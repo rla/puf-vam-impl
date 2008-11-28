@@ -1,4 +1,4 @@
-// $ANTLR 3.1 /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g 2008-11-28 02:45:08
+// $ANTLR 3.1.1 src/tr/fn/grammar/Fun.g 2008-11-28 05:00:30
 
 package tr.fn.grammar;
 
@@ -73,7 +73,7 @@ public class FunParser extends Parser {
     }
 
     public String[] getTokenNames() { return FunParser.tokenNames; }
-    public String getGrammarFileName() { return "/home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g"; }
+    public String getGrammarFileName() { return "src/tr/fn/grammar/Fun.g"; }
 
 
     public static class program_return extends ParserRuleReturnScope {
@@ -82,7 +82,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "program"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:27:1: program : ( decl )* EOF ;
+    // src/tr/fn/grammar/Fun.g:27:1: program : ( decl )* EOF ;
     public final FunParser.program_return program() throws RecognitionException {
         FunParser.program_return retval = new FunParser.program_return();
         retval.start = input.LT(1);
@@ -96,12 +96,12 @@ public class FunParser extends Parser {
         Object EOF2_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:27:12: ( ( decl )* EOF )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:27:14: ( decl )* EOF
+            // src/tr/fn/grammar/Fun.g:27:12: ( ( decl )* EOF )
+            // src/tr/fn/grammar/Fun.g:27:14: ( decl )* EOF
             {
             root_0 = (Object)adaptor.nil();
 
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:27:14: ( decl )*
+            // src/tr/fn/grammar/Fun.g:27:14: ( decl )*
             loop1:
             do {
                 int alt1=2;
@@ -114,7 +114,7 @@ public class FunParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:27:14: decl
+            	    // src/tr/fn/grammar/Fun.g:27:14: decl
             	    {
             	    pushFollow(FOLLOW_decl_in_program70);
             	    decl1=decl();
@@ -162,7 +162,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "decl"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:1: decl : fname ( ID )* DEFINE expr ENDEXPR -> ^( DEFINE fname expr ( ID )* ) ;
+    // src/tr/fn/grammar/Fun.g:29:1: decl : fname ( ID )* DEFINE expr ENDEXPR -> ^( DEFINE fname expr ( ID )* ) ;
     public final FunParser.decl_return decl() throws RecognitionException {
         FunParser.decl_return retval = new FunParser.decl_return();
         retval.start = input.LT(1);
@@ -186,8 +186,8 @@ public class FunParser extends Parser {
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         RewriteRuleSubtreeStream stream_fname=new RewriteRuleSubtreeStream(adaptor,"rule fname");
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:12: ( fname ( ID )* DEFINE expr ENDEXPR -> ^( DEFINE fname expr ( ID )* ) )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:14: fname ( ID )* DEFINE expr ENDEXPR
+            // src/tr/fn/grammar/Fun.g:29:12: ( fname ( ID )* DEFINE expr ENDEXPR -> ^( DEFINE fname expr ( ID )* ) )
+            // src/tr/fn/grammar/Fun.g:29:14: fname ( ID )* DEFINE expr ENDEXPR
             {
             pushFollow(FOLLOW_fname_in_decl87);
             fname3=fname();
@@ -195,7 +195,7 @@ public class FunParser extends Parser {
             state._fsp--;
 
             stream_fname.add(fname3.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:20: ( ID )*
+            // src/tr/fn/grammar/Fun.g:29:20: ( ID )*
             loop2:
             do {
                 int alt2=2;
@@ -208,7 +208,7 @@ public class FunParser extends Parser {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:20: ID
+            	    // src/tr/fn/grammar/Fun.g:29:20: ID
             	    {
             	    ID4=(Token)match(input,ID,FOLLOW_ID_in_decl89);  
             	    stream_ID.add(ID4);
@@ -237,7 +237,7 @@ public class FunParser extends Parser {
 
 
             // AST REWRITE
-            // elements: DEFINE, ID, fname, expr
+            // elements: DEFINE, expr, ID, fname
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -248,14 +248,14 @@ public class FunParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 29:44: -> ^( DEFINE fname expr ( ID )* )
             {
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:47: ^( DEFINE fname expr ( ID )* )
+                // src/tr/fn/grammar/Fun.g:29:47: ^( DEFINE fname expr ( ID )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_DEFINE.nextNode(), root_1);
 
                 adaptor.addChild(root_1, stream_fname.nextTree());
                 adaptor.addChild(root_1, stream_expr.nextTree());
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:29:67: ( ID )*
+                // src/tr/fn/grammar/Fun.g:29:67: ( ID )*
                 while ( stream_ID.hasNext() ) {
                     adaptor.addChild(root_1, stream_ID.nextNode());
 
@@ -294,7 +294,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "fname"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:31:1: fname : ID ;
+    // src/tr/fn/grammar/Fun.g:31:1: fname : ID ;
     public final FunParser.fname_return fname() throws RecognitionException {
         FunParser.fname_return retval = new FunParser.fname_return();
         retval.start = input.LT(1);
@@ -306,8 +306,8 @@ public class FunParser extends Parser {
         Object ID8_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:31:12: ( ID )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:31:14: ID
+            // src/tr/fn/grammar/Fun.g:31:12: ( ID )
+            // src/tr/fn/grammar/Fun.g:31:14: ID
             {
             root_0 = (Object)adaptor.nil();
 
@@ -342,7 +342,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "expr"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:33:1: expr : single ( expr )? ;
+    // src/tr/fn/grammar/Fun.g:33:1: expr : single ( expr )? ;
     public final FunParser.expr_return expr() throws RecognitionException {
         FunParser.expr_return retval = new FunParser.expr_return();
         retval.start = input.LT(1);
@@ -356,8 +356,8 @@ public class FunParser extends Parser {
 
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:33:12: ( single ( expr )? )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:33:14: single ( expr )?
+            // src/tr/fn/grammar/Fun.g:33:12: ( single ( expr )? )
+            // src/tr/fn/grammar/Fun.g:33:14: single ( expr )?
             {
             root_0 = (Object)adaptor.nil();
 
@@ -367,12 +367,12 @@ public class FunParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, single9.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:33:21: ( expr )?
+            // src/tr/fn/grammar/Fun.g:33:21: ( expr )?
             int alt3=2;
             alt3 = dfa3.predict(input);
             switch (alt3) {
                 case 1 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:33:21: expr
+                    // src/tr/fn/grammar/Fun.g:33:21: expr
                     {
                     pushFollow(FOLLOW_expr_in_expr140);
                     expr10=expr();
@@ -413,7 +413,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "single"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:35:1: single : ( HASH INT expr | IF or THEN expr ELSE expr -> ^( IF or expr expr ) | LAMBDA ( ID )* RIGHTARROW expr -> ^( LAMBDA expr ( ID )* ) | LET ( decl )+ IN expr -> ^( LET expr ( decl )+ ) | LETREC ( decl )+ IN expr -> ^( LETREC expr ( decl )+ ) | LEFTPAREN expr RIGHTPAREN -> ^( expr ) | or );
+    // src/tr/fn/grammar/Fun.g:35:1: single : ( HASH INT expr | IF or THEN expr ELSE expr -> ^( IF or expr expr ) | LAMBDA ( ID )* RIGHTARROW expr -> ^( LAMBDA expr ( ID )* ) | LET ( decl )+ IN expr -> ^( LET expr ( decl )+ ) | LETREC ( decl )+ IN expr -> ^( LETREC expr ( decl )+ ) | LEFTPAREN expr RIGHTPAREN -> ^( expr ) | or );
     public final FunParser.single_return single() throws RecognitionException {
         FunParser.single_return retval = new FunParser.single_return();
         retval.start = input.LT(1);
@@ -486,12 +486,12 @@ public class FunParser extends Parser {
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         RewriteRuleSubtreeStream stream_decl=new RewriteRuleSubtreeStream(adaptor,"rule decl");
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:35:12: ( HASH INT expr | IF or THEN expr ELSE expr -> ^( IF or expr expr ) | LAMBDA ( ID )* RIGHTARROW expr -> ^( LAMBDA expr ( ID )* ) | LET ( decl )+ IN expr -> ^( LET expr ( decl )+ ) | LETREC ( decl )+ IN expr -> ^( LETREC expr ( decl )+ ) | LEFTPAREN expr RIGHTPAREN -> ^( expr ) | or )
+            // src/tr/fn/grammar/Fun.g:35:12: ( HASH INT expr | IF or THEN expr ELSE expr -> ^( IF or expr expr ) | LAMBDA ( ID )* RIGHTARROW expr -> ^( LAMBDA expr ( ID )* ) | LET ( decl )+ IN expr -> ^( LET expr ( decl )+ ) | LETREC ( decl )+ IN expr -> ^( LETREC expr ( decl )+ ) | LEFTPAREN expr RIGHTPAREN -> ^( expr ) | or )
             int alt7=7;
             alt7 = dfa7.predict(input);
             switch (alt7) {
                 case 1 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:35:14: HASH INT expr
+                    // src/tr/fn/grammar/Fun.g:35:14: HASH INT expr
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -513,7 +513,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:36:14: IF or THEN expr ELSE expr
+                    // src/tr/fn/grammar/Fun.g:36:14: IF or THEN expr ELSE expr
                     {
                     IF14=(Token)match(input,IF,FOLLOW_IF_in_single184);  
                     stream_IF.add(IF14);
@@ -545,7 +545,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: IF, expr, or, expr
+                    // elements: IF, expr, expr, or
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -556,7 +556,7 @@ public class FunParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 36:42: -> ^( IF or expr expr )
                     {
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:36:45: ^( IF or expr expr )
+                        // src/tr/fn/grammar/Fun.g:36:45: ^( IF or expr expr )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_IF.nextNode(), root_1);
@@ -574,12 +574,12 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:37:14: LAMBDA ( ID )* RIGHTARROW expr
+                    // src/tr/fn/grammar/Fun.g:37:14: LAMBDA ( ID )* RIGHTARROW expr
                     {
                     LAMBDA20=(Token)match(input,LAMBDA,FOLLOW_LAMBDA_in_single223);  
                     stream_LAMBDA.add(LAMBDA20);
 
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:37:21: ( ID )*
+                    // src/tr/fn/grammar/Fun.g:37:21: ( ID )*
                     loop4:
                     do {
                         int alt4=2;
@@ -592,7 +592,7 @@ public class FunParser extends Parser {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:37:21: ID
+                    	    // src/tr/fn/grammar/Fun.g:37:21: ID
                     	    {
                     	    ID21=(Token)match(input,ID,FOLLOW_ID_in_single225);  
                     	    stream_ID.add(ID21);
@@ -618,7 +618,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: ID, LAMBDA, expr
+                    // elements: expr, LAMBDA, ID
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -629,13 +629,13 @@ public class FunParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 37:42: -> ^( LAMBDA expr ( ID )* )
                     {
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:37:45: ^( LAMBDA expr ( ID )* )
+                        // src/tr/fn/grammar/Fun.g:37:45: ^( LAMBDA expr ( ID )* )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_LAMBDA.nextNode(), root_1);
 
                         adaptor.addChild(root_1, stream_expr.nextTree());
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:37:59: ( ID )*
+                        // src/tr/fn/grammar/Fun.g:37:59: ( ID )*
                         while ( stream_ID.hasNext() ) {
                             adaptor.addChild(root_1, stream_ID.nextNode());
 
@@ -651,12 +651,12 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:38:14: LET ( decl )+ IN expr
+                    // src/tr/fn/grammar/Fun.g:38:14: LET ( decl )+ IN expr
                     {
                     LET24=(Token)match(input,LET,FOLLOW_LET_in_single257);  
                     stream_LET.add(LET24);
 
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:38:18: ( decl )+
+                    // src/tr/fn/grammar/Fun.g:38:18: ( decl )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -670,7 +670,7 @@ public class FunParser extends Parser {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:38:18: decl
+                    	    // src/tr/fn/grammar/Fun.g:38:18: decl
                     	    {
                     	    pushFollow(FOLLOW_decl_in_single259);
                     	    decl25=decl();
@@ -703,7 +703,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expr, decl, LET
+                    // elements: LET, expr, decl
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -714,7 +714,7 @@ public class FunParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 38:42: -> ^( LET expr ( decl )+ )
                     {
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:38:45: ^( LET expr ( decl )+ )
+                        // src/tr/fn/grammar/Fun.g:38:45: ^( LET expr ( decl )+ )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_LET.nextNode(), root_1);
@@ -738,12 +738,12 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:39:14: LETREC ( decl )+ IN expr
+                    // src/tr/fn/grammar/Fun.g:39:14: LETREC ( decl )+ IN expr
                     {
                     LETREC28=(Token)match(input,LETREC,FOLLOW_LETREC_in_single300);  
                     stream_LETREC.add(LETREC28);
 
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:39:21: ( decl )+
+                    // src/tr/fn/grammar/Fun.g:39:21: ( decl )+
                     int cnt6=0;
                     loop6:
                     do {
@@ -757,7 +757,7 @@ public class FunParser extends Parser {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:39:21: decl
+                    	    // src/tr/fn/grammar/Fun.g:39:21: decl
                     	    {
                     	    pushFollow(FOLLOW_decl_in_single302);
                     	    decl29=decl();
@@ -801,7 +801,7 @@ public class FunParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 39:42: -> ^( LETREC expr ( decl )+ )
                     {
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:39:45: ^( LETREC expr ( decl )+ )
+                        // src/tr/fn/grammar/Fun.g:39:45: ^( LETREC expr ( decl )+ )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_LETREC.nextNode(), root_1);
@@ -825,7 +825,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:40:14: LEFTPAREN expr RIGHTPAREN
+                    // src/tr/fn/grammar/Fun.g:40:14: LEFTPAREN expr RIGHTPAREN
                     {
                     LEFTPAREN32=(Token)match(input,LEFTPAREN,FOLLOW_LEFTPAREN_in_single340);  
                     stream_LEFTPAREN.add(LEFTPAREN32);
@@ -853,7 +853,7 @@ public class FunParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 40:42: -> ^( expr )
                     {
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:40:45: ^( expr )
+                        // src/tr/fn/grammar/Fun.g:40:45: ^( expr )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_expr.nextNode(), root_1);
@@ -867,7 +867,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:41:14: or
+                    // src/tr/fn/grammar/Fun.g:41:14: or
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -906,7 +906,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "fapp"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:43:1: fapp : fname ( farg )+ -> ^( APP fname ( farg )+ ) ;
+    // src/tr/fn/grammar/Fun.g:43:1: fapp : fname ( farg )+ -> ^( APP fname ( farg )+ ) ;
     public final FunParser.fapp_return fapp() throws RecognitionException {
         FunParser.fapp_return retval = new FunParser.fapp_return();
         retval.start = input.LT(1);
@@ -921,8 +921,8 @@ public class FunParser extends Parser {
         RewriteRuleSubtreeStream stream_farg=new RewriteRuleSubtreeStream(adaptor,"rule farg");
         RewriteRuleSubtreeStream stream_fname=new RewriteRuleSubtreeStream(adaptor,"rule fname");
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:43:12: ( fname ( farg )+ -> ^( APP fname ( farg )+ ) )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:43:14: fname ( farg )+
+            // src/tr/fn/grammar/Fun.g:43:12: ( fname ( farg )+ -> ^( APP fname ( farg )+ ) )
+            // src/tr/fn/grammar/Fun.g:43:14: fname ( farg )+
             {
             pushFollow(FOLLOW_fname_in_fapp382);
             fname36=fname();
@@ -930,7 +930,7 @@ public class FunParser extends Parser {
             state._fsp--;
 
             stream_fname.add(fname36.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:43:20: ( farg )+
+            // src/tr/fn/grammar/Fun.g:43:20: ( farg )+
             int cnt8=0;
             loop8:
             do {
@@ -938,7 +938,7 @@ public class FunParser extends Parser {
                 alt8 = dfa8.predict(input);
                 switch (alt8) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:43:20: farg
+            	    // src/tr/fn/grammar/Fun.g:43:20: farg
             	    {
             	    pushFollow(FOLLOW_farg_in_fapp384);
             	    farg37=farg();
@@ -973,7 +973,7 @@ public class FunParser extends Parser {
             root_0 = (Object)adaptor.nil();
             // 43:26: -> ^( APP fname ( farg )+ )
             {
-                // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:43:29: ^( APP fname ( farg )+ )
+                // src/tr/fn/grammar/Fun.g:43:29: ^( APP fname ( farg )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(APP, "APP"), root_1);
@@ -1020,7 +1020,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "farg"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:45:1: farg : ( LEFTPAREN expr RIGHTPAREN -> ^( expr ) | ID | INT );
+    // src/tr/fn/grammar/Fun.g:45:1: farg : ( LEFTPAREN expr RIGHTPAREN -> ^( expr ) | ID | INT );
     public final FunParser.farg_return farg() throws RecognitionException {
         FunParser.farg_return retval = new FunParser.farg_return();
         retval.start = input.LT(1);
@@ -1042,7 +1042,7 @@ public class FunParser extends Parser {
         RewriteRuleTokenStream stream_RIGHTPAREN=new RewriteRuleTokenStream(adaptor,"token RIGHTPAREN");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:45:12: ( LEFTPAREN expr RIGHTPAREN -> ^( expr ) | ID | INT )
+            // src/tr/fn/grammar/Fun.g:45:12: ( LEFTPAREN expr RIGHTPAREN -> ^( expr ) | ID | INT )
             int alt9=3;
             switch ( input.LA(1) ) {
             case LEFTPAREN:
@@ -1069,7 +1069,7 @@ public class FunParser extends Parser {
 
             switch (alt9) {
                 case 1 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:45:14: LEFTPAREN expr RIGHTPAREN
+                    // src/tr/fn/grammar/Fun.g:45:14: LEFTPAREN expr RIGHTPAREN
                     {
                     LEFTPAREN38=(Token)match(input,LEFTPAREN,FOLLOW_LEFTPAREN_in_farg411);  
                     stream_LEFTPAREN.add(LEFTPAREN38);
@@ -1097,7 +1097,7 @@ public class FunParser extends Parser {
                     root_0 = (Object)adaptor.nil();
                     // 45:40: -> ^( expr )
                     {
-                        // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:45:43: ^( expr )
+                        // src/tr/fn/grammar/Fun.g:45:43: ^( expr )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(stream_expr.nextNode(), root_1);
@@ -1111,7 +1111,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:46:14: ID
+                    // src/tr/fn/grammar/Fun.g:46:14: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1123,7 +1123,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:47:14: INT
+                    // src/tr/fn/grammar/Fun.g:47:14: INT
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1160,7 +1160,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "or"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:49:1: or : and ( OR and )* ;
+    // src/tr/fn/grammar/Fun.g:49:1: or : and ( OR and )* ;
     public final FunParser.or_return or() throws RecognitionException {
         FunParser.or_return retval = new FunParser.or_return();
         retval.start = input.LT(1);
@@ -1176,8 +1176,8 @@ public class FunParser extends Parser {
         Object OR44_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:49:12: ( and ( OR and )* )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:49:14: and ( OR and )*
+            // src/tr/fn/grammar/Fun.g:49:12: ( and ( OR and )* )
+            // src/tr/fn/grammar/Fun.g:49:14: and ( OR and )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1187,14 +1187,14 @@ public class FunParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, and43.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:49:18: ( OR and )*
+            // src/tr/fn/grammar/Fun.g:49:18: ( OR and )*
             loop10:
             do {
                 int alt10=2;
                 alt10 = dfa10.predict(input);
                 switch (alt10) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:49:19: OR and
+            	    // src/tr/fn/grammar/Fun.g:49:19: OR and
             	    {
             	    OR44=(Token)match(input,OR,FOLLOW_OR_in_or471); 
             	    OR44_tree = (Object)adaptor.create(OR44);
@@ -1242,7 +1242,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "and"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:51:1: and : not ( AND not )* ;
+    // src/tr/fn/grammar/Fun.g:51:1: and : not ( AND not )* ;
     public final FunParser.and_return and() throws RecognitionException {
         FunParser.and_return retval = new FunParser.and_return();
         retval.start = input.LT(1);
@@ -1258,8 +1258,8 @@ public class FunParser extends Parser {
         Object AND47_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:51:12: ( not ( AND not )* )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:51:14: not ( AND not )*
+            // src/tr/fn/grammar/Fun.g:51:12: ( not ( AND not )* )
+            // src/tr/fn/grammar/Fun.g:51:14: not ( AND not )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1269,14 +1269,14 @@ public class FunParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, not46.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:51:18: ( AND not )*
+            // src/tr/fn/grammar/Fun.g:51:18: ( AND not )*
             loop11:
             do {
                 int alt11=2;
                 alt11 = dfa11.predict(input);
                 switch (alt11) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:51:19: AND not
+            	    // src/tr/fn/grammar/Fun.g:51:19: AND not
             	    {
             	    AND47=(Token)match(input,AND,FOLLOW_AND_in_and495); 
             	    AND47_tree = (Object)adaptor.create(AND47);
@@ -1324,7 +1324,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "not"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:53:1: not : ( NOT not | comp );
+    // src/tr/fn/grammar/Fun.g:53:1: not : ( NOT not | comp );
     public final FunParser.not_return not() throws RecognitionException {
         FunParser.not_return retval = new FunParser.not_return();
         retval.start = input.LT(1);
@@ -1340,7 +1340,7 @@ public class FunParser extends Parser {
         Object NOT49_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:53:12: ( NOT not | comp )
+            // src/tr/fn/grammar/Fun.g:53:12: ( NOT not | comp )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1358,7 +1358,7 @@ public class FunParser extends Parser {
             }
             switch (alt12) {
                 case 1 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:53:14: NOT not
+                    // src/tr/fn/grammar/Fun.g:53:14: NOT not
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1376,7 +1376,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:54:14: comp
+                    // src/tr/fn/grammar/Fun.g:54:14: comp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1415,7 +1415,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "comp"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:56:1: comp : arith ( comp_op arith )* ;
+    // src/tr/fn/grammar/Fun.g:56:1: comp : arith ( comp_op arith )* ;
     public final FunParser.comp_return comp() throws RecognitionException {
         FunParser.comp_return retval = new FunParser.comp_return();
         retval.start = input.LT(1);
@@ -1431,8 +1431,8 @@ public class FunParser extends Parser {
 
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:56:12: ( arith ( comp_op arith )* )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:56:14: arith ( comp_op arith )*
+            // src/tr/fn/grammar/Fun.g:56:12: ( arith ( comp_op arith )* )
+            // src/tr/fn/grammar/Fun.g:56:14: arith ( comp_op arith )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1442,14 +1442,14 @@ public class FunParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, arith52.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:56:20: ( comp_op arith )*
+            // src/tr/fn/grammar/Fun.g:56:20: ( comp_op arith )*
             loop13:
             do {
                 int alt13=2;
                 alt13 = dfa13.predict(input);
                 switch (alt13) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:56:21: comp_op arith
+            	    // src/tr/fn/grammar/Fun.g:56:21: comp_op arith
             	    {
             	    pushFollow(FOLLOW_comp_op_in_comp563);
             	    comp_op53=comp_op();
@@ -1499,7 +1499,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "arith"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:58:1: arith : term ( ( PLUS | MINUS ) term )* ;
+    // src/tr/fn/grammar/Fun.g:58:1: arith : term ( ( PLUS | MINUS ) term )* ;
     public final FunParser.arith_return arith() throws RecognitionException {
         FunParser.arith_return retval = new FunParser.arith_return();
         retval.start = input.LT(1);
@@ -1515,8 +1515,8 @@ public class FunParser extends Parser {
         Object set56_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:58:12: ( term ( ( PLUS | MINUS ) term )* )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:58:14: term ( ( PLUS | MINUS ) term )*
+            // src/tr/fn/grammar/Fun.g:58:12: ( term ( ( PLUS | MINUS ) term )* )
+            // src/tr/fn/grammar/Fun.g:58:14: term ( ( PLUS | MINUS ) term )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1526,14 +1526,14 @@ public class FunParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, term55.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:58:19: ( ( PLUS | MINUS ) term )*
+            // src/tr/fn/grammar/Fun.g:58:19: ( ( PLUS | MINUS ) term )*
             loop14:
             do {
                 int alt14=2;
                 alt14 = dfa14.predict(input);
                 switch (alt14) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:58:20: ( PLUS | MINUS ) term
+            	    // src/tr/fn/grammar/Fun.g:58:20: ( PLUS | MINUS ) term
             	    {
             	    set56=(Token)input.LT(1);
             	    set56=(Token)input.LT(1);
@@ -1589,7 +1589,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "term"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:60:1: term : factor ( ( STAR | SLASH | PERCENT ) factor )* ;
+    // src/tr/fn/grammar/Fun.g:60:1: term : factor ( ( STAR | SLASH | PERCENT ) factor )* ;
     public final FunParser.term_return term() throws RecognitionException {
         FunParser.term_return retval = new FunParser.term_return();
         retval.start = input.LT(1);
@@ -1605,8 +1605,8 @@ public class FunParser extends Parser {
         Object set59_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:60:12: ( factor ( ( STAR | SLASH | PERCENT ) factor )* )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:60:14: factor ( ( STAR | SLASH | PERCENT ) factor )*
+            // src/tr/fn/grammar/Fun.g:60:12: ( factor ( ( STAR | SLASH | PERCENT ) factor )* )
+            // src/tr/fn/grammar/Fun.g:60:14: factor ( ( STAR | SLASH | PERCENT ) factor )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1616,14 +1616,14 @@ public class FunParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, factor58.getTree());
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:60:21: ( ( STAR | SLASH | PERCENT ) factor )*
+            // src/tr/fn/grammar/Fun.g:60:21: ( ( STAR | SLASH | PERCENT ) factor )*
             loop15:
             do {
                 int alt15=2;
                 alt15 = dfa15.predict(input);
                 switch (alt15) {
             	case 1 :
-            	    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:60:22: ( STAR | SLASH | PERCENT ) factor
+            	    // src/tr/fn/grammar/Fun.g:60:22: ( STAR | SLASH | PERCENT ) factor
             	    {
             	    set59=(Token)input.LT(1);
             	    set59=(Token)input.LT(1);
@@ -1679,7 +1679,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "factor"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:62:1: factor : ( fapp | PLUS factor | MINUS factor | INT | ID );
+    // src/tr/fn/grammar/Fun.g:62:1: factor : ( fapp | PLUS factor | MINUS factor | INT | ID );
     public final FunParser.factor_return factor() throws RecognitionException {
         FunParser.factor_return retval = new FunParser.factor_return();
         retval.start = input.LT(1);
@@ -1703,12 +1703,12 @@ public class FunParser extends Parser {
         Object ID67_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:62:12: ( fapp | PLUS factor | MINUS factor | INT | ID )
+            // src/tr/fn/grammar/Fun.g:62:12: ( fapp | PLUS factor | MINUS factor | INT | ID )
             int alt16=5;
             alt16 = dfa16.predict(input);
             switch (alt16) {
                 case 1 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:62:14: fapp
+                    // src/tr/fn/grammar/Fun.g:62:14: fapp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1722,7 +1722,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:63:14: PLUS factor
+                    // src/tr/fn/grammar/Fun.g:63:14: PLUS factor
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1740,7 +1740,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:64:14: MINUS factor
+                    // src/tr/fn/grammar/Fun.g:64:14: MINUS factor
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1758,7 +1758,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:65:14: INT
+                    // src/tr/fn/grammar/Fun.g:65:14: INT
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1770,7 +1770,7 @@ public class FunParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:66:14: ID
+                    // src/tr/fn/grammar/Fun.g:66:14: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1807,7 +1807,7 @@ public class FunParser extends Parser {
     };
 
     // $ANTLR start "comp_op"
-    // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:68:1: comp_op : ( LESS | GREATER | EQUAL | GREATEREQUAL | LESSEQUAL | NOTEQUAL );
+    // src/tr/fn/grammar/Fun.g:68:1: comp_op : ( LESS | GREATER | EQUAL | GREATEREQUAL | LESSEQUAL | NOTEQUAL );
     public final FunParser.comp_op_return comp_op() throws RecognitionException {
         FunParser.comp_op_return retval = new FunParser.comp_op_return();
         retval.start = input.LT(1);
@@ -1819,8 +1819,8 @@ public class FunParser extends Parser {
         Object set68_tree=null;
 
         try {
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:68:12: ( LESS | GREATER | EQUAL | GREATEREQUAL | LESSEQUAL | NOTEQUAL )
-            // /home/raivo/workspace/tr-fn/src/tr/fn/grammar/Fun.g:
+            // src/tr/fn/grammar/Fun.g:68:12: ( LESS | GREATER | EQUAL | GREATEREQUAL | LESSEQUAL | NOTEQUAL )
+            // src/tr/fn/grammar/Fun.g:
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2518,7 +2518,7 @@ public class FunParser extends Parser {
     public static final BitSet FOLLOW_decl_in_single259 = new BitSet(new long[]{0x0000000000010020L});
     public static final BitSet FOLLOW_IN_in_single262 = new BitSet(new long[]{0x0000000001C6A720L});
     public static final BitSet FOLLOW_expr_in_single264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LETREC_in_single300 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_LETREC_in_single300 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_decl_in_single302 = new BitSet(new long[]{0x0000000000010020L});
     public static final BitSet FOLLOW_IN_in_single305 = new BitSet(new long[]{0x0000000001C6A720L});
     public static final BitSet FOLLOW_expr_in_single307 = new BitSet(new long[]{0x0000000000000002L});
