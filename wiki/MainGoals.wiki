@@ -2,7 +2,7 @@
 
 = Main goals =
 
-* The implementation is consistent with the language specification.
-* All required features are implemented.
-* All required optimizations are implemented.
-* Project is documented and the presentation is given.
+  # The implementation is consistent with the language specification.
+  # All required features are implemented.
+  # All required optimizations are implemented.
+  # Project is documented and the presentation is given.
