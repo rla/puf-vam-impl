@@ -1,0 +1,8 @@
+#summary The main goals of PuF implementation project.
+
+= Main goals =
+
+1. The implementation is consistent with the language specification.
+2. All required features are implemented.
+3. All required optimizations are implemented.
+4. Project is documented and the presentation is given.
