@@ -1,12 +1,12 @@
 #summary Readme file for the program
 = README for PuF to Vam compiler =
 
-== Requirements
+== Requirements ==
   * Java 1.5 compatible compiler and runtime environment.
   * Ant building utility for compilation.
 
-== Compilation
+== Compilation ==
   * Command {{{ant all}}} will compile the project and run all tests.
 
-== Usage
+== Usage ==
   * On linux: {{{puf2vam.sh input output}}}
