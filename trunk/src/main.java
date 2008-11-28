@@ -8,6 +8,7 @@ import tr.fn.gen.GenerateException;
 import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
 import tr.fn.grammar.test.*;
+import tr.fn.util.TreeUtil;
 import tr.fn.ast.*;
 
 public class main {
@@ -19,7 +20,7 @@ public class main {
 	 */
 	public static void main(String[] args) throws GenerateException, IOException {
 		AstBuilder builder = new AstBuilder();
-		LetRec program = builder.buildProgram(TestUtil.getTree("test/proov.fn"));
+		LetRec program = builder.buildProgram(TreeUtil.getTree("test/proov.fn"));
 		GenerationContext context = new GenerationContext();
 		context.setDebug(false);
 		CodeV.codeV(new Environment(null), context, program, 0); 
