@@ -9,4 +9,4 @@
   * Command {{{ant all}}} will compile the project and run all tests.
 
 == Usage ==
-  * On linux: {{{puf2vam.sh input output}}}
+  * On Linux: {{{puf2vam.sh input output}}}
