@@ -48,7 +48,10 @@ farg       : LEFTPAREN expr RIGHTPAREN -> ^(expr)
 
 or         : and (OR^ and)* ;
 
-and        : comp (AND^ comp)* ;
+and        : not (AND^ not)* ;
+
+not        : NOT^ not
+           | comp ;
            
 comp       : arith (comp_op^ arith)* ;
        
@@ -59,7 +62,6 @@ term       : factor ((STAR | SLASH | PERCENT)^ factor)* ;
 factor     : fapp
            | PLUS factor
            | MINUS factor
-           | NOT factor
            | INT
            | ID ;
            
