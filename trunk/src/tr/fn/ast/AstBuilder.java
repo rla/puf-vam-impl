@@ -29,7 +29,11 @@ public class AstBuilder {
 			declarations.add(tree);
 		} else {
 			for (int i = 0; i < tree.getChildCount(); i++) {
-				declarations.add(tree.getChild(i));
+				Tree child = tree.getChild(i);
+				if (child.getType() == FunParser.EOF) {
+					break;
+				}
+				declarations.add(child);
 			}
 		}
 		

@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 src/tr/fn/grammar/Fun.g 2008-11-28 05:00:30
+// $ANTLR 3.1.1 src/tr/fn/grammar/Fun.g 2008-11-28 05:28:32
 
 package tr.fn.grammar;
 
@@ -545,7 +545,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: IF, expr, expr, or
+                    // elements: expr, expr, or, IF
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -618,7 +618,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expr, LAMBDA, ID
+                    // elements: LAMBDA, ID, expr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -703,7 +703,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: LET, expr, decl
+                    // elements: decl, LET, expr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -790,7 +790,7 @@ public class FunParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: decl, LETREC, expr
+                    // elements: decl, expr, LETREC
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -962,7 +962,7 @@ public class FunParser extends Parser {
 
 
             // AST REWRITE
-            // elements: fname, farg
+            // elements: farg, fname
             // token labels: 
             // rule labels: retval
             // token list labels: 
