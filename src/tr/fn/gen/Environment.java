@@ -38,4 +38,14 @@ public class Environment {
 		return parent;
 	}
 	
+	public Environment getCopy() {
+		Environment environment = new Environment(parent);
+		
+		for (Variable variable : variables.values()) {
+			environment.addVariable(variable);
+		}
+		
+		return environment;
+	}
+	
 }

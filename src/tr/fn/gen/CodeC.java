@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
-import tr.fn.debug.Debug;
 import tr.fn.gen.instr.Jump;
 import tr.fn.gen.instr.Label;
 import tr.fn.gen.instr.MkClos;
@@ -21,9 +20,6 @@ public class CodeC {
 	public static void codeC(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
 		Label A = context.makeLabel();
 		Label B = context.makeLabel();
-		
-		System.out.println("codeC: " + e);
-		Debug.printFreeVariables(e);
 		
 		Collection<Identifier> free = e.getFreeVariables();
 		Environment environment1 = new Environment(environment);

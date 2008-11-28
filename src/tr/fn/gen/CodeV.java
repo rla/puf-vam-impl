@@ -10,9 +10,9 @@ import tr.fn.ast.Identifier;
 import tr.fn.ast.IfThenElse;
 import tr.fn.ast.Integer;
 import tr.fn.ast.Lambda;
+import tr.fn.ast.Let;
 import tr.fn.ast.LetRec;
 import tr.fn.ast.op.BinaryOperator;
-import tr.fn.debug.Debug;
 import tr.fn.gen.instr.Alloc;
 import tr.fn.gen.instr.Apply;
 import tr.fn.gen.instr.BinaryOpInstruction;
@@ -52,9 +52,39 @@ public class CodeV {
 			codeVApplication(environment, context, (Application) e, sd);
 		} else if (e instanceof IfThenElse) {
 			codeVIfThenElse(environment, context, (IfThenElse) e, sd);
+		} else if (e instanceof Let) {
+			codeVLet(environment, context, (Let) e, sd);
 		} else {
 			throw new GenerateException("Unknown expression: " + e.getClass());
 		}
+	}
+
+	/**
+	 * Generates code for let expression.
+	 * 
+	 * @see MaMa slides page 51.
+	 */
+	private static void codeVLet(Environment environment, GenerationContext context, Let e, int sd) throws GenerateException {
+		int n = e.getDeclarations().size();
+		
+		Environment environment1 = null;
+		int j = 0;
+		for (Declaration declaration : e.getDeclarations()) {
+			environment1 = environment.getCopy();
+			for (int i = 0; i < j; i++) {
+				environment1.addVariable(new Variable(e.getDeclarations().get(i).getName(), sd + i + 1, VariableType.LOCAL));
+			}
+			CodeC.codeC(environment1, context, declaration.getExpression(), sd + j);
+			j++;
+		}
+		
+		environment1 = environment.getCopy();
+		for (int i = 0; i < n; i++) {
+			environment1.addVariable(new Variable(e.getDeclarations().get(i).getName(), sd + i + 1, VariableType.LOCAL));
+		}
+		
+		codeV(environment1, context, e.getInExpression(), sd + n);
+		context.addInstruction(new Slide(n));
 	}
 
 	/**
@@ -117,8 +147,6 @@ public class CodeV {
 		
 		Collection<Identifier> free = e.getFreeVariables();
 		List<Identifier> arguments = e.getArguments();
-		System.out.println("codeV: " + e);
-		Debug.printFreeVariables(e);
 		
 		Environment environment1 = new Environment(environment);
 		
@@ -163,8 +191,6 @@ public class CodeV {
 		}
 		
 		context.addInstruction(new Alloc(n));
-		
-		System.out.println("Environment1:\n" + environment1);
 		
 		i = 0;
 		for (Declaration declaration : e.getDeclarations()) {

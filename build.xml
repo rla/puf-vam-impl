@@ -5,6 +5,7 @@
 	<property name="lib" value="lib" />
 	<property name="build" value="build" />
 	<property name="doc" value="doc" />
+	<property name="jar" value="puf2vam.jar" />
 	<property name="doc.javadoc" value="${doc}/javadoc" />
 	<property name="doc.test.reports" value="${doc}/reports" />
 	<property name="doc.emma.reports" value="${doc}/coverage-reports" />
@@ -89,7 +90,11 @@
 		<javadoc destdir="${doc.javadoc}" sourcepath="${src}" packagenames="tr.fn.*" />
 	</target>
 	
-	<target name="all" depends="test-coverage, javadoc" description="Compile everything and run test">
+	<target name="jar" depends="compile, test" description="Package the project into jar">
+		<jar destfile="${jar}" basedir="${build}" />
+	</target>
+	
+	<target name="all" depends="javadoc, jar" description="Compile everything and run test">
 		<mkdir dir="${build}" />
 		<javac destdir="${build}" debug="true">
 			<src path="${src}" />
