@@ -52,12 +52,10 @@ public class Compile {
 		
 		// Concrete syntax tree
 		Tree tree = preprocessContext.getTreeAfterPreprocess();
-		System.out.println(tree.toStringTree());
 		
 		// Tree of statements
 		AstBuilder builder = new AstBuilder();
 		LetRec program = builder.buildProgram(tree);
-		System.out.println(program);
 		
 		// Generate output code
 		GenerationContext generationContext = new GenerationContext();
