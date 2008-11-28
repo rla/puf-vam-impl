@@ -86,4 +86,12 @@ public class BinaryOperator extends Expression {
 		return "(+ " + left + " " + right+ ")";
 	}
 
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		Set<Identifier> identifiers = left.getIdentifiers();
+		identifiers.addAll(right.getIdentifiers());
+		
+		return identifiers;
+	}
+
 }

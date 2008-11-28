@@ -55,4 +55,16 @@ public class Application extends Expression {
 		return builder.toString() + ")";
 	}
 
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		Set<Identifier> identifiers = new HashSet<Identifier>();
+		identifiers.addAll(fExpression.getIdentifiers());
+		
+		for (Expression expression : arguments) {
+			identifiers.addAll(expression.getIdentifiers());
+		}
+		
+		return identifiers;
+	}
+
 }

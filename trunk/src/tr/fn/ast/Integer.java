@@ -25,5 +25,10 @@ public class Integer extends Expression {
 	public Set<Identifier> getFreeVariables() {
 		return new HashSet<Identifier>();
 	}
+
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		return new HashSet<Identifier>();
+	}
 	
 }

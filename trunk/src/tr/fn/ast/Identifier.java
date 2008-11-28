@@ -38,5 +38,13 @@ public class Identifier extends Expression {
 		
 		return free;
 	}
+
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		Set<Identifier> identifiers = new HashSet<Identifier>();
+		identifiers.add(this);
+		
+		return identifiers;
+	}
 	
 }

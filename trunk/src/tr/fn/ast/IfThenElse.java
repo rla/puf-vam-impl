@@ -42,4 +42,14 @@ public class IfThenElse extends Expression {
 		return "(if " + condition + " then " + thenExpression + " else " + elseExpression + ")";
 	}
 
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		Set<Identifier> identifiers = new HashSet<Identifier>();
+		identifiers.addAll(condition.getIdentifiers());
+		identifiers.addAll(elseExpression.getIdentifiers());
+		identifiers.addAll(thenExpression.getIdentifiers());
+		
+		return identifiers;
+	}
+
 }

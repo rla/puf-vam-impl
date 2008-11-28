@@ -1,0 +1,26 @@
+alloc 2
+pushloc 0
+mkvec 1
+mkclos L1
+jump L2
+L1:
+pushglob 0
+eval
+update
+L2:
+rewrite 2
+mkvec 0
+mkclos L3
+jump L4
+L3:
+loadc 2
+loadc 3
+add
+mkbasic
+update
+L4:
+rewrite 1
+pushloc 1
+eval
+slide 2
+halt

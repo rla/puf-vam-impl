@@ -6,6 +6,8 @@ import java.util.Set;
  * (= name expression)
  */
 public class Declaration extends Expression {
+	public static final String MAIN_NAME = "main";
+	
 	private final Expression expression;
 	private final Identifier name;
 
@@ -36,6 +38,11 @@ public class Declaration extends Expression {
 		builder.append(expression.toString());
 		
 		return builder.toString();
+	}
+
+	@Override
+	public Set<Identifier> getIdentifiers() {
+		return expression.getIdentifiers();
 	}
 
 }
