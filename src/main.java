@@ -20,12 +20,12 @@ public class main {
 	 */
 	public static void main(String[] args) throws GenerateException, IOException {
 		AstBuilder builder = new AstBuilder();
-		LetRec program = builder.buildProgram(TreeUtil.getTree("test/proov.fn"));
+		LetRec program = builder.buildProgram(TreeUtil.getTree("test/three.fn"));
 		GenerationContext context = new GenerationContext();
 		context.setDebug(false);
 		CodeV.codeV(new Environment(null), context, program, 0); 
 		context.addInstruction(new Halt()); 
-		context.saveToFile(new File("test/out/proov.f"));
+		context.saveToFile(new File("test/out/three.f"));
 	}
 
 }
