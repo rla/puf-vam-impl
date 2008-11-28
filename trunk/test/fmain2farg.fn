@@ -1,0 +1,2 @@
+main = f 4 2;
+f = fn x y -> x + y;

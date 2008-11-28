@@ -1,0 +1,8 @@
+/* 
+Program for testing comments.
+*/
+
+// Main method
+main = 2;
+
+// This one ends with file, not newline

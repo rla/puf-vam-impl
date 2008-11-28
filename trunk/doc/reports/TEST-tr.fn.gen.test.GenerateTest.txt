@@ -1,0 +1,75 @@
+Testsuite: tr.fn.gen.test.GenerateTest
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0.214 sec
+------------- Standard Output ---------------
+EMMA: collecting runtime coverage data ...
+(= main (APP f 4)) (= f (fn (+ x 2) x))
+Environment1:
+f -> (L,2)
+main -> (L,1)
+
+codeC: (apply f (4))
+Free variables: f
+codeC: 4
+Free variables:
+codeC: fn x -> (+ x 2)
+Free variables:
+codeV: fn x -> (+ x 2)
+Free variables:
+(= main (APP f 4 2)) (= f (fn (+ x y) x y))
+Environment1:
+f -> (L,2)
+main -> (L,1)
+
+codeC: (apply f (4) (2))
+Free variables: f
+codeC: 2
+Free variables:
+codeC: 4
+Free variables:
+codeC: fn x y -> (+ x y)
+Free variables:
+codeV: fn x y -> (+ x y)
+Free variables:
+(= main (if 0 2 5))
+Environment1:
+main -> (L,1)
+
+codeC: (if 0 then 5 else 2)
+Free variables:
+(= main (if 1 (APP f 2) (APP f 5))) (= f (fn (+ x 1) x))
+Environment1:
+f -> (L,2)
+main -> (L,1)
+
+codeC: (if 1 then (apply f (5)) else (apply f (2)))
+Free variables: f
+codeC: 5
+Free variables:
+codeC: 2
+Free variables:
+codeC: fn x -> (+ x 1)
+Free variables:
+codeV: fn x -> (+ x 1)
+Free variables:
+(= main (APP fac 10)) (= fac (fn (if n 1 (* n (APP fac (- n 1)))) n))
+Environment1:
+fac -> (L,2)
+main -> (L,1)
+
+codeC: (apply fac (10))
+Free variables: fac
+codeC: 10
+Free variables:
+codeC: fn n -> (if n then (+ n (apply fac ((+ n 1)))) else 1)
+Free variables: fac
+codeV: fn n -> (if n then (+ n (apply fac ((+ n 1)))) else 1)
+Free variables: fac
+codeC: (+ n 1)
+Free variables: n
+------------- ---------------- ---------------
+
+Testcase: testMainFArgCall took 0.13 sec
+Testcase: testMain2FArgCall took 0.002 sec
+Testcase: testIfThenElse took 0.002 sec
+Testcase: testIfThenElseF took 0.004 sec
+Testcase: testIfThenElseFR took 0.004 sec
