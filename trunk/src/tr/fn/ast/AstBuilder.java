@@ -10,6 +10,10 @@ import tr.fn.ast.op.BinaryOperator;
 import tr.fn.ast.op.BinaryOperator.Type;
 import tr.fn.grammar.FunParser;
 
+/**
+ * Generates the abstract syntax tree from the concrete
+ * syntax tree (from antlr).
+ */
 public class AstBuilder {
 	private int[] binaryOperators;
 	private boolean forceSingleArgumentFunctions = false;
@@ -84,6 +88,19 @@ public class AstBuilder {
 			return new Lambda(tree.getLine(), arguments1, expression1);
 		case FunParser.APP:		
 			return buildApplication(tree);
+		case FunParser.TUPLE:
+			// Consider excessive )
+			if (tree.getChildCount() == 2) {
+				// (e) )
+				return buildExpression(tree.getChild(0));
+			}
+			List<Expression> expressions = new ArrayList<Expression>();
+			for (int i = 0; i < tree.getChildCount() - 1; i++) {
+				expressions.add(buildExpression(tree.getChild(i)));
+			}
+			return new Tuple(tree.getLine(), expressions);
+		case FunParser.EMPTY_TUPLE:
+			return new Tuple(tree.getLine(), new ArrayList<Expression>());
 		default:
 			if (isIfThenElse(tree)) {
 				return buildIfThenElse(tree);

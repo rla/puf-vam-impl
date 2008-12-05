@@ -5,11 +5,11 @@ jump L2
 L1:
 loadc 0
 jumpz L3
-loadc 5
+loadc 2
 mkbasic
 jump L4
 L3:
-loadc 2
+loadc 5
 mkbasic
 L4:
 update

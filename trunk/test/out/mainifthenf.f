@@ -11,7 +11,7 @@ mkvec 0
 mkclos L6
 jump L7
 L6:
-loadc 5
+loadc 2
 mkbasic
 update
 L7:
@@ -26,7 +26,7 @@ mkvec 0
 mkclos L9
 jump L10
 L9:
-loadc 2
+loadc 5
 mkbasic
 update
 L10:

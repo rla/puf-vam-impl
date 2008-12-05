@@ -35,6 +35,10 @@ pushloc 0
 eval
 getbasic
 jumpz L10
+loadc 1
+mkbasic
+jump L11
+L10:
 pushloc 0
 eval
 getbasic
@@ -58,10 +62,6 @@ apply
 L12:
 getbasic
 mul
-mkbasic
-jump L11
-L10:
-loadc 1
 mkbasic
 L11:
 return 1
