@@ -7,6 +7,8 @@ options {
 
 tokens {
   APP;
+  TUPLE;
+  LIST;
 }
 
 @header {
@@ -33,12 +35,24 @@ fname      : ID ;
 expr       : single expr? ;
            
 single     : HASH INT expr
-           | IF or THEN expr ELSE expr   -> ^(IF or expr expr)
+           | IF or THEN e1=expr ELSE e2=expr   -> ^(IF or $e1 $e2)
            | LAMBDA ID* RIGHTARROW expr  -> ^(LAMBDA expr ID*)
            | LET decl+ IN expr           -> ^(LET expr decl+)
            | LETREC decl+ IN expr        -> ^(LETREC expr decl+)
-           | LEFTPAREN expr RIGHTPAREN   -> ^(expr)
+           | EMPTY_LIST
+           | list_sugar
+           | tuple
            | or ;
+           
+list_sugar     : OPEN_SQUARE! expr list_sugar_end -> ^(LIST expr list_sugar_end) ;
+list_sugar_end : CLOSE_SQUARE
+               | COMMA! expr list_sugar_end ;
+       
+tuple      : EMPTY_TUPLE
+           | LEFTPAREN! expr tuple_end    -> ^(TUPLE expr tuple_end) ;
+           
+tuple_end  : RIGHTPAREN
+           | COMMA! expr tuple_end ;
 
 fapp       : fname farg+ -> ^(APP fname farg+) ;
 
@@ -53,7 +67,12 @@ and        : not (AND^ not)* ;
 not        : NOT^ not
            | comp ;
            
-comp       : arith (comp_op^ arith)* ;
+comp       : list (comp_op^ list)* ;
+
+list       : arith (CONS^ tail)? ;
+
+tail       : list
+           | EMPTY_LIST ;
        
 arith      : term ((PLUS | MINUS)^ term)* ;
        
@@ -73,16 +92,22 @@ comp_op    : LESS
            | LESSEQUAL
            | NOTEQUAL ;
 
-DEFINE     : '='      ;
-LAMBDA     : 'fn'     ;
-RIGHTARROW : '->'     ;
-LET        : 'let'    ;
-LETREC     : 'letrec' ;
-IN         : 'in'     ;
-HASH       : '#'      ;
-ENDEXPR    : ';'      ;
-LEFTPAREN  : '('      ;
-RIGHTPAREN : ')'      ;
+OPEN_SQUARE  : '['      ;
+CLOSE_SQUARE : ']'      ;
+EMPTY_TUPLE  : '()'     ;
+COMMA        : ','      ;
+EMPTY_LIST   : '[]'     ;
+CONS         : ':'      ;
+DEFINE       : '='      ;
+LAMBDA       : 'fn'     ;
+RIGHTARROW   : '->'     ;
+LET          : 'let'    ;
+LETREC       : 'letrec' ;
+IN           : 'in'     ;
+HASH         : '#'      ;
+ENDEXPR      : ';'      ;
+LEFTPAREN    : '('      ;
+RIGHTPAREN   : ')'      ;
 
 LESS         : '<'  ;
 GREATER      : '>'  ;

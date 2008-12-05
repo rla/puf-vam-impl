@@ -2,6 +2,7 @@ package tr.fn.gen;
 
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
+import tr.fn.ast.IfThenElse;
 import tr.fn.ast.Integer;
 import tr.fn.ast.op.BinaryOperator;
 import tr.fn.gen.instr.BinaryOpInstruction;
@@ -23,6 +24,8 @@ public class CodeB {
 			codeBBinaryOperator(environment, context, (BinaryOperator) e, sd);
 		} else if (e instanceof Identifier) {
 			codeBIdentifier(environment, context, (Identifier) e, sd);
+		} else if (e instanceof IfThenElse) {
+			throw new RuntimeException("unimplemented if-then");
 		} else {
 			CodeV.codeV(environment, context, e, sd);
 			context.addInstruction(new GetBasic());

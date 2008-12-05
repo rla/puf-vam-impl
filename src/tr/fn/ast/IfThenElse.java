@@ -8,7 +8,7 @@ public class IfThenElse extends Expression {
 	private final Expression thenExpression;
 	private final Expression elseExpression;
 
-	public IfThenElse(int line, Expression condition, Expression elseExpression, Expression thenExpression) {
+	public IfThenElse(int line, Expression condition, Expression thenExpression, Expression elseExpression) {
 		super(line);
 		this.condition = condition;
 		this.elseExpression = elseExpression;

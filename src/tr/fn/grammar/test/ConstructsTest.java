@@ -73,4 +73,39 @@ public class ConstructsTest extends TestCase {
 		Tree tree = TreeUtil.getTree("test/comments.fn");
 		assertEquals("(= main 2) null", tree.toStringTree());
 	}
+	
+	public void testList() {
+		Tree tree = TreeUtil.getTree("test/list.fn");
+		assertEquals("(= main (: 1 (: 2 (: 3 [])))) null", tree.toStringTree());
+	}
+	
+	public void testListArithm() {
+		Tree tree = TreeUtil.getTree("test/listarithm.fn");
+		assertEquals("(= main (: (+ 1 2) (: (- 2 5) []))) null", tree.toStringTree());
+	}
+	
+	public void testTuple() {
+		Tree tree = TreeUtil.getTree("test/tuple.fn");
+		assertEquals("(= main (TUPLE 1 2 ))) null", tree.toStringTree());
+	}
+	
+	public void testTupleNoTuple() {
+		Tree tree = TreeUtil.getTree("test/tuplenotuple.fn");
+		assertEquals("(= main (TUPLE 1 ))) null", tree.toStringTree());
+	}
+	
+	public void testTupleEmpty() {
+		Tree tree = TreeUtil.getTree("test/tupleempty.fn");
+		assertEquals("(= main ()) null", tree.toStringTree());
+	}
+	
+	public void testListSugar() {
+		Tree tree = TreeUtil.getTree("test/listsugar.fn");
+		assertEquals("(= main (LIST 1 2 a b ])) null", tree.toStringTree());
+	}
+	
+	public void testListEmpty() {
+		Tree tree = TreeUtil.getTree("test/listempty.fn");
+		assertEquals("(= main []) null", tree.toStringTree());
+	}
 }

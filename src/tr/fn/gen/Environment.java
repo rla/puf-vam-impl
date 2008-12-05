@@ -38,6 +38,10 @@ public class Environment {
 		return parent;
 	}
 	
+	/**
+	 * Returns the copy of this environment. The added
+	 * variables will not appear in the original environment.
+	 */
 	public Environment getCopy() {
 		Environment environment = new Environment(parent);
 		

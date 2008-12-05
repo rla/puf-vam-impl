@@ -182,7 +182,7 @@ public class CodeV {
 	 */
 	private static void codeVLetRec(Environment environment, GenerationContext context, LetRec e, int sd) throws GenerateException {
 		int n = e.getDeclarations().size();
-		Environment environment1 = new Environment(environment);
+		Environment environment1 = environment.getCopy();
 		
 		int i = 0;
 		for (Declaration declaration : e.getDeclarations()) {
