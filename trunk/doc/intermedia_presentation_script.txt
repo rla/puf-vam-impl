@@ -1,0 +1,98 @@
+* Our team consists of 2 member: Merli Uus and me.
+
+In this intermediate presentation I'm going to talk
+about the tools that we are using to complete the project.
+Then I will give a short overview of the current state
+of our work. We also encountered some problems, I will
+mention those at the end.
+
+* Out choice of programming language was Java. This was
+mainly because we both can use it. Also, I have been working
+as a Java programmer and I am quite familiar with all the tools
+listed below.
+
+The most important tool is probably the parser generator.
+I have played around with ANTLeR before and I found it to
+be very easy to convert the puf syntax specification into
+the ANTLR grammar specification. This saved us very valuable
+time. (which, however, was wasted on testing).
+
+Both of us had already used Eclipse before (either in
+programming courses of Tartu University or at work).
+Eclipse has very nice ANTLeR editor as a plugin.
+
+The project which has more than 1 programmer, needs
+certanly a versioning control system. Merging of code
+is impossible without version control system. We also
+tried to use distributed versioning system but failed
+at it. Finally we decided to use Google Code. It gave
+us Subversion repository. It presents the changes of
+code in very readable way and it also has wiki.
+We also know that one of the other teams is hosting
+their stuff on Google Code.
+
+To discover the errors in the code as early as possible
+we use unit testing. Because of the design of Vam, we
+cannot automatically test the compiler by running the programs
+that it produces, we then run the unit tests on separate 
+aspects which are parsing, conversion to abstract syntax tree and
+code generation. The test coverage measurement is done
+by Emma utility. By checking the test coverage on the
+generated parser we can also see which of production rules
+are not yet tested by our test cases.
+
+To speed up coding, we use Apache Commons libraries
+that free us from the standard coding tasks like reading of
+files and other boring stuff.
+
+And finally, the whole thing is built using ANT
+building tool.
+
+
+* Ok, now about that we have done already.
+
+The grammar is almost implemented. We are missing unary operators
+and maybe it will stay that way. Other functional
+languages have no unary operators and we hope to deal
+with than at the Abstract Syntax Tree level, because
+they behave as functions.
+
+The code generation without optimizations is ready,
+except for lists and tuples. The code generation is
+designed in a way that sphagetty removal is very easy.
+
+We have also written the main class and the shell script
+to run it with the correct classpath. Usually we just
+run the test cases directly from Eclipse.
+
+All Varmo examples work. We also have a large collection
+of our own test programs.
+
+We have slowly started to implement optimizations.
+Firstly, to ease the pain of testing we needed to get rid of
+the unecessary declarations from prelude. The algorithm
+is very simple and primitive and removes the declarations
+that are certanly not used.
+
+Secondly, we started to write the code for the
+abstract interpretation. The algorithm is quite
+inefficient and uses boolean tables in their
+explicit form. Despite of it, there is no feeling
+of slowdown of the compiler. Currently it does not
+corrctly respect the scope of identifiers and can be
+used only on very simple programs.
+
+All of this is together about 52 hundred lines
+of code. About 500 of these are unit tests.
+
+* The most problems have been with testing.
+Manual testing takes a lot time because of VAM. Automatic
+testing in its full potential is not possible.
+However, we have spent no time on debugging. Most
+of code worked on first run.
+
+There have been small problems with ANTLR. Currently
+it gives a lot of warnings. Also, it does not always throw
+exceptions on bad input, instead, it writes them into error
+output (which is still ok if the compiler is ran from
+the command line).
