@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-18 04:42:00
+// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-18 18:03:18
 
 package tr.fn.grammar;
 
@@ -458,8 +458,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = LESS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:218:14: ( '<' )
-            // src/tr/fn/grammar/Puf.g:218:16: '<'
+            // src/tr/fn/grammar/Puf.g:241:14: ( '<' )
+            // src/tr/fn/grammar/Puf.g:241:16: '<'
             {
             match('<'); 
 
@@ -478,8 +478,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = GREATER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:219:14: ( '>' )
-            // src/tr/fn/grammar/Puf.g:219:16: '>'
+            // src/tr/fn/grammar/Puf.g:242:14: ( '>' )
+            // src/tr/fn/grammar/Puf.g:242:16: '>'
             {
             match('>'); 
 
@@ -498,8 +498,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:220:14: ( '==' )
-            // src/tr/fn/grammar/Puf.g:220:16: '=='
+            // src/tr/fn/grammar/Puf.g:243:14: ( '==' )
+            // src/tr/fn/grammar/Puf.g:243:16: '=='
             {
             match("=="); 
 
@@ -519,8 +519,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = NOTEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:221:14: ( '!=' )
-            // src/tr/fn/grammar/Puf.g:221:16: '!='
+            // src/tr/fn/grammar/Puf.g:244:14: ( '!=' )
+            // src/tr/fn/grammar/Puf.g:244:16: '!='
             {
             match("!="); 
 
@@ -540,8 +540,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = LESSEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:222:14: ( '<=' )
-            // src/tr/fn/grammar/Puf.g:222:16: '<='
+            // src/tr/fn/grammar/Puf.g:245:14: ( '<=' )
+            // src/tr/fn/grammar/Puf.g:245:16: '<='
             {
             match("<="); 
 
@@ -561,8 +561,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = GREATEREQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:223:14: ( '>=' )
-            // src/tr/fn/grammar/Puf.g:223:16: '>='
+            // src/tr/fn/grammar/Puf.g:246:14: ( '>=' )
+            // src/tr/fn/grammar/Puf.g:246:16: '>='
             {
             match(">="); 
 
@@ -582,8 +582,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:225:14: ( '&&' )
-            // src/tr/fn/grammar/Puf.g:225:16: '&&'
+            // src/tr/fn/grammar/Puf.g:248:14: ( '&&' )
+            // src/tr/fn/grammar/Puf.g:248:16: '&&'
             {
             match("&&"); 
 
@@ -603,8 +603,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:226:14: ( '||' )
-            // src/tr/fn/grammar/Puf.g:226:16: '||'
+            // src/tr/fn/grammar/Puf.g:249:14: ( '||' )
+            // src/tr/fn/grammar/Puf.g:249:16: '||'
             {
             match("||"); 
 
@@ -624,8 +624,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:227:14: ( '+' )
-            // src/tr/fn/grammar/Puf.g:227:16: '+'
+            // src/tr/fn/grammar/Puf.g:250:14: ( '+' )
+            // src/tr/fn/grammar/Puf.g:250:16: '+'
             {
             match('+'); 
 
@@ -644,8 +644,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:228:14: ( '-' )
-            // src/tr/fn/grammar/Puf.g:228:16: '-'
+            // src/tr/fn/grammar/Puf.g:251:14: ( '-' )
+            // src/tr/fn/grammar/Puf.g:251:16: '-'
             {
             match('-'); 
 
@@ -664,8 +664,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = STAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:229:14: ( '*' )
-            // src/tr/fn/grammar/Puf.g:229:16: '*'
+            // src/tr/fn/grammar/Puf.g:252:14: ( '*' )
+            // src/tr/fn/grammar/Puf.g:252:16: '*'
             {
             match('*'); 
 
@@ -684,8 +684,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = SLASH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:230:14: ( '/' )
-            // src/tr/fn/grammar/Puf.g:230:16: '/'
+            // src/tr/fn/grammar/Puf.g:253:14: ( '/' )
+            // src/tr/fn/grammar/Puf.g:253:16: '/'
             {
             match('/'); 
 
@@ -704,8 +704,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = PERCENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:231:14: ( '%' )
-            // src/tr/fn/grammar/Puf.g:231:16: '%'
+            // src/tr/fn/grammar/Puf.g:254:14: ( '%' )
+            // src/tr/fn/grammar/Puf.g:254:16: '%'
             {
             match('%'); 
 
@@ -724,8 +724,8 @@ public class PufLexer extends Lexer {
         try {
             int _type = CONS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:232:14: ( ':' )
-            // src/tr/fn/grammar/Puf.g:232:16: ':'
+            // src/tr/fn/grammar/Puf.g:255:14: ( ':' )
+            // src/tr/fn/grammar/Puf.g:255:16: ':'
             {
             match(':'); 
 
@@ -744,7 +744,7 @@ public class PufLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:234:14: ( ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) ) ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )* | '#' )
+            // src/tr/fn/grammar/Puf.g:257:14: ( ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) ) ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )* | '#' )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -762,9 +762,9 @@ public class PufLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // src/tr/fn/grammar/Puf.g:234:16: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) ) ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )*
+                    // src/tr/fn/grammar/Puf.g:257:16: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) ) ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )*
                     {
-                    // src/tr/fn/grammar/Puf.g:234:16: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )
+                    // src/tr/fn/grammar/Puf.g:257:16: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )
                     int alt1=2;
                     int LA1_0 = input.LA(1);
 
@@ -782,10 +782,10 @@ public class PufLexer extends Lexer {
                     }
                     switch (alt1) {
                         case 1 :
-                            // src/tr/fn/grammar/Puf.g:234:17: ( 'a' .. 'z' )
+                            // src/tr/fn/grammar/Puf.g:257:17: ( 'a' .. 'z' )
                             {
-                            // src/tr/fn/grammar/Puf.g:234:17: ( 'a' .. 'z' )
-                            // src/tr/fn/grammar/Puf.g:234:18: 'a' .. 'z'
+                            // src/tr/fn/grammar/Puf.g:257:17: ( 'a' .. 'z' )
+                            // src/tr/fn/grammar/Puf.g:257:18: 'a' .. 'z'
                             {
                             matchRange('a','z'); 
 
@@ -795,10 +795,10 @@ public class PufLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // src/tr/fn/grammar/Puf.g:234:32: ( 'A' .. 'Z' )
+                            // src/tr/fn/grammar/Puf.g:257:32: ( 'A' .. 'Z' )
                             {
-                            // src/tr/fn/grammar/Puf.g:234:32: ( 'A' .. 'Z' )
-                            // src/tr/fn/grammar/Puf.g:234:33: 'A' .. 'Z'
+                            // src/tr/fn/grammar/Puf.g:257:32: ( 'A' .. 'Z' )
+                            // src/tr/fn/grammar/Puf.g:257:33: 'A' .. 'Z'
                             {
                             matchRange('A','Z'); 
 
@@ -810,7 +810,7 @@ public class PufLexer extends Lexer {
 
                     }
 
-                    // src/tr/fn/grammar/Puf.g:234:46: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )*
+                    // src/tr/fn/grammar/Puf.g:257:46: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )*
                     loop2:
                     do {
                         int alt2=4;
@@ -894,10 +894,10 @@ public class PufLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // src/tr/fn/grammar/Puf.g:234:47: ( 'a' .. 'z' )
+                    	    // src/tr/fn/grammar/Puf.g:257:47: ( 'a' .. 'z' )
                     	    {
-                    	    // src/tr/fn/grammar/Puf.g:234:47: ( 'a' .. 'z' )
-                    	    // src/tr/fn/grammar/Puf.g:234:48: 'a' .. 'z'
+                    	    // src/tr/fn/grammar/Puf.g:257:47: ( 'a' .. 'z' )
+                    	    // src/tr/fn/grammar/Puf.g:257:48: 'a' .. 'z'
                     	    {
                     	    matchRange('a','z'); 
 
@@ -907,10 +907,10 @@ public class PufLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // src/tr/fn/grammar/Puf.g:234:62: ( 'A' .. 'Z' )
+                    	    // src/tr/fn/grammar/Puf.g:257:62: ( 'A' .. 'Z' )
                     	    {
-                    	    // src/tr/fn/grammar/Puf.g:234:62: ( 'A' .. 'Z' )
-                    	    // src/tr/fn/grammar/Puf.g:234:63: 'A' .. 'Z'
+                    	    // src/tr/fn/grammar/Puf.g:257:62: ( 'A' .. 'Z' )
+                    	    // src/tr/fn/grammar/Puf.g:257:63: 'A' .. 'Z'
                     	    {
                     	    matchRange('A','Z'); 
 
@@ -920,10 +920,10 @@ public class PufLexer extends Lexer {
                     	    }
                     	    break;
                     	case 3 :
-                    	    // src/tr/fn/grammar/Puf.g:234:77: ( '0' .. '9' )
+                    	    // src/tr/fn/grammar/Puf.g:257:77: ( '0' .. '9' )
                     	    {
-                    	    // src/tr/fn/grammar/Puf.g:234:77: ( '0' .. '9' )
-                    	    // src/tr/fn/grammar/Puf.g:234:78: '0' .. '9'
+                    	    // src/tr/fn/grammar/Puf.g:257:77: ( '0' .. '9' )
+                    	    // src/tr/fn/grammar/Puf.g:257:78: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -942,7 +942,7 @@ public class PufLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // src/tr/fn/grammar/Puf.g:235:16: '#'
+                    // src/tr/fn/grammar/Puf.g:258:16: '#'
                     {
                     match('#'); 
 
@@ -963,10 +963,10 @@ public class PufLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:237:14: ( ( '0' .. '9' )+ )
-            // src/tr/fn/grammar/Puf.g:237:16: ( '0' .. '9' )+
+            // src/tr/fn/grammar/Puf.g:260:14: ( ( '0' .. '9' )+ )
+            // src/tr/fn/grammar/Puf.g:260:16: ( '0' .. '9' )+
             {
-            // src/tr/fn/grammar/Puf.g:237:16: ( '0' .. '9' )+
+            // src/tr/fn/grammar/Puf.g:260:16: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -980,7 +980,7 @@ public class PufLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // src/tr/fn/grammar/Puf.g:237:17: '0' .. '9'
+            	    // src/tr/fn/grammar/Puf.g:260:17: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1012,10 +1012,10 @@ public class PufLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:239:14: ( ( ' ' | '\\t' )+ )
-            // src/tr/fn/grammar/Puf.g:239:16: ( ' ' | '\\t' )+
+            // src/tr/fn/grammar/Puf.g:262:14: ( ( ' ' | '\\t' )+ )
+            // src/tr/fn/grammar/Puf.g:262:16: ( ' ' | '\\t' )+
             {
-            // src/tr/fn/grammar/Puf.g:239:16: ( ' ' | '\\t' )+
+            // src/tr/fn/grammar/Puf.g:262:16: ( ' ' | '\\t' )+
             int cnt5=0;
             loop5:
             do {
@@ -1070,10 +1070,10 @@ public class PufLexer extends Lexer {
         try {
             int _type = NL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:241:14: ( ( ( '\\r' )? '\\n' )+ )
-            // src/tr/fn/grammar/Puf.g:241:16: ( ( '\\r' )? '\\n' )+
+            // src/tr/fn/grammar/Puf.g:264:14: ( ( ( '\\r' )? '\\n' )+ )
+            // src/tr/fn/grammar/Puf.g:264:16: ( ( '\\r' )? '\\n' )+
             {
-            // src/tr/fn/grammar/Puf.g:241:16: ( ( '\\r' )? '\\n' )+
+            // src/tr/fn/grammar/Puf.g:264:16: ( ( '\\r' )? '\\n' )+
             int cnt7=0;
             loop7:
             do {
@@ -1087,9 +1087,9 @@ public class PufLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // src/tr/fn/grammar/Puf.g:241:17: ( '\\r' )? '\\n'
+            	    // src/tr/fn/grammar/Puf.g:264:17: ( '\\r' )? '\\n'
             	    {
-            	    // src/tr/fn/grammar/Puf.g:241:17: ( '\\r' )?
+            	    // src/tr/fn/grammar/Puf.g:264:17: ( '\\r' )?
             	    int alt6=2;
             	    int LA6_0 = input.LA(1);
 
@@ -1098,7 +1098,7 @@ public class PufLexer extends Lexer {
             	    }
             	    switch (alt6) {
             	        case 1 :
-            	            // src/tr/fn/grammar/Puf.g:241:17: '\\r'
+            	            // src/tr/fn/grammar/Puf.g:264:17: '\\r'
             	            {
             	            match('\r'); 
 
@@ -1138,12 +1138,12 @@ public class PufLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:243:14: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // src/tr/fn/grammar/Puf.g:243:16: '/*' ( options {greedy=false; } : . )* '*/'
+            // src/tr/fn/grammar/Puf.g:266:14: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // src/tr/fn/grammar/Puf.g:266:16: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // src/tr/fn/grammar/Puf.g:243:21: ( options {greedy=false; } : . )*
+            // src/tr/fn/grammar/Puf.g:266:21: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -1168,7 +1168,7 @@ public class PufLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // src/tr/fn/grammar/Puf.g:243:48: .
+            	    // src/tr/fn/grammar/Puf.g:266:48: .
             	    {
             	    matchAny(); 
 
@@ -1199,16 +1199,16 @@ public class PufLexer extends Lexer {
         try {
             int _type = SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Puf.g:245:14: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* )
+            // src/tr/fn/grammar/Puf.g:268:14: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* )
             int alt12=2;
             alt12 = dfa12.predict(input);
             switch (alt12) {
                 case 1 :
-                    // src/tr/fn/grammar/Puf.g:245:16: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' )
+                    // src/tr/fn/grammar/Puf.g:268:16: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' )
                     {
                     match("//"); 
 
-                    // src/tr/fn/grammar/Puf.g:245:21: (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Puf.g:268:21: (~ ( '\\n' | '\\r' ) )*
                     loop9:
                     do {
                         int alt9=2;
@@ -1221,7 +1221,7 @@ public class PufLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // src/tr/fn/grammar/Puf.g:245:21: ~ ( '\\n' | '\\r' )
+                    	    // src/tr/fn/grammar/Puf.g:268:21: ~ ( '\\n' | '\\r' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1241,7 +1241,7 @@ public class PufLexer extends Lexer {
                         }
                     } while (true);
 
-                    // src/tr/fn/grammar/Puf.g:245:35: ( '\\r\\n' | '\\r' | '\\n' )
+                    // src/tr/fn/grammar/Puf.g:268:35: ( '\\r\\n' | '\\r' | '\\n' )
                     int alt10=3;
                     int LA10_0 = input.LA(1);
 
@@ -1265,7 +1265,7 @@ public class PufLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // src/tr/fn/grammar/Puf.g:245:36: '\\r\\n'
+                            // src/tr/fn/grammar/Puf.g:268:36: '\\r\\n'
                             {
                             match("\r\n"); 
 
@@ -1273,14 +1273,14 @@ public class PufLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // src/tr/fn/grammar/Puf.g:245:45: '\\r'
+                            // src/tr/fn/grammar/Puf.g:268:45: '\\r'
                             {
                             match('\r'); 
 
                             }
                             break;
                         case 3 :
-                            // src/tr/fn/grammar/Puf.g:245:52: '\\n'
+                            // src/tr/fn/grammar/Puf.g:268:52: '\\n'
                             {
                             match('\n'); 
 
@@ -1294,11 +1294,11 @@ public class PufLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // src/tr/fn/grammar/Puf.g:246:16: '//' (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Puf.g:269:16: '//' (~ ( '\\n' | '\\r' ) )*
                     {
                     match("//"); 
 
-                    // src/tr/fn/grammar/Puf.g:246:21: (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Puf.g:269:21: (~ ( '\\n' | '\\r' ) )*
                     loop11:
                     do {
                         int alt11=2;
@@ -1311,7 +1311,7 @@ public class PufLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // src/tr/fn/grammar/Puf.g:246:21: ~ ( '\\n' | '\\r' )
+                    	    // src/tr/fn/grammar/Puf.g:269:21: ~ ( '\\n' | '\\r' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1675,7 +1675,7 @@ public class PufLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "245:1: SL_COMMENT : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* );";
+            return "268:1: SL_COMMENT : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
