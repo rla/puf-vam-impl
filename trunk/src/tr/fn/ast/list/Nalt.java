@@ -1,21 +1,22 @@
-package tr.fn.ast;
+package tr.fn.ast.list;
 
 import java.util.Set;
 
-public class Declaration extends Expression {
-	public static final String MAIN_NAME = "main";
-	
+import tr.fn.ast.Expression;
+import tr.fn.ast.Identifier;
+import tr.fn.ast.Lambda;
+import tr.fn.ast.LetBase;
+
+public class Nalt extends Expression {
 	public final Expression expression;
-	public final Identifier name;
-	
-	public Declaration(Identifier name, Expression expression) {
+
+	public Nalt(Expression expression) {
 		this.expression = expression;
-		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return name + " = " + expression;
+		return "[] -> " + expression;
 	}
 
 	@Override
@@ -29,15 +30,15 @@ public class Declaration extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
-		expression.markEnclosingLambda(lambda);
-	}
-
-	@Override
 	public void markEnclosingLet(LetBase let) {
 		setEnclosingLet(let);
 		expression.markEnclosingLet(let);
 	}
 
+	@Override
+	public void markEnclosingLambda(Lambda lambda) {
+		setEnclosingLambda(lambda);
+		expression.markEnclosingLambda(lambda);
+	}
+		
 }

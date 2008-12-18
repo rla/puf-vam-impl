@@ -4,30 +4,35 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 public class Application extends Expression {
-	private final Expression fExpression;
-	private final List<Expression> arguments;
+	public final Expression functionExpression;
+	public final List<Expression> argumentExpressions;
 	
-	public Application(int line, Expression fExpression, List<Expression> arguments) {
-		super(line);
-		this.fExpression = fExpression;
-		this.arguments = arguments;
+	public Application(Expression functionExpression, List<Expression> argumentExpressions) {
+		this.functionExpression = functionExpression;
+		this.argumentExpressions = argumentExpressions;
 	}
 
-	public List<Expression> getArguments() {
-		return arguments;
-	}
-
-	public Expression getFExpression() {
-		return fExpression;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append('(').append(functionExpression);
+		
+		for (Expression arg : argumentExpressions) {
+			builder.append(' ').append(arg);
+		}
+		builder.append(')');
+		
+		return builder.toString();
 	}
 
 	@Override
 	public Set<Identifier> getFreeVariables() {
 		Set<Identifier> free = new HashSet<Identifier>();
-		free.addAll(fExpression.getFreeVariables());
+		free.addAll(functionExpression.getFreeVariables());
 		
-		for (Expression expression : arguments) {
+		for (Expression expression : argumentExpressions) {
 			free.addAll(expression.getFreeVariables());
 		}
 		
@@ -35,36 +40,34 @@ public class Application extends Expression {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("(apply " + fExpression);
-		
-		if (!arguments.isEmpty()) {
-			builder.append(" ");
-			boolean first = true;
-			for (Expression argument : arguments) {
-				if (first) {
-					first = false;
-				} else {
-					builder.append(' ');
+	public boolean isSimpleStrict() {
+		if (functionExpression.isSimpleStrict() || functionExpression instanceof Identifier) {
+			for (Expression arg : argumentExpressions) {
+				if (!arg.isSimpleStrict()) {
+					return false;
 				}
-				builder.append("(" + argument + ")");
 			}
+			return true;
 		}
-		
-		return builder.toString() + ")";
+		return false;
 	}
 
 	@Override
-	public Set<Identifier> getIdentifiers() {
-		Set<Identifier> identifiers = new HashSet<Identifier>();
-		identifiers.addAll(fExpression.getIdentifiers());
-		
-		for (Expression expression : arguments) {
-			identifiers.addAll(expression.getIdentifiers());
+	public void markEnclosingLambda(Lambda lambda) {
+		setEnclosingLambda(lambda);
+		functionExpression.markEnclosingLambda(lambda);
+		for (Expression e : argumentExpressions) {
+			e.markEnclosingLambda(lambda);
 		}
-		
-		return identifiers;
 	}
 
+	@Override
+	public void markEnclosingLet(LetBase let) {
+		setEnclosingLet(let);
+		functionExpression.markEnclosingLet(let);
+		for (Expression e : argumentExpressions) {
+			e.markEnclosingLet(let);
+		}
+	}
+	
 }

@@ -1,17 +1,17 @@
 package tr.fn.pre;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.Tree;
 import org.apache.commons.lang.StringUtils;
 
-import tr.fn.grammar.FunParser;
-import tr.fn.util.TreeUtil;
+import tr.fn.ast.AstUtil;
+import tr.fn.ast.Declaration;
+import tr.fn.ast.LetRec;
 
 public class PreprocessContext {
 	private Map<File, List<String>> files;
@@ -28,24 +28,17 @@ public class PreprocessContext {
 		files.put(file, lines);
 	}
 	
-	public Tree getTreeAfterPreprocess() {
-		CommonTree tree = new CommonTree();
+	public LetRec getAstAfterPreprocessing() throws Exception {
+		List<Declaration> declarations = new ArrayList<Declaration>();
 		
 		for (Entry<File, List<String>> entry : files.entrySet()) {
 			if (debug) {
 				System.out.println("Parsing file " + entry.getKey().getAbsolutePath());
 			}
-			Tree fileTree = TreeUtil.getTree(entry.getKey(), StringUtils.join(entry.getValue(), '\n'));
-			for (int i = 0; i < fileTree.getChildCount(); i++) {
-				Tree decl = fileTree.getChild(i);
-				if (decl.getType() == FunParser.EOF) {
-					break;
-				}
-				tree.addChild(decl);
-			}
+			declarations.addAll(AstUtil.getDeclarations(StringUtils.join(entry.getValue(), '\n')));
 		}
 		
-		return tree;
+		return AstUtil.makeAst(declarations);
 	}
 
 	public File getMain() {

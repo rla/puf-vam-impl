@@ -6,10 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import tr.fn.ast.Expression;
 import tr.fn.gen.instr.Halt;
 import tr.fn.gen.instr.Instruction;
 import tr.fn.gen.instr.Label;
+import tr.fn.opt.StrictnessInfo;
 
 /**
  * Helper class for code generation.
@@ -18,9 +21,11 @@ public class GenerationContext {
 	private List<Instruction> instructions;
 	private List<Instruction> instructionsAfterHalt;
 	private LabelContext labelContext;
+	private Map<Expression, StrictnessInfo> strictness;
 	
 	private boolean debug = false;
 	private boolean noSpaghetti = true;
+	private boolean tryToEliminateClosures = true;
 	
 	public GenerationContext() {
 		instructions = new ArrayList<Instruction>();
@@ -95,6 +100,26 @@ public class GenerationContext {
 
 	public void setNoSpaghetti(boolean noSpaghetti) {
 		this.noSpaghetti = noSpaghetti;
+	}
+
+	public Map<Expression, StrictnessInfo> getStrictness() {
+		return strictness;
+	}
+
+	public void setStrictness(Map<Expression, StrictnessInfo> strictness) {
+		this.strictness = strictness;
+	}
+
+	public boolean isStrict(Expression e) {
+		return false;
+	}
+
+	public boolean isTryToEliminateClosures() {
+		return tryToEliminateClosures;
+	}
+
+	public void setTryToEliminateClosures(boolean tryToEliminateClosures) {
+		this.tryToEliminateClosures = tryToEliminateClosures;
 	}
 	
 }

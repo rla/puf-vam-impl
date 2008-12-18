@@ -1,16 +1,16 @@
 package tr.fn.gen;
 
+import tr.fn.ast.BinaryOperator;
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
 import tr.fn.ast.IfThenElse;
-import tr.fn.ast.Integer;
-import tr.fn.ast.op.BinaryOperator;
+import tr.fn.ast.Number;
 import tr.fn.gen.instr.BinaryOpInstruction;
 import tr.fn.gen.instr.GetBasic;
-import tr.fn.gen.instr.LoadC;
-import tr.fn.gen.instr.Jumpz;
 import tr.fn.gen.instr.Jump;
+import tr.fn.gen.instr.Jumpz;
 import tr.fn.gen.instr.Label;
+import tr.fn.gen.instr.LoadC;
 
 public class CodeB {
 	
@@ -20,8 +20,8 @@ public class CodeB {
 	 * @see MaMa slides page 9.
 	 */
 	public static final void codeB(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
-		if (e instanceof Integer) {
-			codeBInteger(environment, context, (Integer) e, sd);
+		if (e instanceof Number) {
+			codeBInteger(environment, context, (Number) e, sd);
 		} else if (e instanceof BinaryOperator) {
 			codeBBinaryOperator(environment, context, (BinaryOperator) e, sd);
 		} else if (e instanceof Identifier) {
@@ -40,25 +40,25 @@ public class CodeB {
 	}
 
 	private static void codeBBinaryOperator(Environment environment, GenerationContext context, BinaryOperator e, int sd) throws GenerateException {
-		codeB(environment, context, e.getLeft(), sd);
-		codeB(environment, context, e.getRight(), sd + 1);
+		codeB(environment, context, e.left, sd);
+		codeB(environment, context, e.right, sd + 1);
 		context.addInstruction(new BinaryOpInstruction(e));
 	}
 
-	private static void codeBInteger(Environment environment, GenerationContext context, Integer e, int sd) {
-		context.addInstruction(new LoadC(e.getValue()));
+	private static void codeBInteger(Environment environment, GenerationContext context, Number e, int sd) {
+		context.addInstruction(new LoadC(e.value));
 	}
 	
 	private static void codeBIfThenElse (Environment environment, GenerationContext context, IfThenElse e, int sd) throws GenerateException {
 		Label A = context.makeLabel();
 		Label B = context.makeLabel();
 		
-		codeB(environment, context, e.getCondition(), sd);
+		codeB(environment, context, e.condition, sd);
 		context.addInstruction(new Jumpz(A));
-		codeB(environment, context, e.getThenExpression(), sd);
+		codeB(environment, context, e.thenExpression, sd);
 		context.addInstruction(new Jump(B));
 		context.addInstruction(A);
-		codeB(environment, context, e.getElseExpression(), sd);
+		codeB(environment, context, e.elseExpression, sd);
 		context.addInstruction(B);
 	}
 }

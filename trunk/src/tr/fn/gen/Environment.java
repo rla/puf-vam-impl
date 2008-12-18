@@ -17,6 +17,10 @@ public class Environment {
 		this.variables = new HashMap<Identifier, Variable>();
 	}
 	
+	public Environment() {
+		this(null);
+	}
+	
 	public void addVariable(Variable variable) {
 		variables.put(variable.getIdentifier(), variable);
 	}

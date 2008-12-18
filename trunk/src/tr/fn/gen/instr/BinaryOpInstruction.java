@@ -1,6 +1,7 @@
 package tr.fn.gen.instr;
 
-import tr.fn.ast.op.BinaryOperator;
+import tr.fn.ast.BinaryOperator;
+
 
 public class BinaryOpInstruction extends Instruction {
 	private final BinaryOperator binaryOperator;
@@ -12,7 +13,7 @@ public class BinaryOpInstruction extends Instruction {
 
 	@Override
 	public String toString() {
-		return binaryOperator.getType().getName();
+		return binaryOperator.type.getName();
 	}
 
 }

@@ -1,5 +1,7 @@
 package tr.fn.opt;
 
+import java.util.Map;
+
 import tr.fn.ast.Expression;
 
 /**
@@ -8,6 +10,7 @@ import tr.fn.ast.Expression;
 public class OptimizationContext {
 	private Expression program;
 	private boolean debug;
+	private Map<Expression, StrictnessInfo> strictness;
 
 	public OptimizationContext(Expression program, boolean debug) {
 		this.program = program;
@@ -24,6 +27,14 @@ public class OptimizationContext {
 
 	public boolean isDebug() {
 		return debug;
+	}
+
+	public Map<Expression, StrictnessInfo> getStrictness() {
+		return strictness;
+	}
+
+	public void setStrictness(Map<Expression, StrictnessInfo> strictness) {
+		this.strictness = strictness;
 	}
 	
 }
