@@ -20,6 +20,18 @@ public class GenerateTest extends TestCase {
 		context.addInstruction(new Halt());
 		
 		context.saveToFile(new File("test/out/fmain.f"));
+
+	}
+	
+	public void testTuple() throws Exception {
+		LetRec program = AstUtil.getAst(new File("test/tuplelet.fn"));
+		System.out.println(program);
+
+		GenerationContext context = new GenerationContext();
+		Code.code(program, context);
+		context.addInstruction(new Halt());
+		
+		context.saveToFile(new File("test/out/tuplelet.cbn"));
 	}
 	
 	/*

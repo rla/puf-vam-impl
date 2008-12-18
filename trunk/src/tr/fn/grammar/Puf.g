@@ -71,7 +71,7 @@ ldecl      returns [Declaration v]
 
 tlhs       returns [Tuple v]
            @init { List<Identifier> a = new ArrayList<Identifier>(); }
-           : '(' i = id { a.add($i.v); } (',' in = id { a.add($in.v); })* ')' {
+           : '(' (i = id { a.add($i.v); })? (',' in = id { a.add($in.v); })* ')' {
                //if (a.size() == 1) {
                //    $v = a.get(0);
                //} else {
@@ -174,7 +174,7 @@ iexpr      returns [Expression v]
            
 tuple      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : '(' e = expr { l.add($e.v); } (',' e = expr { l.add($e.v); } )* ')' {
+           : '(' (e = expr { l.add($e.v); })? (',' e = expr { l.add($e.v); } )* ')' {
                if (l.size() == 1) {
                    $v = l.get(0);
                } else {

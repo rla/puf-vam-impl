@@ -13,6 +13,8 @@ import tr.fn.ast.Lambda;
 import tr.fn.ast.Let;
 import tr.fn.ast.LetRec;
 import tr.fn.ast.Number;
+import tr.fn.ast.Tuple;
+import tr.fn.ast.TupleLet;
 import tr.fn.gen.instr.Alloc;
 import tr.fn.gen.instr.Apply;
 import tr.fn.gen.instr.BinaryOpInstruction;
@@ -25,6 +27,7 @@ import tr.fn.gen.instr.Mark;
 import tr.fn.gen.instr.MkBasic;
 import tr.fn.gen.instr.MkFunval;
 import tr.fn.gen.instr.MkVec;
+import tr.fn.gen.instr.GetVec;
 import tr.fn.gen.instr.Pushglob;
 import tr.fn.gen.instr.Pushloc;
 import tr.fn.gen.instr.Return;
@@ -54,6 +57,10 @@ public class CodeV {
 			codeVIfThenElse(environment, context, (IfThenElse) e, sd);
 		} else if (e instanceof Let) {
 			codeVLet(environment, context, (Let) e, sd);
+		} else if (e instanceof Tuple) {
+			codeVTuple(environment, context, (Tuple) e, sd);
+		} else if (e instanceof TupleLet) {
+			codeVTupleLet(environment, context, (TupleLet) e, sd);
 		} else {
 			throw new GenerateException("Unknown expression: " + e.getClass());
 		}
@@ -244,6 +251,42 @@ public class CodeV {
 		
 		context.addInstruction(new BinaryOpInstruction(binaryOperator));
 		context.addInstruction(new MkBasic());
+	}
+	
+	/**
+	 * Creates code for tuple
+	 * 
+	 * @see MaMa slides page 86.
+	 */
+	private static void codeVTuple(Environment environment, GenerationContext context, Tuple e, int sd) throws GenerateException {
+		int n = e.arguments.size();
+
+		for (int i = 0; i < n; i++) {
+			CodeC.codeC(environment, context, e.arguments.get(i), sd + i);
+		}
+		
+		context.addInstruction(new MkVec(n));
+	}
+	
+	/**
+	 * Creates code for let expression with tuple
+	 * 
+	 * @see MaMa slides page 88.
+	 */
+	private static void codeVTupleLet(Environment environment, GenerationContext context, TupleLet e, int sd) throws GenerateException {
+		int n = e.tuple.arguments.size();
+		codeV(environment, context, e.expression, sd);
+		context.addInstruction(new GetVec(n));
+		
+		Environment environment1 = environment.getCopy();
+		int i = 0;
+		for (Expression expression : e.tuple.arguments) {
+			Identifier id = (Identifier) expression;
+			environment1.addVariable(new Variable(id, sd + i, VariableType.LOCAL));
+			i++;
+		}
+		codeV(environment1,context,e.inExpression,sd);
+		context.addInstruction(new Slide(n));
 	}
 	
 }

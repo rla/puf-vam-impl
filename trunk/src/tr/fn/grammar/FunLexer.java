@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 src/tr/fn/grammar/Fun.g 2008-11-28 05:28:33
+// $ANTLR 3.1.1 src/tr/fn/grammar/Fun.g 2008-12-18 16:32:58
 
 package tr.fn.grammar;
 
@@ -9,41 +9,49 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FunLexer extends Lexer {
-    public static final int STAR=25;
-    public static final int PERCENT=27;
-    public static final int RIGHTARROW=14;
-    public static final int ELSE=12;
-    public static final int HASH=8;
-    public static final int GREATEREQUAL=31;
+    public static final int STAR=33;
+    public static final int RIGHTARROW=16;
     public static final int APP=4;
-    public static final int INT=9;
-    public static final int NOT=22;
-    public static final int MINUS=24;
-    public static final int AND=21;
-    public static final int ID=5;
+    public static final int GREATEREQUAL=39;
+    public static final int NOT=29;
+    public static final int AND=28;
+    public static final int ID=7;
+    public static final int DEFINE=8;
     public static final int EOF=-1;
-    public static final int DEFINE=6;
-    public static final int ENDEXPR=7;
-    public static final int IF=10;
-    public static final int NOTEQUAL=33;
-    public static final int LEFTPAREN=18;
-    public static final int ML_COMMENT=36;
-    public static final int LETREC=17;
-    public static final int SLASH=26;
-    public static final int GREATER=29;
-    public static final int WS=34;
-    public static final int IN=16;
-    public static final int THEN=11;
-    public static final int RIGHTPAREN=19;
-    public static final int EQUAL=30;
-    public static final int OR=20;
-    public static final int SL_COMMENT=37;
-    public static final int LESS=28;
-    public static final int PLUS=23;
-    public static final int LAMBDA=13;
-    public static final int NL=35;
-    public static final int LESSEQUAL=32;
-    public static final int LET=15;
+    public static final int ENDEXPR=9;
+    public static final int IF=12;
+    public static final int NOTEQUAL=41;
+    public static final int LEFTPAREN=25;
+    public static final int ML_COMMENT=44;
+    public static final int EMPTY_LIST=20;
+    public static final int TUPLE=5;
+    public static final int LETREC=19;
+    public static final int SLASH=34;
+    public static final int GREATER=37;
+    public static final int IN=18;
+    public static final int THEN=13;
+    public static final int COMMA=23;
+    public static final int EQUAL=38;
+    public static final int LESS=36;
+    public static final int OPEN_SQUARE=21;
+    public static final int PLUS=31;
+    public static final int LAMBDA=15;
+    public static final int NL=43;
+    public static final int CLOSE_SQUARE=22;
+    public static final int PERCENT=35;
+    public static final int ELSE=14;
+    public static final int EMPTY_TUPLE=24;
+    public static final int HASH=10;
+    public static final int INT=11;
+    public static final int MINUS=32;
+    public static final int LIST=6;
+    public static final int WS=42;
+    public static final int RIGHTPAREN=26;
+    public static final int CONS=30;
+    public static final int SL_COMMENT=45;
+    public static final int OR=27;
+    public static final int LESSEQUAL=40;
+    public static final int LET=17;
 
     @Override
     public void reportError(RecognitionException e) {
@@ -64,13 +72,135 @@ public class FunLexer extends Lexer {
     }
     public String getGrammarFileName() { return "src/tr/fn/grammar/Fun.g"; }
 
+    // $ANTLR start "OPEN_SQUARE"
+    public final void mOPEN_SQUARE() throws RecognitionException {
+        try {
+            int _type = OPEN_SQUARE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/tr/fn/grammar/Fun.g:95:14: ( '[' )
+            // src/tr/fn/grammar/Fun.g:95:16: '['
+            {
+            match('['); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "OPEN_SQUARE"
+
+    // $ANTLR start "CLOSE_SQUARE"
+    public final void mCLOSE_SQUARE() throws RecognitionException {
+        try {
+            int _type = CLOSE_SQUARE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/tr/fn/grammar/Fun.g:96:14: ( ']' )
+            // src/tr/fn/grammar/Fun.g:96:16: ']'
+            {
+            match(']'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "CLOSE_SQUARE"
+
+    // $ANTLR start "EMPTY_TUPLE"
+    public final void mEMPTY_TUPLE() throws RecognitionException {
+        try {
+            int _type = EMPTY_TUPLE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/tr/fn/grammar/Fun.g:97:14: ( '()' )
+            // src/tr/fn/grammar/Fun.g:97:16: '()'
+            {
+            match("()"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "EMPTY_TUPLE"
+
+    // $ANTLR start "COMMA"
+    public final void mCOMMA() throws RecognitionException {
+        try {
+            int _type = COMMA;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/tr/fn/grammar/Fun.g:98:14: ( ',' )
+            // src/tr/fn/grammar/Fun.g:98:16: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "COMMA"
+
+    // $ANTLR start "EMPTY_LIST"
+    public final void mEMPTY_LIST() throws RecognitionException {
+        try {
+            int _type = EMPTY_LIST;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/tr/fn/grammar/Fun.g:99:14: ( '[]' )
+            // src/tr/fn/grammar/Fun.g:99:16: '[]'
+            {
+            match("[]"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "EMPTY_LIST"
+
+    // $ANTLR start "CONS"
+    public final void mCONS() throws RecognitionException {
+        try {
+            int _type = CONS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // src/tr/fn/grammar/Fun.g:100:14: ( ':' )
+            // src/tr/fn/grammar/Fun.g:100:16: ':'
+            {
+            match(':'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "CONS"
+
     // $ANTLR start "DEFINE"
     public final void mDEFINE() throws RecognitionException {
         try {
             int _type = DEFINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:75:12: ( '=' )
-            // src/tr/fn/grammar/Fun.g:75:14: '='
+            // src/tr/fn/grammar/Fun.g:101:14: ( '=' )
+            // src/tr/fn/grammar/Fun.g:101:16: '='
             {
             match('='); 
 
@@ -89,8 +219,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LAMBDA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:76:12: ( 'fn' )
-            // src/tr/fn/grammar/Fun.g:76:14: 'fn'
+            // src/tr/fn/grammar/Fun.g:102:14: ( 'fn' )
+            // src/tr/fn/grammar/Fun.g:102:16: 'fn'
             {
             match("fn"); 
 
@@ -110,8 +240,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = RIGHTARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:77:12: ( '->' )
-            // src/tr/fn/grammar/Fun.g:77:14: '->'
+            // src/tr/fn/grammar/Fun.g:103:14: ( '->' )
+            // src/tr/fn/grammar/Fun.g:103:16: '->'
             {
             match("->"); 
 
@@ -131,8 +261,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:78:12: ( 'let' )
-            // src/tr/fn/grammar/Fun.g:78:14: 'let'
+            // src/tr/fn/grammar/Fun.g:104:14: ( 'let' )
+            // src/tr/fn/grammar/Fun.g:104:16: 'let'
             {
             match("let"); 
 
@@ -152,8 +282,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LETREC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:79:12: ( 'letrec' )
-            // src/tr/fn/grammar/Fun.g:79:14: 'letrec'
+            // src/tr/fn/grammar/Fun.g:105:14: ( 'letrec' )
+            // src/tr/fn/grammar/Fun.g:105:16: 'letrec'
             {
             match("letrec"); 
 
@@ -173,8 +303,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = IN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:80:12: ( 'in' )
-            // src/tr/fn/grammar/Fun.g:80:14: 'in'
+            // src/tr/fn/grammar/Fun.g:106:14: ( 'in' )
+            // src/tr/fn/grammar/Fun.g:106:16: 'in'
             {
             match("in"); 
 
@@ -194,8 +324,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = HASH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:81:12: ( '#' )
-            // src/tr/fn/grammar/Fun.g:81:14: '#'
+            // src/tr/fn/grammar/Fun.g:107:14: ( '#' )
+            // src/tr/fn/grammar/Fun.g:107:16: '#'
             {
             match('#'); 
 
@@ -214,8 +344,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = ENDEXPR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:82:12: ( ';' )
-            // src/tr/fn/grammar/Fun.g:82:14: ';'
+            // src/tr/fn/grammar/Fun.g:108:14: ( ';' )
+            // src/tr/fn/grammar/Fun.g:108:16: ';'
             {
             match(';'); 
 
@@ -234,8 +364,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LEFTPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:83:12: ( '(' )
-            // src/tr/fn/grammar/Fun.g:83:14: '('
+            // src/tr/fn/grammar/Fun.g:109:14: ( '(' )
+            // src/tr/fn/grammar/Fun.g:109:16: '('
             {
             match('('); 
 
@@ -254,8 +384,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = RIGHTPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:84:12: ( ')' )
-            // src/tr/fn/grammar/Fun.g:84:14: ')'
+            // src/tr/fn/grammar/Fun.g:110:14: ( ')' )
+            // src/tr/fn/grammar/Fun.g:110:16: ')'
             {
             match(')'); 
 
@@ -274,8 +404,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LESS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:86:14: ( '<' )
-            // src/tr/fn/grammar/Fun.g:86:16: '<'
+            // src/tr/fn/grammar/Fun.g:112:14: ( '<' )
+            // src/tr/fn/grammar/Fun.g:112:16: '<'
             {
             match('<'); 
 
@@ -294,8 +424,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = GREATER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:87:14: ( '>' )
-            // src/tr/fn/grammar/Fun.g:87:16: '>'
+            // src/tr/fn/grammar/Fun.g:113:14: ( '>' )
+            // src/tr/fn/grammar/Fun.g:113:16: '>'
             {
             match('>'); 
 
@@ -314,8 +444,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:88:14: ( '==' )
-            // src/tr/fn/grammar/Fun.g:88:16: '=='
+            // src/tr/fn/grammar/Fun.g:114:14: ( '==' )
+            // src/tr/fn/grammar/Fun.g:114:16: '=='
             {
             match("=="); 
 
@@ -335,8 +465,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = NOTEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:89:14: ( '!=' )
-            // src/tr/fn/grammar/Fun.g:89:16: '!='
+            // src/tr/fn/grammar/Fun.g:115:14: ( '!=' )
+            // src/tr/fn/grammar/Fun.g:115:16: '!='
             {
             match("!="); 
 
@@ -356,8 +486,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = LESSEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:90:14: ( '<=' )
-            // src/tr/fn/grammar/Fun.g:90:16: '<='
+            // src/tr/fn/grammar/Fun.g:116:14: ( '<=' )
+            // src/tr/fn/grammar/Fun.g:116:16: '<='
             {
             match("<="); 
 
@@ -377,8 +507,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = GREATEREQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:91:14: ( '>=' )
-            // src/tr/fn/grammar/Fun.g:91:16: '>='
+            // src/tr/fn/grammar/Fun.g:117:14: ( '>=' )
+            // src/tr/fn/grammar/Fun.g:117:16: '>='
             {
             match(">="); 
 
@@ -398,8 +528,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:93:12: ( 'if' )
-            // src/tr/fn/grammar/Fun.g:93:14: 'if'
+            // src/tr/fn/grammar/Fun.g:119:12: ( 'if' )
+            // src/tr/fn/grammar/Fun.g:119:14: 'if'
             {
             match("if"); 
 
@@ -419,8 +549,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:94:12: ( 'then' )
-            // src/tr/fn/grammar/Fun.g:94:14: 'then'
+            // src/tr/fn/grammar/Fun.g:120:12: ( 'then' )
+            // src/tr/fn/grammar/Fun.g:120:14: 'then'
             {
             match("then"); 
 
@@ -440,8 +570,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:95:12: ( 'else' )
-            // src/tr/fn/grammar/Fun.g:95:14: 'else'
+            // src/tr/fn/grammar/Fun.g:121:12: ( 'else' )
+            // src/tr/fn/grammar/Fun.g:121:14: 'else'
             {
             match("else"); 
 
@@ -461,8 +591,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:97:12: ( 'not' )
-            // src/tr/fn/grammar/Fun.g:97:14: 'not'
+            // src/tr/fn/grammar/Fun.g:123:12: ( 'not' )
+            // src/tr/fn/grammar/Fun.g:123:14: 'not'
             {
             match("not"); 
 
@@ -482,8 +612,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:98:12: ( '&&' )
-            // src/tr/fn/grammar/Fun.g:98:14: '&&'
+            // src/tr/fn/grammar/Fun.g:124:12: ( '&&' )
+            // src/tr/fn/grammar/Fun.g:124:14: '&&'
             {
             match("&&"); 
 
@@ -503,8 +633,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:99:12: ( '||' )
-            // src/tr/fn/grammar/Fun.g:99:14: '||'
+            // src/tr/fn/grammar/Fun.g:125:12: ( '||' )
+            // src/tr/fn/grammar/Fun.g:125:14: '||'
             {
             match("||"); 
 
@@ -524,8 +654,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:100:12: ( '+' )
-            // src/tr/fn/grammar/Fun.g:100:14: '+'
+            // src/tr/fn/grammar/Fun.g:126:12: ( '+' )
+            // src/tr/fn/grammar/Fun.g:126:14: '+'
             {
             match('+'); 
 
@@ -544,8 +674,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:101:12: ( '-' )
-            // src/tr/fn/grammar/Fun.g:101:14: '-'
+            // src/tr/fn/grammar/Fun.g:127:12: ( '-' )
+            // src/tr/fn/grammar/Fun.g:127:14: '-'
             {
             match('-'); 
 
@@ -564,8 +694,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = STAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:102:12: ( '*' )
-            // src/tr/fn/grammar/Fun.g:102:14: '*'
+            // src/tr/fn/grammar/Fun.g:128:12: ( '*' )
+            // src/tr/fn/grammar/Fun.g:128:14: '*'
             {
             match('*'); 
 
@@ -584,8 +714,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = SLASH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:103:12: ( '/' )
-            // src/tr/fn/grammar/Fun.g:103:14: '/'
+            // src/tr/fn/grammar/Fun.g:129:12: ( '/' )
+            // src/tr/fn/grammar/Fun.g:129:14: '/'
             {
             match('/'); 
 
@@ -604,8 +734,8 @@ public class FunLexer extends Lexer {
         try {
             int _type = PERCENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:104:12: ( '%' )
-            // src/tr/fn/grammar/Fun.g:104:14: '%'
+            // src/tr/fn/grammar/Fun.g:130:12: ( '%' )
+            // src/tr/fn/grammar/Fun.g:130:14: '%'
             {
             match('%'); 
 
@@ -624,30 +754,143 @@ public class FunLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:105:12: ( ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+ )
-            // src/tr/fn/grammar/Fun.g:105:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+
+            // src/tr/fn/grammar/Fun.g:131:12: ( ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) ) ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )* )
+            // src/tr/fn/grammar/Fun.g:131:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) ) ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )*
             {
-            // src/tr/fn/grammar/Fun.g:105:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )+
-            int cnt1=0;
-            loop1:
+            // src/tr/fn/grammar/Fun.g:131:14: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) )
+            int alt1=2;
+            int LA1_0 = input.LA(1);
+
+            if ( ((LA1_0>='a' && LA1_0<='z')) ) {
+                alt1=1;
+            }
+            else if ( ((LA1_0>='A' && LA1_0<='Z')) ) {
+                alt1=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 1, 0, input);
+
+                throw nvae;
+            }
+            switch (alt1) {
+                case 1 :
+                    // src/tr/fn/grammar/Fun.g:131:15: ( 'a' .. 'z' )
+                    {
+                    // src/tr/fn/grammar/Fun.g:131:15: ( 'a' .. 'z' )
+                    // src/tr/fn/grammar/Fun.g:131:16: 'a' .. 'z'
+                    {
+                    matchRange('a','z'); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // src/tr/fn/grammar/Fun.g:131:30: ( 'A' .. 'Z' )
+                    {
+                    // src/tr/fn/grammar/Fun.g:131:30: ( 'A' .. 'Z' )
+                    // src/tr/fn/grammar/Fun.g:131:31: 'A' .. 'Z'
+                    {
+                    matchRange('A','Z'); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // src/tr/fn/grammar/Fun.g:131:44: ( ( 'a' .. 'z' ) | ( 'A' .. 'Z' ) | ( '0' .. '9' ) )*
+            loop2:
             do {
-                int alt1=3;
-                int LA1_0 = input.LA(1);
+                int alt2=4;
+                switch ( input.LA(1) ) {
+                case 'a':
+                case 'b':
+                case 'c':
+                case 'd':
+                case 'e':
+                case 'f':
+                case 'g':
+                case 'h':
+                case 'i':
+                case 'j':
+                case 'k':
+                case 'l':
+                case 'm':
+                case 'n':
+                case 'o':
+                case 'p':
+                case 'q':
+                case 'r':
+                case 's':
+                case 't':
+                case 'u':
+                case 'v':
+                case 'w':
+                case 'x':
+                case 'y':
+                case 'z':
+                    {
+                    alt2=1;
+                    }
+                    break;
+                case 'A':
+                case 'B':
+                case 'C':
+                case 'D':
+                case 'E':
+                case 'F':
+                case 'G':
+                case 'H':
+                case 'I':
+                case 'J':
+                case 'K':
+                case 'L':
+                case 'M':
+                case 'N':
+                case 'O':
+                case 'P':
+                case 'Q':
+                case 'R':
+                case 'S':
+                case 'T':
+                case 'U':
+                case 'V':
+                case 'W':
+                case 'X':
+                case 'Y':
+                case 'Z':
+                    {
+                    alt2=2;
+                    }
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    {
+                    alt2=3;
+                    }
+                    break;
 
-                if ( ((LA1_0>='a' && LA1_0<='z')) ) {
-                    alt1=1;
                 }
-                else if ( ((LA1_0>='A' && LA1_0<='Z')) ) {
-                    alt1=2;
-                }
 
-
-                switch (alt1) {
+                switch (alt2) {
             	case 1 :
-            	    // src/tr/fn/grammar/Fun.g:105:15: ( 'a' .. 'z' )
+            	    // src/tr/fn/grammar/Fun.g:131:45: ( 'a' .. 'z' )
             	    {
-            	    // src/tr/fn/grammar/Fun.g:105:15: ( 'a' .. 'z' )
-            	    // src/tr/fn/grammar/Fun.g:105:16: 'a' .. 'z'
+            	    // src/tr/fn/grammar/Fun.g:131:45: ( 'a' .. 'z' )
+            	    // src/tr/fn/grammar/Fun.g:131:46: 'a' .. 'z'
             	    {
             	    matchRange('a','z'); 
 
@@ -657,10 +900,10 @@ public class FunLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // src/tr/fn/grammar/Fun.g:105:30: ( 'A' .. 'Z' )
+            	    // src/tr/fn/grammar/Fun.g:131:60: ( 'A' .. 'Z' )
             	    {
-            	    // src/tr/fn/grammar/Fun.g:105:30: ( 'A' .. 'Z' )
-            	    // src/tr/fn/grammar/Fun.g:105:31: 'A' .. 'Z'
+            	    // src/tr/fn/grammar/Fun.g:131:60: ( 'A' .. 'Z' )
+            	    // src/tr/fn/grammar/Fun.g:131:61: 'A' .. 'Z'
             	    {
             	    matchRange('A','Z'); 
 
@@ -669,14 +912,23 @@ public class FunLexer extends Lexer {
 
             	    }
             	    break;
+            	case 3 :
+            	    // src/tr/fn/grammar/Fun.g:131:75: ( '0' .. '9' )
+            	    {
+            	    // src/tr/fn/grammar/Fun.g:131:75: ( '0' .. '9' )
+            	    // src/tr/fn/grammar/Fun.g:131:76: '0' .. '9'
+            	    {
+            	    matchRange('0','9'); 
+
+            	    }
+
+
+            	    }
+            	    break;
 
             	default :
-            	    if ( cnt1 >= 1 ) break loop1;
-                        EarlyExitException eee =
-                            new EarlyExitException(1, input);
-                        throw eee;
+            	    break loop2;
                 }
-                cnt1++;
             } while (true);
 
 
@@ -695,24 +947,24 @@ public class FunLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:106:12: ( ( '0' .. '9' )+ )
-            // src/tr/fn/grammar/Fun.g:106:14: ( '0' .. '9' )+
+            // src/tr/fn/grammar/Fun.g:132:12: ( ( '0' .. '9' )+ )
+            // src/tr/fn/grammar/Fun.g:132:14: ( '0' .. '9' )+
             {
-            // src/tr/fn/grammar/Fun.g:106:14: ( '0' .. '9' )+
-            int cnt2=0;
-            loop2:
+            // src/tr/fn/grammar/Fun.g:132:14: ( '0' .. '9' )+
+            int cnt3=0;
+            loop3:
             do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-                if ( ((LA2_0>='0' && LA2_0<='9')) ) {
-                    alt2=1;
+                if ( ((LA3_0>='0' && LA3_0<='9')) ) {
+                    alt3=1;
                 }
 
 
-                switch (alt2) {
+                switch (alt3) {
             	case 1 :
-            	    // src/tr/fn/grammar/Fun.g:106:14: '0' .. '9'
+            	    // src/tr/fn/grammar/Fun.g:132:14: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -720,12 +972,12 @@ public class FunLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt2 >= 1 ) break loop2;
+            	    if ( cnt3 >= 1 ) break loop3;
                         EarlyExitException eee =
-                            new EarlyExitException(2, input);
+                            new EarlyExitException(3, input);
                         throw eee;
                 }
-                cnt2++;
+                cnt3++;
             } while (true);
 
 
@@ -744,22 +996,22 @@ public class FunLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:107:12: ( ( ' ' | '\\t' )+ )
-            // src/tr/fn/grammar/Fun.g:107:14: ( ' ' | '\\t' )+
+            // src/tr/fn/grammar/Fun.g:133:12: ( ( ' ' | '\\t' )+ )
+            // src/tr/fn/grammar/Fun.g:133:14: ( ' ' | '\\t' )+
             {
-            // src/tr/fn/grammar/Fun.g:107:14: ( ' ' | '\\t' )+
-            int cnt3=0;
-            loop3:
+            // src/tr/fn/grammar/Fun.g:133:14: ( ' ' | '\\t' )+
+            int cnt4=0;
+            loop4:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA3_0=='\t'||LA3_0==' ') ) {
-                    alt3=1;
+                if ( (LA4_0=='\t'||LA4_0==' ') ) {
+                    alt4=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt4) {
             	case 1 :
             	    // src/tr/fn/grammar/Fun.g:
             	    {
@@ -777,12 +1029,12 @@ public class FunLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt3 >= 1 ) break loop3;
+            	    if ( cnt4 >= 1 ) break loop4;
                         EarlyExitException eee =
-                            new EarlyExitException(3, input);
+                            new EarlyExitException(4, input);
                         throw eee;
                 }
-                cnt3++;
+                cnt4++;
             } while (true);
 
              skip(); 
@@ -802,35 +1054,35 @@ public class FunLexer extends Lexer {
         try {
             int _type = NL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:108:12: ( ( ( '\\r' )? '\\n' )+ )
-            // src/tr/fn/grammar/Fun.g:108:14: ( ( '\\r' )? '\\n' )+
+            // src/tr/fn/grammar/Fun.g:134:12: ( ( ( '\\r' )? '\\n' )+ )
+            // src/tr/fn/grammar/Fun.g:134:14: ( ( '\\r' )? '\\n' )+
             {
-            // src/tr/fn/grammar/Fun.g:108:14: ( ( '\\r' )? '\\n' )+
-            int cnt5=0;
-            loop5:
+            // src/tr/fn/grammar/Fun.g:134:14: ( ( '\\r' )? '\\n' )+
+            int cnt6=0;
+            loop6:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA5_0=='\n'||LA5_0=='\r') ) {
-                    alt5=1;
+                if ( (LA6_0=='\n'||LA6_0=='\r') ) {
+                    alt6=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt6) {
             	case 1 :
-            	    // src/tr/fn/grammar/Fun.g:108:15: ( '\\r' )? '\\n'
+            	    // src/tr/fn/grammar/Fun.g:134:15: ( '\\r' )? '\\n'
             	    {
-            	    // src/tr/fn/grammar/Fun.g:108:15: ( '\\r' )?
-            	    int alt4=2;
-            	    int LA4_0 = input.LA(1);
+            	    // src/tr/fn/grammar/Fun.g:134:15: ( '\\r' )?
+            	    int alt5=2;
+            	    int LA5_0 = input.LA(1);
 
-            	    if ( (LA4_0=='\r') ) {
-            	        alt4=1;
+            	    if ( (LA5_0=='\r') ) {
+            	        alt5=1;
             	    }
-            	    switch (alt4) {
+            	    switch (alt5) {
             	        case 1 :
-            	            // src/tr/fn/grammar/Fun.g:108:15: '\\r'
+            	            // src/tr/fn/grammar/Fun.g:134:15: '\\r'
             	            {
             	            match('\r'); 
 
@@ -845,12 +1097,12 @@ public class FunLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt5 >= 1 ) break loop5;
+            	    if ( cnt6 >= 1 ) break loop6;
                         EarlyExitException eee =
-                            new EarlyExitException(5, input);
+                            new EarlyExitException(6, input);
                         throw eee;
                 }
-                cnt5++;
+                cnt6++;
             } while (true);
 
              skip(); 
@@ -870,37 +1122,37 @@ public class FunLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:110:12: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // src/tr/fn/grammar/Fun.g:110:14: '/*' ( options {greedy=false; } : . )* '*/'
+            // src/tr/fn/grammar/Fun.g:136:12: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // src/tr/fn/grammar/Fun.g:136:14: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // src/tr/fn/grammar/Fun.g:110:19: ( options {greedy=false; } : . )*
-            loop6:
+            // src/tr/fn/grammar/Fun.g:136:19: ( options {greedy=false; } : . )*
+            loop7:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( (LA6_0=='*') ) {
-                    int LA6_1 = input.LA(2);
+                if ( (LA7_0=='*') ) {
+                    int LA7_1 = input.LA(2);
 
-                    if ( (LA6_1=='/') ) {
-                        alt6=2;
+                    if ( (LA7_1=='/') ) {
+                        alt7=2;
                     }
-                    else if ( ((LA6_1>='\u0000' && LA6_1<='.')||(LA6_1>='0' && LA6_1<='\uFFFF')) ) {
-                        alt6=1;
+                    else if ( ((LA7_1>='\u0000' && LA7_1<='.')||(LA7_1>='0' && LA7_1<='\uFFFF')) ) {
+                        alt7=1;
                     }
 
 
                 }
-                else if ( ((LA6_0>='\u0000' && LA6_0<=')')||(LA6_0>='+' && LA6_0<='\uFFFF')) ) {
-                    alt6=1;
+                else if ( ((LA7_0>='\u0000' && LA7_0<=')')||(LA7_0>='+' && LA7_0<='\uFFFF')) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt7) {
             	case 1 :
-            	    // src/tr/fn/grammar/Fun.g:110:46: .
+            	    // src/tr/fn/grammar/Fun.g:136:46: .
             	    {
             	    matchAny(); 
 
@@ -908,7 +1160,7 @@ public class FunLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop7;
                 }
             } while (true);
 
@@ -931,29 +1183,29 @@ public class FunLexer extends Lexer {
         try {
             int _type = SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // src/tr/fn/grammar/Fun.g:111:12: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* )
-            int alt10=2;
-            alt10 = dfa10.predict(input);
-            switch (alt10) {
+            // src/tr/fn/grammar/Fun.g:137:12: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* )
+            int alt11=2;
+            alt11 = dfa11.predict(input);
+            switch (alt11) {
                 case 1 :
-                    // src/tr/fn/grammar/Fun.g:111:14: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' )
+                    // src/tr/fn/grammar/Fun.g:137:14: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' )
                     {
                     match("//"); 
 
-                    // src/tr/fn/grammar/Fun.g:111:19: (~ ( '\\n' | '\\r' ) )*
-                    loop7:
+                    // src/tr/fn/grammar/Fun.g:137:19: (~ ( '\\n' | '\\r' ) )*
+                    loop8:
                     do {
-                        int alt7=2;
-                        int LA7_0 = input.LA(1);
+                        int alt8=2;
+                        int LA8_0 = input.LA(1);
 
-                        if ( ((LA7_0>='\u0000' && LA7_0<='\t')||(LA7_0>='\u000B' && LA7_0<='\f')||(LA7_0>='\u000E' && LA7_0<='\uFFFF')) ) {
-                            alt7=1;
+                        if ( ((LA8_0>='\u0000' && LA8_0<='\t')||(LA8_0>='\u000B' && LA8_0<='\f')||(LA8_0>='\u000E' && LA8_0<='\uFFFF')) ) {
+                            alt8=1;
                         }
 
 
-                        switch (alt7) {
+                        switch (alt8) {
                     	case 1 :
-                    	    // src/tr/fn/grammar/Fun.g:111:19: ~ ( '\\n' | '\\r' )
+                    	    // src/tr/fn/grammar/Fun.g:137:19: ~ ( '\\n' | '\\r' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -969,35 +1221,35 @@ public class FunLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop7;
+                    	    break loop8;
                         }
                     } while (true);
 
-                    // src/tr/fn/grammar/Fun.g:111:33: ( '\\r\\n' | '\\r' | '\\n' )
-                    int alt8=3;
-                    int LA8_0 = input.LA(1);
+                    // src/tr/fn/grammar/Fun.g:137:33: ( '\\r\\n' | '\\r' | '\\n' )
+                    int alt9=3;
+                    int LA9_0 = input.LA(1);
 
-                    if ( (LA8_0=='\r') ) {
-                        int LA8_1 = input.LA(2);
+                    if ( (LA9_0=='\r') ) {
+                        int LA9_1 = input.LA(2);
 
-                        if ( (LA8_1=='\n') ) {
-                            alt8=1;
+                        if ( (LA9_1=='\n') ) {
+                            alt9=1;
                         }
                         else {
-                            alt8=2;}
+                            alt9=2;}
                     }
-                    else if ( (LA8_0=='\n') ) {
-                        alt8=3;
+                    else if ( (LA9_0=='\n') ) {
+                        alt9=3;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 8, 0, input);
+                            new NoViableAltException("", 9, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt8) {
+                    switch (alt9) {
                         case 1 :
-                            // src/tr/fn/grammar/Fun.g:111:34: '\\r\\n'
+                            // src/tr/fn/grammar/Fun.g:137:34: '\\r\\n'
                             {
                             match("\r\n"); 
 
@@ -1005,14 +1257,14 @@ public class FunLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // src/tr/fn/grammar/Fun.g:111:43: '\\r'
+                            // src/tr/fn/grammar/Fun.g:137:43: '\\r'
                             {
                             match('\r'); 
 
                             }
                             break;
                         case 3 :
-                            // src/tr/fn/grammar/Fun.g:111:50: '\\n'
+                            // src/tr/fn/grammar/Fun.g:137:50: '\\n'
                             {
                             match('\n'); 
 
@@ -1026,24 +1278,24 @@ public class FunLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // src/tr/fn/grammar/Fun.g:112:14: '//' (~ ( '\\n' | '\\r' ) )*
+                    // src/tr/fn/grammar/Fun.g:138:14: '//' (~ ( '\\n' | '\\r' ) )*
                     {
                     match("//"); 
 
-                    // src/tr/fn/grammar/Fun.g:112:19: (~ ( '\\n' | '\\r' ) )*
-                    loop9:
+                    // src/tr/fn/grammar/Fun.g:138:19: (~ ( '\\n' | '\\r' ) )*
+                    loop10:
                     do {
-                        int alt9=2;
-                        int LA9_0 = input.LA(1);
+                        int alt10=2;
+                        int LA10_0 = input.LA(1);
 
-                        if ( ((LA9_0>='\u0000' && LA9_0<='\t')||(LA9_0>='\u000B' && LA9_0<='\f')||(LA9_0>='\u000E' && LA9_0<='\uFFFF')) ) {
-                            alt9=1;
+                        if ( ((LA10_0>='\u0000' && LA10_0<='\t')||(LA10_0>='\u000B' && LA10_0<='\f')||(LA10_0>='\u000E' && LA10_0<='\uFFFF')) ) {
+                            alt10=1;
                         }
 
 
-                        switch (alt9) {
+                        switch (alt10) {
                     	case 1 :
-                    	    // src/tr/fn/grammar/Fun.g:112:19: ~ ( '\\n' | '\\r' )
+                    	    // src/tr/fn/grammar/Fun.g:138:19: ~ ( '\\n' | '\\r' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1059,7 +1311,7 @@ public class FunLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop9;
+                    	    break loop10;
                         }
                     } while (true);
 
@@ -1078,236 +1330,278 @@ public class FunLexer extends Lexer {
     // $ANTLR end "SL_COMMENT"
 
     public void mTokens() throws RecognitionException {
-        // src/tr/fn/grammar/Fun.g:1:8: ( DEFINE | LAMBDA | RIGHTARROW | LET | LETREC | IN | HASH | ENDEXPR | LEFTPAREN | RIGHTPAREN | LESS | GREATER | EQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | IF | THEN | ELSE | NOT | AND | OR | PLUS | MINUS | STAR | SLASH | PERCENT | ID | INT | WS | NL | ML_COMMENT | SL_COMMENT )
-        int alt11=33;
-        alt11 = dfa11.predict(input);
-        switch (alt11) {
+        // src/tr/fn/grammar/Fun.g:1:8: ( OPEN_SQUARE | CLOSE_SQUARE | EMPTY_TUPLE | COMMA | EMPTY_LIST | CONS | DEFINE | LAMBDA | RIGHTARROW | LET | LETREC | IN | HASH | ENDEXPR | LEFTPAREN | RIGHTPAREN | LESS | GREATER | EQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | IF | THEN | ELSE | NOT | AND | OR | PLUS | MINUS | STAR | SLASH | PERCENT | ID | INT | WS | NL | ML_COMMENT | SL_COMMENT )
+        int alt12=39;
+        alt12 = dfa12.predict(input);
+        switch (alt12) {
             case 1 :
-                // src/tr/fn/grammar/Fun.g:1:10: DEFINE
+                // src/tr/fn/grammar/Fun.g:1:10: OPEN_SQUARE
+                {
+                mOPEN_SQUARE(); 
+
+                }
+                break;
+            case 2 :
+                // src/tr/fn/grammar/Fun.g:1:22: CLOSE_SQUARE
+                {
+                mCLOSE_SQUARE(); 
+
+                }
+                break;
+            case 3 :
+                // src/tr/fn/grammar/Fun.g:1:35: EMPTY_TUPLE
+                {
+                mEMPTY_TUPLE(); 
+
+                }
+                break;
+            case 4 :
+                // src/tr/fn/grammar/Fun.g:1:47: COMMA
+                {
+                mCOMMA(); 
+
+                }
+                break;
+            case 5 :
+                // src/tr/fn/grammar/Fun.g:1:53: EMPTY_LIST
+                {
+                mEMPTY_LIST(); 
+
+                }
+                break;
+            case 6 :
+                // src/tr/fn/grammar/Fun.g:1:64: CONS
+                {
+                mCONS(); 
+
+                }
+                break;
+            case 7 :
+                // src/tr/fn/grammar/Fun.g:1:69: DEFINE
                 {
                 mDEFINE(); 
 
                 }
                 break;
-            case 2 :
-                // src/tr/fn/grammar/Fun.g:1:17: LAMBDA
+            case 8 :
+                // src/tr/fn/grammar/Fun.g:1:76: LAMBDA
                 {
                 mLAMBDA(); 
 
                 }
                 break;
-            case 3 :
-                // src/tr/fn/grammar/Fun.g:1:24: RIGHTARROW
+            case 9 :
+                // src/tr/fn/grammar/Fun.g:1:83: RIGHTARROW
                 {
                 mRIGHTARROW(); 
 
                 }
                 break;
-            case 4 :
-                // src/tr/fn/grammar/Fun.g:1:35: LET
+            case 10 :
+                // src/tr/fn/grammar/Fun.g:1:94: LET
                 {
                 mLET(); 
 
                 }
                 break;
-            case 5 :
-                // src/tr/fn/grammar/Fun.g:1:39: LETREC
+            case 11 :
+                // src/tr/fn/grammar/Fun.g:1:98: LETREC
                 {
                 mLETREC(); 
 
                 }
                 break;
-            case 6 :
-                // src/tr/fn/grammar/Fun.g:1:46: IN
+            case 12 :
+                // src/tr/fn/grammar/Fun.g:1:105: IN
                 {
                 mIN(); 
 
                 }
                 break;
-            case 7 :
-                // src/tr/fn/grammar/Fun.g:1:49: HASH
+            case 13 :
+                // src/tr/fn/grammar/Fun.g:1:108: HASH
                 {
                 mHASH(); 
 
                 }
                 break;
-            case 8 :
-                // src/tr/fn/grammar/Fun.g:1:54: ENDEXPR
+            case 14 :
+                // src/tr/fn/grammar/Fun.g:1:113: ENDEXPR
                 {
                 mENDEXPR(); 
 
                 }
                 break;
-            case 9 :
-                // src/tr/fn/grammar/Fun.g:1:62: LEFTPAREN
+            case 15 :
+                // src/tr/fn/grammar/Fun.g:1:121: LEFTPAREN
                 {
                 mLEFTPAREN(); 
 
                 }
                 break;
-            case 10 :
-                // src/tr/fn/grammar/Fun.g:1:72: RIGHTPAREN
+            case 16 :
+                // src/tr/fn/grammar/Fun.g:1:131: RIGHTPAREN
                 {
                 mRIGHTPAREN(); 
 
                 }
                 break;
-            case 11 :
-                // src/tr/fn/grammar/Fun.g:1:83: LESS
+            case 17 :
+                // src/tr/fn/grammar/Fun.g:1:142: LESS
                 {
                 mLESS(); 
 
                 }
                 break;
-            case 12 :
-                // src/tr/fn/grammar/Fun.g:1:88: GREATER
+            case 18 :
+                // src/tr/fn/grammar/Fun.g:1:147: GREATER
                 {
                 mGREATER(); 
 
                 }
                 break;
-            case 13 :
-                // src/tr/fn/grammar/Fun.g:1:96: EQUAL
+            case 19 :
+                // src/tr/fn/grammar/Fun.g:1:155: EQUAL
                 {
                 mEQUAL(); 
 
                 }
                 break;
-            case 14 :
-                // src/tr/fn/grammar/Fun.g:1:102: NOTEQUAL
+            case 20 :
+                // src/tr/fn/grammar/Fun.g:1:161: NOTEQUAL
                 {
                 mNOTEQUAL(); 
 
                 }
                 break;
-            case 15 :
-                // src/tr/fn/grammar/Fun.g:1:111: LESSEQUAL
+            case 21 :
+                // src/tr/fn/grammar/Fun.g:1:170: LESSEQUAL
                 {
                 mLESSEQUAL(); 
 
                 }
                 break;
-            case 16 :
-                // src/tr/fn/grammar/Fun.g:1:121: GREATEREQUAL
+            case 22 :
+                // src/tr/fn/grammar/Fun.g:1:180: GREATEREQUAL
                 {
                 mGREATEREQUAL(); 
 
                 }
                 break;
-            case 17 :
-                // src/tr/fn/grammar/Fun.g:1:134: IF
+            case 23 :
+                // src/tr/fn/grammar/Fun.g:1:193: IF
                 {
                 mIF(); 
 
                 }
                 break;
-            case 18 :
-                // src/tr/fn/grammar/Fun.g:1:137: THEN
+            case 24 :
+                // src/tr/fn/grammar/Fun.g:1:196: THEN
                 {
                 mTHEN(); 
 
                 }
                 break;
-            case 19 :
-                // src/tr/fn/grammar/Fun.g:1:142: ELSE
+            case 25 :
+                // src/tr/fn/grammar/Fun.g:1:201: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
-            case 20 :
-                // src/tr/fn/grammar/Fun.g:1:147: NOT
+            case 26 :
+                // src/tr/fn/grammar/Fun.g:1:206: NOT
                 {
                 mNOT(); 
 
                 }
                 break;
-            case 21 :
-                // src/tr/fn/grammar/Fun.g:1:151: AND
+            case 27 :
+                // src/tr/fn/grammar/Fun.g:1:210: AND
                 {
                 mAND(); 
 
                 }
                 break;
-            case 22 :
-                // src/tr/fn/grammar/Fun.g:1:155: OR
+            case 28 :
+                // src/tr/fn/grammar/Fun.g:1:214: OR
                 {
                 mOR(); 
 
                 }
                 break;
-            case 23 :
-                // src/tr/fn/grammar/Fun.g:1:158: PLUS
+            case 29 :
+                // src/tr/fn/grammar/Fun.g:1:217: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
-            case 24 :
-                // src/tr/fn/grammar/Fun.g:1:163: MINUS
+            case 30 :
+                // src/tr/fn/grammar/Fun.g:1:222: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
-            case 25 :
-                // src/tr/fn/grammar/Fun.g:1:169: STAR
+            case 31 :
+                // src/tr/fn/grammar/Fun.g:1:228: STAR
                 {
                 mSTAR(); 
 
                 }
                 break;
-            case 26 :
-                // src/tr/fn/grammar/Fun.g:1:174: SLASH
+            case 32 :
+                // src/tr/fn/grammar/Fun.g:1:233: SLASH
                 {
                 mSLASH(); 
 
                 }
                 break;
-            case 27 :
-                // src/tr/fn/grammar/Fun.g:1:180: PERCENT
+            case 33 :
+                // src/tr/fn/grammar/Fun.g:1:239: PERCENT
                 {
                 mPERCENT(); 
 
                 }
                 break;
-            case 28 :
-                // src/tr/fn/grammar/Fun.g:1:188: ID
+            case 34 :
+                // src/tr/fn/grammar/Fun.g:1:247: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 29 :
-                // src/tr/fn/grammar/Fun.g:1:191: INT
+            case 35 :
+                // src/tr/fn/grammar/Fun.g:1:250: INT
                 {
                 mINT(); 
 
                 }
                 break;
-            case 30 :
-                // src/tr/fn/grammar/Fun.g:1:195: WS
+            case 36 :
+                // src/tr/fn/grammar/Fun.g:1:254: WS
                 {
                 mWS(); 
 
                 }
                 break;
-            case 31 :
-                // src/tr/fn/grammar/Fun.g:1:198: NL
+            case 37 :
+                // src/tr/fn/grammar/Fun.g:1:257: NL
                 {
                 mNL(); 
 
                 }
                 break;
-            case 32 :
-                // src/tr/fn/grammar/Fun.g:1:201: ML_COMMENT
+            case 38 :
+                // src/tr/fn/grammar/Fun.g:1:260: ML_COMMENT
                 {
                 mML_COMMENT(); 
 
                 }
                 break;
-            case 33 :
-                // src/tr/fn/grammar/Fun.g:1:212: SL_COMMENT
+            case 39 :
+                // src/tr/fn/grammar/Fun.g:1:271: SL_COMMENT
                 {
                 mSL_COMMENT(); 
 
@@ -1319,185 +1613,26 @@ public class FunLexer extends Lexer {
     }
 
 
-    protected DFA10 dfa10 = new DFA10(this);
     protected DFA11 dfa11 = new DFA11(this);
-    static final String DFA10_eotS =
-        "\2\uffff\2\4\2\uffff";
-    static final String DFA10_eofS =
+    protected DFA12 dfa12 = new DFA12(this);
+    static final String DFA11_eotS =
+        "\2\uffff\2\5\2\uffff";
+    static final String DFA11_eofS =
         "\6\uffff";
-    static final String DFA10_minS =
+    static final String DFA11_minS =
         "\2\57\2\0\2\uffff";
-    static final String DFA10_maxS =
+    static final String DFA11_maxS =
         "\2\57\2\uffff\2\uffff";
-    static final String DFA10_acceptS =
-        "\4\uffff\1\2\1\1";
-    static final String DFA10_specialS =
-        "\2\uffff\1\0\1\1\2\uffff}>";
-    static final String[] DFA10_transitionS = {
+    static final String DFA11_acceptS =
+        "\4\uffff\1\1\1\2";
+    static final String DFA11_specialS =
+        "\2\uffff\1\1\1\0\2\uffff}>";
+    static final String[] DFA11_transitionS = {
             "\1\1",
             "\1\2",
-            "\12\3\1\5\2\3\1\5\ufff2\3",
-            "\12\3\1\5\2\3\1\5\ufff2\3",
+            "\12\3\1\4\2\3\1\4\ufff2\3",
+            "\12\3\1\4\2\3\1\4\ufff2\3",
             "",
-            ""
-    };
-
-    static final short[] DFA10_eot = DFA.unpackEncodedString(DFA10_eotS);
-    static final short[] DFA10_eof = DFA.unpackEncodedString(DFA10_eofS);
-    static final char[] DFA10_min = DFA.unpackEncodedStringToUnsignedChars(DFA10_minS);
-    static final char[] DFA10_max = DFA.unpackEncodedStringToUnsignedChars(DFA10_maxS);
-    static final short[] DFA10_accept = DFA.unpackEncodedString(DFA10_acceptS);
-    static final short[] DFA10_special = DFA.unpackEncodedString(DFA10_specialS);
-    static final short[][] DFA10_transition;
-
-    static {
-        int numStates = DFA10_transitionS.length;
-        DFA10_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA10_transition[i] = DFA.unpackEncodedString(DFA10_transitionS[i]);
-        }
-    }
-
-    class DFA10 extends DFA {
-
-        public DFA10(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 10;
-            this.eot = DFA10_eot;
-            this.eof = DFA10_eof;
-            this.min = DFA10_min;
-            this.max = DFA10_max;
-            this.accept = DFA10_accept;
-            this.special = DFA10_special;
-            this.transition = DFA10_transition;
-        }
-        public String getDescription() {
-            return "111:1: SL_COMMENT : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* );";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            IntStream input = _input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA10_2 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA10_2>='\u0000' && LA10_2<='\t')||(LA10_2>='\u000B' && LA10_2<='\f')||(LA10_2>='\u000E' && LA10_2<='\uFFFF')) ) {s = 3;}
-
-                        else if ( (LA10_2=='\n'||LA10_2=='\r') ) {s = 5;}
-
-                        else s = 4;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA10_3 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA10_3=='\n'||LA10_3=='\r') ) {s = 5;}
-
-                        else if ( ((LA10_3>='\u0000' && LA10_3<='\t')||(LA10_3>='\u000B' && LA10_3<='\f')||(LA10_3>='\u000E' && LA10_3<='\uFFFF')) ) {s = 3;}
-
-                        else s = 4;
-
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 10, _s, input);
-            error(nvae);
-            throw nvae;
-        }
-    }
-    static final String DFA11_eotS =
-        "\1\uffff\1\33\1\26\1\36\2\26\4\uffff\1\43\1\45\1\uffff\3\26\4\uffff"+
-        "\1\53\7\uffff\1\54\2\uffff\1\26\1\56\1\57\4\uffff\3\26\4\uffff\1"+
-        "\64\2\uffff\2\26\1\67\1\26\1\uffff\1\71\1\72\1\uffff\1\26\2\uffff"+
-        "\1\74\1\uffff";
-    static final String DFA11_eofS =
-        "\75\uffff";
-    static final String DFA11_minS =
-        "\1\11\1\75\1\156\1\76\1\145\1\146\4\uffff\2\75\1\uffff\1\150\1\154"+
-        "\1\157\4\uffff\1\52\7\uffff\1\101\2\uffff\1\164\2\101\4\uffff\1"+
-        "\145\1\163\1\164\4\uffff\1\101\2\uffff\1\156\1\145\1\101\1\145\1"+
-        "\uffff\2\101\1\uffff\1\143\2\uffff\1\101\1\uffff";
-    static final String DFA11_maxS =
-        "\1\174\1\75\1\156\1\76\1\145\1\156\4\uffff\2\75\1\uffff\1\150\1"+
-        "\154\1\157\4\uffff\1\57\7\uffff\1\172\2\uffff\1\164\2\172\4\uffff"+
-        "\1\145\1\163\1\164\4\uffff\1\172\2\uffff\1\156\1\145\1\172\1\145"+
-        "\1\uffff\2\172\1\uffff\1\143\2\uffff\1\172\1\uffff";
-    static final String DFA11_acceptS =
-        "\6\uffff\1\7\1\10\1\11\1\12\2\uffff\1\16\3\uffff\1\25\1\26\1\27"+
-        "\1\31\1\uffff\1\33\1\34\1\35\1\36\1\37\1\15\1\1\1\uffff\1\3\1\30"+
-        "\3\uffff\1\17\1\13\1\20\1\14\3\uffff\1\40\1\41\1\32\1\2\1\uffff"+
-        "\1\6\1\21\4\uffff\1\4\2\uffff\1\24\1\uffff\1\22\1\23\1\uffff\1\5";
-    static final String DFA11_specialS =
-        "\75\uffff}>";
-    static final String[] DFA11_transitionS = {
-            "\1\30\1\31\2\uffff\1\31\22\uffff\1\30\1\14\1\uffff\1\6\1\uffff"+
-            "\1\25\1\20\1\uffff\1\10\1\11\1\23\1\22\1\uffff\1\3\1\uffff\1"+
-            "\24\12\27\1\uffff\1\7\1\12\1\1\1\13\2\uffff\32\26\6\uffff\4"+
-            "\26\1\16\1\2\2\26\1\5\2\26\1\4\1\26\1\17\5\26\1\15\6\26\1\uffff"+
-            "\1\21",
-            "\1\32",
-            "\1\34",
-            "\1\35",
-            "\1\37",
-            "\1\41\7\uffff\1\40",
-            "",
-            "",
-            "",
-            "",
-            "\1\42",
-            "\1\44",
-            "",
-            "\1\46",
-            "\1\47",
-            "\1\50",
-            "",
-            "",
-            "",
-            "",
-            "\1\51\4\uffff\1\52",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\32\26\6\uffff\32\26",
-            "",
-            "",
-            "\1\55",
-            "\32\26\6\uffff\32\26",
-            "\32\26\6\uffff\32\26",
-            "",
-            "",
-            "",
-            "",
-            "\1\60",
-            "\1\61",
-            "\1\62",
-            "",
-            "",
-            "",
-            "",
-            "\32\26\6\uffff\21\26\1\63\10\26",
-            "",
-            "",
-            "\1\65",
-            "\1\66",
-            "\32\26\6\uffff\32\26",
-            "\1\70",
-            "",
-            "\32\26\6\uffff\32\26",
-            "\32\26\6\uffff\32\26",
-            "",
-            "\1\73",
-            "",
-            "",
-            "\32\26\6\uffff\32\26",
             ""
     };
 
@@ -1531,7 +1666,177 @@ public class FunLexer extends Lexer {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( DEFINE | LAMBDA | RIGHTARROW | LET | LETREC | IN | HASH | ENDEXPR | LEFTPAREN | RIGHTPAREN | LESS | GREATER | EQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | IF | THEN | ELSE | NOT | AND | OR | PLUS | MINUS | STAR | SLASH | PERCENT | ID | INT | WS | NL | ML_COMMENT | SL_COMMENT );";
+            return "137:1: SL_COMMENT : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\r' | '\\n' ) | '//' (~ ( '\\n' | '\\r' ) )* );";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            IntStream input = _input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA11_3 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA11_3>='\u0000' && LA11_3<='\t')||(LA11_3>='\u000B' && LA11_3<='\f')||(LA11_3>='\u000E' && LA11_3<='\uFFFF')) ) {s = 3;}
+
+                        else if ( (LA11_3=='\n'||LA11_3=='\r') ) {s = 4;}
+
+                        else s = 5;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA11_2 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA11_2>='\u0000' && LA11_2<='\t')||(LA11_2>='\u000B' && LA11_2<='\f')||(LA11_2>='\u000E' && LA11_2<='\uFFFF')) ) {s = 3;}
+
+                        else if ( (LA11_2=='\n'||LA11_2=='\r') ) {s = 4;}
+
+                        else s = 5;
+
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 11, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA12_eotS =
+        "\1\uffff\1\37\1\uffff\1\41\2\uffff\1\43\1\32\1\46\2\32\3\uffff"+
+        "\1\53\1\55\1\uffff\3\32\4\uffff\1\63\13\uffff\1\64\2\uffff\1\32"+
+        "\1\66\1\67\4\uffff\3\32\4\uffff\1\74\2\uffff\2\32\1\77\1\32\1\uffff"+
+        "\1\101\1\102\1\uffff\1\32\2\uffff\1\104\1\uffff";
+    static final String DFA12_eofS =
+        "\105\uffff";
+    static final String DFA12_minS =
+        "\1\11\1\135\1\uffff\1\51\2\uffff\1\75\1\156\1\76\1\145\1\146\3"+
+        "\uffff\2\75\1\uffff\1\150\1\154\1\157\4\uffff\1\52\13\uffff\1\60"+
+        "\2\uffff\1\164\2\60\4\uffff\1\145\1\163\1\164\4\uffff\1\60\2\uffff"+
+        "\1\156\1\145\1\60\1\145\1\uffff\2\60\1\uffff\1\143\2\uffff\1\60"+
+        "\1\uffff";
+    static final String DFA12_maxS =
+        "\1\174\1\135\1\uffff\1\51\2\uffff\1\75\1\156\1\76\1\145\1\156\3"+
+        "\uffff\2\75\1\uffff\1\150\1\154\1\157\4\uffff\1\57\13\uffff\1\172"+
+        "\2\uffff\1\164\2\172\4\uffff\1\145\1\163\1\164\4\uffff\1\172\2\uffff"+
+        "\1\156\1\145\1\172\1\145\1\uffff\2\172\1\uffff\1\143\2\uffff\1\172"+
+        "\1\uffff";
+    static final String DFA12_acceptS =
+        "\2\uffff\1\2\1\uffff\1\4\1\6\5\uffff\1\15\1\16\1\20\2\uffff\1\24"+
+        "\3\uffff\1\33\1\34\1\35\1\37\1\uffff\1\41\1\42\1\43\1\44\1\45\1"+
+        "\5\1\1\1\3\1\17\1\23\1\7\1\uffff\1\11\1\36\3\uffff\1\25\1\21\1\26"+
+        "\1\22\3\uffff\1\46\1\47\1\40\1\10\1\uffff\1\14\1\27\4\uffff\1\12"+
+        "\2\uffff\1\32\1\uffff\1\30\1\31\1\uffff\1\13";
+    static final String DFA12_specialS =
+        "\105\uffff}>";
+    static final String[] DFA12_transitionS = {
+            "\1\34\1\35\2\uffff\1\35\22\uffff\1\34\1\20\1\uffff\1\13\1\uffff"+
+            "\1\31\1\24\1\uffff\1\3\1\15\1\27\1\26\1\4\1\10\1\uffff\1\30"+
+            "\12\33\1\5\1\14\1\16\1\6\1\17\2\uffff\32\32\1\1\1\uffff\1\2"+
+            "\3\uffff\4\32\1\22\1\7\2\32\1\12\2\32\1\11\1\32\1\23\5\32\1"+
+            "\21\6\32\1\uffff\1\25",
+            "\1\36",
+            "",
+            "\1\40",
+            "",
+            "",
+            "\1\42",
+            "\1\44",
+            "\1\45",
+            "\1\47",
+            "\1\51\7\uffff\1\50",
+            "",
+            "",
+            "",
+            "\1\52",
+            "\1\54",
+            "",
+            "\1\56",
+            "\1\57",
+            "\1\60",
+            "",
+            "",
+            "",
+            "",
+            "\1\61\4\uffff\1\62",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            "",
+            "",
+            "\1\65",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            "",
+            "",
+            "",
+            "",
+            "\1\70",
+            "\1\71",
+            "\1\72",
+            "",
+            "",
+            "",
+            "",
+            "\12\32\7\uffff\32\32\6\uffff\21\32\1\73\10\32",
+            "",
+            "",
+            "\1\75",
+            "\1\76",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            "\1\100",
+            "",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            "",
+            "\1\103",
+            "",
+            "",
+            "\12\32\7\uffff\32\32\6\uffff\32\32",
+            ""
+    };
+
+    static final short[] DFA12_eot = DFA.unpackEncodedString(DFA12_eotS);
+    static final short[] DFA12_eof = DFA.unpackEncodedString(DFA12_eofS);
+    static final char[] DFA12_min = DFA.unpackEncodedStringToUnsignedChars(DFA12_minS);
+    static final char[] DFA12_max = DFA.unpackEncodedStringToUnsignedChars(DFA12_maxS);
+    static final short[] DFA12_accept = DFA.unpackEncodedString(DFA12_acceptS);
+    static final short[] DFA12_special = DFA.unpackEncodedString(DFA12_specialS);
+    static final short[][] DFA12_transition;
+
+    static {
+        int numStates = DFA12_transitionS.length;
+        DFA12_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA12_transition[i] = DFA.unpackEncodedString(DFA12_transitionS[i]);
+        }
+    }
+
+    class DFA12 extends DFA {
+
+        public DFA12(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 12;
+            this.eot = DFA12_eot;
+            this.eof = DFA12_eof;
+            this.min = DFA12_min;
+            this.max = DFA12_max;
+            this.accept = DFA12_accept;
+            this.special = DFA12_special;
+            this.transition = DFA12_transition;
+        }
+        public String getDescription() {
+            return "1:1: Tokens : ( OPEN_SQUARE | CLOSE_SQUARE | EMPTY_TUPLE | COMMA | EMPTY_LIST | CONS | DEFINE | LAMBDA | RIGHTARROW | LET | LETREC | IN | HASH | ENDEXPR | LEFTPAREN | RIGHTPAREN | LESS | GREATER | EQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | IF | THEN | ELSE | NOT | AND | OR | PLUS | MINUS | STAR | SLASH | PERCENT | ID | INT | WS | NL | ML_COMMENT | SL_COMMENT );";
         }
     }
  
