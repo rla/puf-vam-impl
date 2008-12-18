@@ -16,6 +16,18 @@ import tr.fn.grammar.PufParser;
 
 public class GrammarTest extends TestCase {
 	
+	public void testEmptyTuple() throws Exception {
+		List<Declaration> l = getDeclarations("main = ();");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> ()", l.get(0).toString());
+	}
+	
+	public void testEmptyTupleLet() throws Exception {
+		List<Declaration> l = getDeclarations("main = let () = () in 1 + 2;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> let () = () ; in (1 + 2)", l.get(0).toString());
+	}
+	
 	public void testBinOpApp() throws Exception {
 		List<Declaration> l = getDeclarations("main = n * f 2;");
 		assertEquals(1, l.size());
@@ -50,6 +62,12 @@ public class GrammarTest extends TestCase {
 		List<Declaration> l = getDeclarations("main = case x of [] -> 1; h:t -> h + t;");
 		assertEquals(1, l.size());
 		assertEquals("main = fn -> case of [] -> 1 ; h : t -> (h + t)", l.get(0).toString());
+	}
+	
+	public void testTupleLet() throws Exception {
+		List<Declaration> l = getDeclarations("main = let (y,z) = f 2; in s x y z;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> let (y,z) = (f 2) ; in (s x y z)", l.get(0).toString());
 	}
 	
 	public void testLetRec() throws Exception {

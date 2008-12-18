@@ -40,4 +40,11 @@ public class TupleLet extends Expression {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public String toString() {
+		return "let " + tuple + " = " + expression + " ; in " + inExpression;
+	}
+	
+	
+
 }

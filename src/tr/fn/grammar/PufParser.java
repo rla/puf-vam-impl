@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-18 18:03:16
+// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-18 16:38:49
 
 package tr.fn.grammar;
 
@@ -355,7 +355,7 @@ public class PufParser extends Parser {
     };
 
     // $ANTLR start "tlhs"
-    // src/tr/fn/grammar/Puf.g:72:1: tlhs returns [Tuple v] : '(' i= id ( ',' in= id )* ')' ;
+    // src/tr/fn/grammar/Puf.g:72:1: tlhs returns [Tuple v] : '(' (i= id )? ( ',' in= id )* ')' ;
     public final PufParser.tlhs_return tlhs() throws RecognitionException {
         PufParser.tlhs_return retval = new PufParser.tlhs_return();
         retval.start = input.LT(1);
@@ -376,8 +376,8 @@ public class PufParser extends Parser {
 
          List<Identifier> a = new ArrayList<Identifier>(); 
         try {
-            // src/tr/fn/grammar/Puf.g:74:12: ( '(' i= id ( ',' in= id )* ')' )
-            // src/tr/fn/grammar/Puf.g:74:14: '(' i= id ( ',' in= id )* ')'
+            // src/tr/fn/grammar/Puf.g:74:12: ( '(' (i= id )? ( ',' in= id )* ')' )
+            // src/tr/fn/grammar/Puf.g:74:14: '(' (i= id )? ( ',' in= id )* ')'
             {
             root_0 = (Object)adaptor.nil();
 
@@ -385,33 +385,50 @@ public class PufParser extends Parser {
             char_literal5_tree = (Object)adaptor.create(char_literal5);
             adaptor.addChild(root_0, char_literal5_tree);
 
-            pushFollow(FOLLOW_id_in_tlhs345);
-            i=id();
+            // src/tr/fn/grammar/Puf.g:74:18: (i= id )?
+            int alt3=2;
+            int LA3_0 = input.LA(1);
 
-            state._fsp--;
+            if ( (LA3_0==ID) ) {
+                alt3=1;
+            }
+            switch (alt3) {
+                case 1 :
+                    // src/tr/fn/grammar/Puf.g:74:19: i= id
+                    {
+                    pushFollow(FOLLOW_id_in_tlhs346);
+                    i=id();
 
-            adaptor.addChild(root_0, i.getTree());
-             a.add((i!=null?i.v:null)); 
-            // src/tr/fn/grammar/Puf.g:74:42: ( ',' in= id )*
-            loop3:
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, i.getTree());
+                     a.add((i!=null?i.v:null)); 
+
+                    }
+                    break;
+
+            }
+
+            // src/tr/fn/grammar/Puf.g:74:45: ( ',' in= id )*
+            loop4:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA3_0==41) ) {
-                    alt3=1;
+                if ( (LA4_0==41) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt4) {
             	case 1 :
-            	    // src/tr/fn/grammar/Puf.g:74:43: ',' in= id
+            	    // src/tr/fn/grammar/Puf.g:74:46: ',' in= id
             	    {
-            	    char_literal6=(Token)match(input,41,FOLLOW_41_in_tlhs350); 
+            	    char_literal6=(Token)match(input,41,FOLLOW_41_in_tlhs353); 
             	    char_literal6_tree = (Object)adaptor.create(char_literal6);
             	    adaptor.addChild(root_0, char_literal6_tree);
 
-            	    pushFollow(FOLLOW_id_in_tlhs356);
+            	    pushFollow(FOLLOW_id_in_tlhs359);
             	    in=id();
 
             	    state._fsp--;
@@ -423,11 +440,11 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop3;
+            	    break loop4;
                 }
             } while (true);
 
-            char_literal7=(Token)match(input,42,FOLLOW_42_in_tlhs362); 
+            char_literal7=(Token)match(input,42,FOLLOW_42_in_tlhs365); 
             char_literal7_tree = (Object)adaptor.create(char_literal7);
             adaptor.addChild(root_0, char_literal7_tree);
 
@@ -485,16 +502,16 @@ public class PufParser extends Parser {
             root_0 = (Object)adaptor.nil();
 
             // src/tr/fn/grammar/Puf.g:84:14: (e= oexpr )+
-            int cnt4=0;
-            loop4:
+            int cnt5=0;
+            loop5:
             do {
-                int alt4=2;
-                alt4 = dfa4.predict(input);
-                switch (alt4) {
+                int alt5=2;
+                alt5 = dfa5.predict(input);
+                switch (alt5) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:84:15: e= oexpr
             	    {
-            	    pushFollow(FOLLOW_oexpr_in_expr414);
+            	    pushFollow(FOLLOW_oexpr_in_expr417);
             	    e=oexpr();
 
             	    state._fsp--;
@@ -506,12 +523,12 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    if ( cnt4 >= 1 ) break loop4;
+            	    if ( cnt5 >= 1 ) break loop5;
                         EarlyExitException eee =
-                            new EarlyExitException(4, input);
+                            new EarlyExitException(5, input);
                         throw eee;
                 }
-                cnt4++;
+                cnt5++;
             } while (true);
 
 
@@ -573,7 +590,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_aexpr_in_oexpr468);
+            pushFollow(FOLLOW_aexpr_in_oexpr471);
             e=aexpr();
 
             state._fsp--;
@@ -581,19 +598,19 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:96:41: ( OR e1= aexpr )*
-            loop5:
+            loop6:
             do {
-                int alt5=2;
-                alt5 = dfa5.predict(input);
-                switch (alt5) {
+                int alt6=2;
+                alt6 = dfa6.predict(input);
+                switch (alt6) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:96:42: OR e1= aexpr
             	    {
-            	    OR8=(Token)match(input,OR,FOLLOW_OR_in_oexpr473); 
+            	    OR8=(Token)match(input,OR,FOLLOW_OR_in_oexpr476); 
             	    OR8_tree = (Object)adaptor.create(OR8);
             	    adaptor.addChild(root_0, OR8_tree);
 
-            	    pushFollow(FOLLOW_aexpr_in_oexpr479);
+            	    pushFollow(FOLLOW_aexpr_in_oexpr482);
             	    e1=aexpr();
 
             	    state._fsp--;
@@ -605,7 +622,7 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop6;
                 }
             } while (true);
 
@@ -662,7 +679,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_cexpr_in_aexpr534);
+            pushFollow(FOLLOW_cexpr_in_aexpr537);
             e=cexpr();
 
             state._fsp--;
@@ -670,19 +687,19 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:102:41: ( AND e1= cexpr )*
-            loop6:
+            loop7:
             do {
-                int alt6=2;
-                alt6 = dfa6.predict(input);
-                switch (alt6) {
+                int alt7=2;
+                alt7 = dfa7.predict(input);
+                switch (alt7) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:102:42: AND e1= cexpr
             	    {
-            	    AND9=(Token)match(input,AND,FOLLOW_AND_in_aexpr539); 
+            	    AND9=(Token)match(input,AND,FOLLOW_AND_in_aexpr542); 
             	    AND9_tree = (Object)adaptor.create(AND9);
             	    adaptor.addChild(root_0, AND9_tree);
 
-            	    pushFollow(FOLLOW_cexpr_in_aexpr545);
+            	    pushFollow(FOLLOW_cexpr_in_aexpr548);
             	    e1=cexpr();
 
             	    state._fsp--;
@@ -694,7 +711,7 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop7;
                 }
             } while (true);
 
@@ -751,7 +768,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_lexpr_in_cexpr600);
+            pushFollow(FOLLOW_lexpr_in_cexpr603);
             e=lexpr();
 
             state._fsp--;
@@ -759,19 +776,19 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:108:41: (c= cop e1= lexpr )?
-            int alt7=2;
-            alt7 = dfa7.predict(input);
-            switch (alt7) {
+            int alt8=2;
+            alt8 = dfa8.predict(input);
+            switch (alt8) {
                 case 1 :
                     // src/tr/fn/grammar/Puf.g:108:42: c= cop e1= lexpr
                     {
-                    pushFollow(FOLLOW_cop_in_cexpr609);
+                    pushFollow(FOLLOW_cop_in_cexpr612);
                     c=cop();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, c.getTree());
-                    pushFollow(FOLLOW_lexpr_in_cexpr615);
+                    pushFollow(FOLLOW_lexpr_in_cexpr618);
                     e1=lexpr();
 
                     state._fsp--;
@@ -837,7 +854,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_pexpr_in_lexpr670);
+            pushFollow(FOLLOW_pexpr_in_lexpr673);
             e=pexpr();
 
             state._fsp--;
@@ -845,19 +862,19 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:114:41: ( CONS e1= pexpr )*
-            loop8:
+            loop9:
             do {
-                int alt8=2;
-                alt8 = dfa8.predict(input);
-                switch (alt8) {
+                int alt9=2;
+                alt9 = dfa9.predict(input);
+                switch (alt9) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:114:42: CONS e1= pexpr
             	    {
-            	    CONS10=(Token)match(input,CONS,FOLLOW_CONS_in_lexpr675); 
+            	    CONS10=(Token)match(input,CONS,FOLLOW_CONS_in_lexpr678); 
             	    CONS10_tree = (Object)adaptor.create(CONS10);
             	    adaptor.addChild(root_0, CONS10_tree);
 
-            	    pushFollow(FOLLOW_pexpr_in_lexpr681);
+            	    pushFollow(FOLLOW_pexpr_in_lexpr684);
             	    e1=pexpr();
 
             	    state._fsp--;
@@ -869,7 +886,7 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop9;
                 }
             } while (true);
 
@@ -926,7 +943,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_mexpr_in_pexpr736);
+            pushFollow(FOLLOW_mexpr_in_pexpr739);
             e=mexpr();
 
             state._fsp--;
@@ -934,11 +951,11 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:120:41: (o= ( PLUS | MINUS ) e1= mexpr )*
-            loop9:
+            loop10:
             do {
-                int alt9=2;
-                alt9 = dfa9.predict(input);
-                switch (alt9) {
+                int alt10=2;
+                alt10 = dfa10.predict(input);
+                switch (alt10) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:120:42: o= ( PLUS | MINUS ) e1= mexpr
             	    {
@@ -953,7 +970,7 @@ public class PufParser extends Parser {
             	        throw mse;
             	    }
 
-            	    pushFollow(FOLLOW_mexpr_in_pexpr757);
+            	    pushFollow(FOLLOW_mexpr_in_pexpr760);
             	    e1=mexpr();
 
             	    state._fsp--;
@@ -965,7 +982,7 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop10;
                 }
             } while (true);
 
@@ -1022,7 +1039,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_fexpr_in_mexpr812);
+            pushFollow(FOLLOW_fexpr_in_mexpr815);
             e=fexpr();
 
             state._fsp--;
@@ -1030,11 +1047,11 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:126:41: (o= ( STAR | SLASH | PERCENT ) e1= fexpr )*
-            loop10:
+            loop11:
             do {
-                int alt10=2;
-                alt10 = dfa10.predict(input);
-                switch (alt10) {
+                int alt11=2;
+                alt11 = dfa11.predict(input);
+                switch (alt11) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:126:42: o= ( STAR | SLASH | PERCENT ) e1= fexpr
             	    {
@@ -1049,7 +1066,7 @@ public class PufParser extends Parser {
             	        throw mse;
             	    }
 
-            	    pushFollow(FOLLOW_fexpr_in_mexpr837);
+            	    pushFollow(FOLLOW_fexpr_in_mexpr840);
             	    e1=fexpr();
 
             	    state._fsp--;
@@ -1061,7 +1078,7 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -1129,15 +1146,15 @@ public class PufParser extends Parser {
 
         try {
             // src/tr/fn/grammar/Puf.g:131:12: ( fappl | id | integer | tuple | list | iexpr | let | letrec | lambda | casee | tlet )
-            int alt11=11;
-            alt11 = dfa11.predict(input);
-            switch (alt11) {
+            int alt12=11;
+            alt12 = dfa12.predict(input);
+            switch (alt12) {
                 case 1 :
                     // src/tr/fn/grammar/Puf.g:131:14: fappl
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_fappl_in_fexpr872);
+                    pushFollow(FOLLOW_fappl_in_fexpr875);
                     fappl11=fappl();
 
                     state._fsp--;
@@ -1152,7 +1169,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_id_in_fexpr893);
+                    pushFollow(FOLLOW_id_in_fexpr896);
                     id12=id();
 
                     state._fsp--;
@@ -1167,7 +1184,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_integer_in_fexpr917);
+                    pushFollow(FOLLOW_integer_in_fexpr920);
                     integer13=integer();
 
                     state._fsp--;
@@ -1182,7 +1199,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_tuple_in_fexpr936);
+                    pushFollow(FOLLOW_tuple_in_fexpr939);
                     tuple14=tuple();
 
                     state._fsp--;
@@ -1197,7 +1214,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_list_in_fexpr957);
+                    pushFollow(FOLLOW_list_in_fexpr960);
                     list15=list();
 
                     state._fsp--;
@@ -1212,7 +1229,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_iexpr_in_fexpr979);
+                    pushFollow(FOLLOW_iexpr_in_fexpr982);
                     iexpr16=iexpr();
 
                     state._fsp--;
@@ -1227,7 +1244,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_let_in_fexpr1000);
+                    pushFollow(FOLLOW_let_in_fexpr1003);
                     let17=let();
 
                     state._fsp--;
@@ -1242,7 +1259,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_letrec_in_fexpr1023);
+                    pushFollow(FOLLOW_letrec_in_fexpr1026);
                     letrec18=letrec();
 
                     state._fsp--;
@@ -1257,7 +1274,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_lambda_in_fexpr1043);
+                    pushFollow(FOLLOW_lambda_in_fexpr1046);
                     lambda19=lambda();
 
                     state._fsp--;
@@ -1272,7 +1289,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_casee_in_fexpr1063);
+                    pushFollow(FOLLOW_casee_in_fexpr1066);
                     casee20=casee();
 
                     state._fsp--;
@@ -1287,7 +1304,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_tlet_in_fexpr1084);
+                    pushFollow(FOLLOW_tlet_in_fexpr1087);
                     tlet21=tlet();
 
                     state._fsp--;
@@ -1345,33 +1362,33 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_id_in_fappl1130);
+            pushFollow(FOLLOW_id_in_fappl1133);
             id22=id();
 
             state._fsp--;
 
             adaptor.addChild(root_0, id22.getTree());
             // src/tr/fn/grammar/Puf.g:144:17: ( fargm | fsarg )
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( ((LA12_0>=INT && LA12_0<=ID)||LA12_0==40||LA12_0==48) ) {
-                alt12=1;
+            if ( ((LA13_0>=INT && LA13_0<=ID)||LA13_0==40||LA13_0==48) ) {
+                alt13=1;
             }
-            else if ( (LA12_0==43||LA12_0==50||(LA12_0>=52 && LA12_0<=53)) ) {
-                alt12=2;
+            else if ( (LA13_0==43||LA13_0==50||(LA13_0>=52 && LA13_0<=53)) ) {
+                alt13=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
             }
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
                     // src/tr/fn/grammar/Puf.g:144:18: fargm
                     {
-                    pushFollow(FOLLOW_fargm_in_fappl1133);
+                    pushFollow(FOLLOW_fargm_in_fappl1136);
                     fargm23=fargm();
 
                     state._fsp--;
@@ -1384,7 +1401,7 @@ public class PufParser extends Parser {
                 case 2 :
                     // src/tr/fn/grammar/Puf.g:144:69: fsarg
                     {
-                    pushFollow(FOLLOW_fsarg_in_fappl1139);
+                    pushFollow(FOLLOW_fsarg_in_fappl1142);
                     fsarg24=fsarg();
 
                     state._fsp--;
@@ -1444,16 +1461,16 @@ public class PufParser extends Parser {
             root_0 = (Object)adaptor.nil();
 
             // src/tr/fn/grammar/Puf.g:148:14: (e= fmarg )+
-            int cnt13=0;
-            loop13:
+            int cnt14=0;
+            loop14:
             do {
-                int alt13=2;
-                alt13 = dfa13.predict(input);
-                switch (alt13) {
+                int alt14=2;
+                alt14 = dfa14.predict(input);
+                switch (alt14) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:148:15: e= fmarg
             	    {
-            	    pushFollow(FOLLOW_fmarg_in_fargm1192);
+            	    pushFollow(FOLLOW_fmarg_in_fargm1195);
             	    e=fmarg();
 
             	    state._fsp--;
@@ -1465,12 +1482,12 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    if ( cnt13 >= 1 ) break loop13;
+            	    if ( cnt14 >= 1 ) break loop14;
                         EarlyExitException eee =
-                            new EarlyExitException(13, input);
+                            new EarlyExitException(14, input);
                         throw eee;
                 }
-                cnt13++;
+                cnt14++;
             } while (true);
 
 
@@ -1523,42 +1540,42 @@ public class PufParser extends Parser {
 
         try {
             // src/tr/fn/grammar/Puf.g:153:12: ( tuple | id | integer | list )
-            int alt14=4;
+            int alt15=4;
             switch ( input.LA(1) ) {
             case 40:
                 {
-                alt14=1;
+                alt15=1;
                 }
                 break;
             case ID:
                 {
-                alt14=2;
+                alt15=2;
                 }
                 break;
             case INT:
                 {
-                alt14=3;
+                alt15=3;
                 }
                 break;
             case 48:
                 {
-                alt14=4;
+                alt15=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
                     // src/tr/fn/grammar/Puf.g:153:14: tuple
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_tuple_in_fmarg1226);
+                    pushFollow(FOLLOW_tuple_in_fmarg1229);
                     tuple25=tuple();
 
                     state._fsp--;
@@ -1573,7 +1590,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_id_in_fmarg1245);
+                    pushFollow(FOLLOW_id_in_fmarg1248);
                     id26=id();
 
                     state._fsp--;
@@ -1588,7 +1605,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_integer_in_fmarg1267);
+                    pushFollow(FOLLOW_integer_in_fmarg1270);
                     integer27=integer();
 
                     state._fsp--;
@@ -1603,7 +1620,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_list_in_fmarg1284);
+                    pushFollow(FOLLOW_list_in_fmarg1287);
                     list28=list();
 
                     state._fsp--;
@@ -1661,21 +1678,21 @@ public class PufParser extends Parser {
 
         try {
             // src/tr/fn/grammar/Puf.g:159:12: ( let | letrec | lambda | casee | tlet )
-            int alt15=5;
+            int alt16=5;
             switch ( input.LA(1) ) {
             case 43:
                 {
-                int LA15_1 = input.LA(2);
+                int LA16_1 = input.LA(2);
 
-                if ( (LA15_1==ID) ) {
-                    alt15=1;
+                if ( (LA16_1==40) ) {
+                    alt16=5;
                 }
-                else if ( (LA15_1==40) ) {
-                    alt15=5;
+                else if ( (LA16_1==ID) ) {
+                    alt16=1;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 15, 1, input);
+                        new NoViableAltException("", 16, 1, input);
 
                     throw nvae;
                 }
@@ -1683,33 +1700,33 @@ public class PufParser extends Parser {
                 break;
             case 52:
                 {
-                alt15=2;
+                alt16=2;
                 }
                 break;
             case 50:
                 {
-                alt15=3;
+                alt16=3;
                 }
                 break;
             case 53:
                 {
-                alt15=4;
+                alt16=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 15, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt15) {
+            switch (alt16) {
                 case 1 :
                     // src/tr/fn/grammar/Puf.g:159:14: let
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_let_in_fsarg1317);
+                    pushFollow(FOLLOW_let_in_fsarg1320);
                     let29=let();
 
                     state._fsp--;
@@ -1724,7 +1741,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_letrec_in_fsarg1338);
+                    pushFollow(FOLLOW_letrec_in_fsarg1341);
                     letrec30=letrec();
 
                     state._fsp--;
@@ -1739,7 +1756,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_lambda_in_fsarg1356);
+                    pushFollow(FOLLOW_lambda_in_fsarg1359);
                     lambda31=lambda();
 
                     state._fsp--;
@@ -1754,7 +1771,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_casee_in_fsarg1374);
+                    pushFollow(FOLLOW_casee_in_fsarg1377);
                     casee32=casee();
 
                     state._fsp--;
@@ -1769,7 +1786,7 @@ public class PufParser extends Parser {
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_tlet_in_fsarg1393);
+                    pushFollow(FOLLOW_tlet_in_fsarg1396);
                     tlet33=tlet();
 
                     state._fsp--;
@@ -1833,31 +1850,31 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal34=(Token)match(input,43,FOLLOW_43_in_tlet1438); 
+            string_literal34=(Token)match(input,43,FOLLOW_43_in_tlet1441); 
             string_literal34_tree = (Object)adaptor.create(string_literal34);
             adaptor.addChild(root_0, string_literal34_tree);
 
-            pushFollow(FOLLOW_tlhs_in_tlet1440);
+            pushFollow(FOLLOW_tlhs_in_tlet1443);
             tlhs35=tlhs();
 
             state._fsp--;
 
             adaptor.addChild(root_0, tlhs35.getTree());
-            char_literal36=(Token)match(input,38,FOLLOW_38_in_tlet1442); 
+            char_literal36=(Token)match(input,38,FOLLOW_38_in_tlet1445); 
             char_literal36_tree = (Object)adaptor.create(char_literal36);
             adaptor.addChild(root_0, char_literal36_tree);
 
-            pushFollow(FOLLOW_expr_in_tlet1448);
+            pushFollow(FOLLOW_expr_in_tlet1451);
             e1=expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, e1.getTree());
-            string_literal37=(Token)match(input,44,FOLLOW_44_in_tlet1450); 
+            string_literal37=(Token)match(input,44,FOLLOW_44_in_tlet1453); 
             string_literal37_tree = (Object)adaptor.create(string_literal37);
             adaptor.addChild(root_0, string_literal37_tree);
 
-            pushFollow(FOLLOW_expr_in_tlet1456);
+            pushFollow(FOLLOW_expr_in_tlet1459);
             e2=expr();
 
             state._fsp--;
@@ -1921,31 +1938,31 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal38=(Token)match(input,45,FOLLOW_45_in_iexpr1497); 
+            string_literal38=(Token)match(input,45,FOLLOW_45_in_iexpr1500); 
             string_literal38_tree = (Object)adaptor.create(string_literal38);
             adaptor.addChild(root_0, string_literal38_tree);
 
-            pushFollow(FOLLOW_expr_in_iexpr1503);
+            pushFollow(FOLLOW_expr_in_iexpr1506);
             c=expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, c.getTree());
-            string_literal39=(Token)match(input,46,FOLLOW_46_in_iexpr1505); 
+            string_literal39=(Token)match(input,46,FOLLOW_46_in_iexpr1508); 
             string_literal39_tree = (Object)adaptor.create(string_literal39);
             adaptor.addChild(root_0, string_literal39_tree);
 
-            pushFollow(FOLLOW_expr_in_iexpr1511);
+            pushFollow(FOLLOW_expr_in_iexpr1514);
             t=expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, t.getTree());
-            string_literal40=(Token)match(input,47,FOLLOW_47_in_iexpr1513); 
+            string_literal40=(Token)match(input,47,FOLLOW_47_in_iexpr1516); 
             string_literal40_tree = (Object)adaptor.create(string_literal40);
             adaptor.addChild(root_0, string_literal40_tree);
 
-            pushFollow(FOLLOW_expr_in_iexpr1519);
+            pushFollow(FOLLOW_expr_in_iexpr1522);
             e=expr();
 
             state._fsp--;
@@ -1982,7 +1999,7 @@ public class PufParser extends Parser {
     };
 
     // $ANTLR start "tuple"
-    // src/tr/fn/grammar/Puf.g:175:1: tuple returns [Expression v] : '(' e= expr ( ',' e= expr )* ')' ;
+    // src/tr/fn/grammar/Puf.g:175:1: tuple returns [Expression v] : '(' (e= expr )? ( ',' e= expr )* ')' ;
     public final PufParser.tuple_return tuple() throws RecognitionException {
         PufParser.tuple_return retval = new PufParser.tuple_return();
         retval.start = input.LT(1);
@@ -2001,42 +2018,55 @@ public class PufParser extends Parser {
 
          List<Expression> l = new ArrayList<Expression>(); 
         try {
-            // src/tr/fn/grammar/Puf.g:177:12: ( '(' e= expr ( ',' e= expr )* ')' )
-            // src/tr/fn/grammar/Puf.g:177:14: '(' e= expr ( ',' e= expr )* ')'
+            // src/tr/fn/grammar/Puf.g:177:12: ( '(' (e= expr )? ( ',' e= expr )* ')' )
+            // src/tr/fn/grammar/Puf.g:177:14: '(' (e= expr )? ( ',' e= expr )* ')'
             {
             root_0 = (Object)adaptor.nil();
 
-            char_literal41=(Token)match(input,40,FOLLOW_40_in_tuple1576); 
+            char_literal41=(Token)match(input,40,FOLLOW_40_in_tuple1579); 
             char_literal41_tree = (Object)adaptor.create(char_literal41);
             adaptor.addChild(root_0, char_literal41_tree);
 
-            pushFollow(FOLLOW_expr_in_tuple1582);
-            e=expr();
+            // src/tr/fn/grammar/Puf.g:177:18: (e= expr )?
+            int alt17=2;
+            alt17 = dfa17.predict(input);
+            switch (alt17) {
+                case 1 :
+                    // src/tr/fn/grammar/Puf.g:177:19: e= expr
+                    {
+                    pushFollow(FOLLOW_expr_in_tuple1586);
+                    e=expr();
 
-            state._fsp--;
+                    state._fsp--;
 
-            adaptor.addChild(root_0, e.getTree());
-             l.add((e!=null?e.v:null)); 
-            // src/tr/fn/grammar/Puf.g:177:44: ( ',' e= expr )*
-            loop16:
+                    adaptor.addChild(root_0, e.getTree());
+                     l.add((e!=null?e.v:null)); 
+
+                    }
+                    break;
+
+            }
+
+            // src/tr/fn/grammar/Puf.g:177:47: ( ',' e= expr )*
+            loop18:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( (LA16_0==41) ) {
-                    alt16=1;
+                if ( (LA18_0==41) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt18) {
             	case 1 :
-            	    // src/tr/fn/grammar/Puf.g:177:45: ',' e= expr
+            	    // src/tr/fn/grammar/Puf.g:177:48: ',' e= expr
             	    {
-            	    char_literal42=(Token)match(input,41,FOLLOW_41_in_tuple1587); 
+            	    char_literal42=(Token)match(input,41,FOLLOW_41_in_tuple1593); 
             	    char_literal42_tree = (Object)adaptor.create(char_literal42);
             	    adaptor.addChild(root_0, char_literal42_tree);
 
-            	    pushFollow(FOLLOW_expr_in_tuple1593);
+            	    pushFollow(FOLLOW_expr_in_tuple1599);
             	    e=expr();
 
             	    state._fsp--;
@@ -2048,11 +2078,11 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop18;
                 }
             } while (true);
 
-            char_literal43=(Token)match(input,42,FOLLOW_42_in_tuple1600); 
+            char_literal43=(Token)match(input,42,FOLLOW_42_in_tuple1606); 
             char_literal43_tree = (Object)adaptor.create(char_literal43);
             adaptor.addChild(root_0, char_literal43_tree);
 
@@ -2115,11 +2145,11 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            char_literal44=(Token)match(input,48,FOLLOW_48_in_list1647); 
+            char_literal44=(Token)match(input,48,FOLLOW_48_in_list1653); 
             char_literal44_tree = (Object)adaptor.create(char_literal44);
             adaptor.addChild(root_0, char_literal44_tree);
 
-            pushFollow(FOLLOW_expr_in_list1653);
+            pushFollow(FOLLOW_expr_in_list1659);
             e=expr();
 
             state._fsp--;
@@ -2127,25 +2157,25 @@ public class PufParser extends Parser {
             adaptor.addChild(root_0, e.getTree());
              l.add((e!=null?e.v:null)); 
             // src/tr/fn/grammar/Puf.g:187:44: ( ',' e= expr )*
-            loop17:
+            loop19:
             do {
-                int alt17=2;
-                int LA17_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA17_0==41) ) {
-                    alt17=1;
+                if ( (LA19_0==41) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt17) {
+                switch (alt19) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:187:45: ',' e= expr
             	    {
-            	    char_literal45=(Token)match(input,41,FOLLOW_41_in_list1658); 
+            	    char_literal45=(Token)match(input,41,FOLLOW_41_in_list1664); 
             	    char_literal45_tree = (Object)adaptor.create(char_literal45);
             	    adaptor.addChild(root_0, char_literal45_tree);
 
-            	    pushFollow(FOLLOW_expr_in_list1664);
+            	    pushFollow(FOLLOW_expr_in_list1670);
             	    e=expr();
 
             	    state._fsp--;
@@ -2157,11 +2187,11 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop17;
+            	    break loop19;
                 }
             } while (true);
 
-            char_literal46=(Token)match(input,49,FOLLOW_49_in_list1671); 
+            char_literal46=(Token)match(input,49,FOLLOW_49_in_list1677); 
             char_literal46_tree = (Object)adaptor.create(char_literal46);
             adaptor.addChild(root_0, char_literal46_tree);
 
@@ -2220,26 +2250,26 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal47=(Token)match(input,50,FOLLOW_50_in_lambda1716); 
+            string_literal47=(Token)match(input,50,FOLLOW_50_in_lambda1722); 
             string_literal47_tree = (Object)adaptor.create(string_literal47);
             adaptor.addChild(root_0, string_literal47_tree);
 
             // src/tr/fn/grammar/Puf.g:193:19: (i= id )*
-            loop18:
+            loop20:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt20=2;
+                int LA20_0 = input.LA(1);
 
-                if ( (LA18_0==ID) ) {
-                    alt18=1;
+                if ( (LA20_0==ID) ) {
+                    alt20=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt20) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:193:20: i= id
             	    {
-            	    pushFollow(FOLLOW_id_in_lambda1723);
+            	    pushFollow(FOLLOW_id_in_lambda1729);
             	    i=id();
 
             	    state._fsp--;
@@ -2251,15 +2281,15 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop20;
                 }
             } while (true);
 
-            string_literal48=(Token)match(input,51,FOLLOW_51_in_lambda1729); 
+            string_literal48=(Token)match(input,51,FOLLOW_51_in_lambda1735); 
             string_literal48_tree = (Object)adaptor.create(string_literal48);
             adaptor.addChild(root_0, string_literal48_tree);
 
-            pushFollow(FOLLOW_expr_in_lambda1735);
+            pushFollow(FOLLOW_expr_in_lambda1741);
             e=expr();
 
             state._fsp--;
@@ -2320,27 +2350,27 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal49=(Token)match(input,43,FOLLOW_43_in_let1783); 
+            string_literal49=(Token)match(input,43,FOLLOW_43_in_let1789); 
             string_literal49_tree = (Object)adaptor.create(string_literal49);
             adaptor.addChild(root_0, string_literal49_tree);
 
             // src/tr/fn/grammar/Puf.g:199:20: (d= ldecl )+
-            int cnt19=0;
-            loop19:
+            int cnt21=0;
+            loop21:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA19_0==ID) ) {
-                    alt19=1;
+                if ( (LA21_0==ID) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt21) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:199:21: d= ldecl
             	    {
-            	    pushFollow(FOLLOW_ldecl_in_let1790);
+            	    pushFollow(FOLLOW_ldecl_in_let1796);
             	    d=ldecl();
 
             	    state._fsp--;
@@ -2352,19 +2382,19 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    if ( cnt19 >= 1 ) break loop19;
+            	    if ( cnt21 >= 1 ) break loop21;
                         EarlyExitException eee =
-                            new EarlyExitException(19, input);
+                            new EarlyExitException(21, input);
                         throw eee;
                 }
-                cnt19++;
+                cnt21++;
             } while (true);
 
-            string_literal50=(Token)match(input,44,FOLLOW_44_in_let1796); 
+            string_literal50=(Token)match(input,44,FOLLOW_44_in_let1802); 
             string_literal50_tree = (Object)adaptor.create(string_literal50);
             adaptor.addChild(root_0, string_literal50_tree);
 
-            pushFollow(FOLLOW_expr_in_let1802);
+            pushFollow(FOLLOW_expr_in_let1808);
             e=expr();
 
             state._fsp--;
@@ -2425,27 +2455,27 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal51=(Token)match(input,52,FOLLOW_52_in_letrec1847); 
+            string_literal51=(Token)match(input,52,FOLLOW_52_in_letrec1853); 
             string_literal51_tree = (Object)adaptor.create(string_literal51);
             adaptor.addChild(root_0, string_literal51_tree);
 
             // src/tr/fn/grammar/Puf.g:205:23: (d= rdecl )+
-            int cnt20=0;
-            loop20:
+            int cnt22=0;
+            loop22:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA20_0==ID) ) {
-                    alt20=1;
+                if ( (LA22_0==ID) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt22) {
             	case 1 :
             	    // src/tr/fn/grammar/Puf.g:205:24: d= rdecl
             	    {
-            	    pushFollow(FOLLOW_rdecl_in_letrec1854);
+            	    pushFollow(FOLLOW_rdecl_in_letrec1860);
             	    d=rdecl();
 
             	    state._fsp--;
@@ -2457,19 +2487,19 @@ public class PufParser extends Parser {
             	    break;
 
             	default :
-            	    if ( cnt20 >= 1 ) break loop20;
+            	    if ( cnt22 >= 1 ) break loop22;
                         EarlyExitException eee =
-                            new EarlyExitException(20, input);
+                            new EarlyExitException(22, input);
                         throw eee;
                 }
-                cnt20++;
+                cnt22++;
             } while (true);
 
-            string_literal52=(Token)match(input,44,FOLLOW_44_in_letrec1860); 
+            string_literal52=(Token)match(input,44,FOLLOW_44_in_letrec1866); 
             string_literal52_tree = (Object)adaptor.create(string_literal52);
             adaptor.addChild(root_0, string_literal52_tree);
 
-            pushFollow(FOLLOW_expr_in_letrec1866);
+            pushFollow(FOLLOW_expr_in_letrec1872);
             e=expr();
 
             state._fsp--;
@@ -2533,31 +2563,31 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal53=(Token)match(input,53,FOLLOW_53_in_casee1896); 
+            string_literal53=(Token)match(input,53,FOLLOW_53_in_casee1902); 
             string_literal53_tree = (Object)adaptor.create(string_literal53);
             adaptor.addChild(root_0, string_literal53_tree);
 
-            pushFollow(FOLLOW_expr_in_casee1902);
+            pushFollow(FOLLOW_expr_in_casee1908);
             e=expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, e.getTree());
-            string_literal54=(Token)match(input,54,FOLLOW_54_in_casee1904); 
+            string_literal54=(Token)match(input,54,FOLLOW_54_in_casee1910); 
             string_literal54_tree = (Object)adaptor.create(string_literal54);
             adaptor.addChild(root_0, string_literal54_tree);
 
-            pushFollow(FOLLOW_nalt_in_casee1910);
+            pushFollow(FOLLOW_nalt_in_casee1916);
             n=nalt();
 
             state._fsp--;
 
             adaptor.addChild(root_0, n.getTree());
-            char_literal55=(Token)match(input,39,FOLLOW_39_in_casee1912); 
+            char_literal55=(Token)match(input,39,FOLLOW_39_in_casee1918); 
             char_literal55_tree = (Object)adaptor.create(char_literal55);
             adaptor.addChild(root_0, char_literal55_tree);
 
-            pushFollow(FOLLOW_calt_in_casee1918);
+            pushFollow(FOLLOW_calt_in_casee1924);
             c=calt();
 
             state._fsp--;
@@ -2615,15 +2645,15 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal56=(Token)match(input,55,FOLLOW_55_in_nalt1949); 
+            string_literal56=(Token)match(input,55,FOLLOW_55_in_nalt1955); 
             string_literal56_tree = (Object)adaptor.create(string_literal56);
             adaptor.addChild(root_0, string_literal56_tree);
 
-            string_literal57=(Token)match(input,51,FOLLOW_51_in_nalt1951); 
+            string_literal57=(Token)match(input,51,FOLLOW_51_in_nalt1957); 
             string_literal57_tree = (Object)adaptor.create(string_literal57);
             adaptor.addChild(root_0, string_literal57_tree);
 
-            pushFollow(FOLLOW_expr_in_nalt1957);
+            pushFollow(FOLLOW_expr_in_nalt1963);
             e=expr();
 
             state._fsp--;
@@ -2685,27 +2715,27 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_id_in_calt1992);
+            pushFollow(FOLLOW_id_in_calt1998);
             i1=id();
 
             state._fsp--;
 
             adaptor.addChild(root_0, i1.getTree());
-            char_literal58=(Token)match(input,CONS,FOLLOW_CONS_in_calt1994); 
+            char_literal58=(Token)match(input,CONS,FOLLOW_CONS_in_calt2000); 
             char_literal58_tree = (Object)adaptor.create(char_literal58);
             adaptor.addChild(root_0, char_literal58_tree);
 
-            pushFollow(FOLLOW_id_in_calt2000);
+            pushFollow(FOLLOW_id_in_calt2006);
             i2=id();
 
             state._fsp--;
 
             adaptor.addChild(root_0, i2.getTree());
-            string_literal59=(Token)match(input,51,FOLLOW_51_in_calt2002); 
+            string_literal59=(Token)match(input,51,FOLLOW_51_in_calt2008); 
             string_literal59_tree = (Object)adaptor.create(string_literal59);
             adaptor.addChild(root_0, string_literal59_tree);
 
-            pushFollow(FOLLOW_expr_in_calt2008);
+            pushFollow(FOLLOW_expr_in_calt2014);
             e=expr();
 
             state._fsp--;
@@ -2759,7 +2789,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            INT60=(Token)match(input,INT,FOLLOW_INT_in_integer2047); 
+            INT60=(Token)match(input,INT,FOLLOW_INT_in_integer2053); 
             INT60_tree = (Object)adaptor.create(INT60);
             adaptor.addChild(root_0, INT60_tree);
 
@@ -2811,7 +2841,7 @@ public class PufParser extends Parser {
             {
             root_0 = (Object)adaptor.nil();
 
-            ID61=(Token)match(input,ID,FOLLOW_ID_in_id2080); 
+            ID61=(Token)match(input,ID,FOLLOW_ID_in_id2086); 
             ID61_tree = (Object)adaptor.create(ID61);
             adaptor.addChild(root_0, ID61_tree);
 
@@ -2897,7 +2927,6 @@ public class PufParser extends Parser {
     // Delegated rules
 
 
-    protected DFA4 dfa4 = new DFA4(this);
     protected DFA5 dfa5 = new DFA5(this);
     protected DFA6 dfa6 = new DFA6(this);
     protected DFA7 dfa7 = new DFA7(this);
@@ -2905,80 +2934,9 @@ public class PufParser extends Parser {
     protected DFA9 dfa9 = new DFA9(this);
     protected DFA10 dfa10 = new DFA10(this);
     protected DFA11 dfa11 = new DFA11(this);
-    protected DFA13 dfa13 = new DFA13(this);
-    static final String DFA4_eotS =
-        "\30\uffff";
-    static final String DFA4_eofS =
-        "\30\uffff";
-    static final String DFA4_minS =
-        "\1\22\27\uffff";
-    static final String DFA4_maxS =
-        "\1\66\27\uffff";
-    static final String DFA4_acceptS =
-        "\1\uffff\1\2\7\uffff\11\1\6\uffff";
-    static final String DFA4_specialS =
-        "\30\uffff}>";
-    static final String[] DFA4_transitionS = {
-            "\10\1\1\12\1\11\6\1\5\uffff\1\1\1\13\2\1\1\16\1\1\1\15\2\1\1"+
-            "\14\1\1\1\20\1\uffff\1\17\1\21\1\1",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA4_eot = DFA.unpackEncodedString(DFA4_eotS);
-    static final short[] DFA4_eof = DFA.unpackEncodedString(DFA4_eofS);
-    static final char[] DFA4_min = DFA.unpackEncodedStringToUnsignedChars(DFA4_minS);
-    static final char[] DFA4_max = DFA.unpackEncodedStringToUnsignedChars(DFA4_maxS);
-    static final short[] DFA4_accept = DFA.unpackEncodedString(DFA4_acceptS);
-    static final short[] DFA4_special = DFA.unpackEncodedString(DFA4_specialS);
-    static final short[][] DFA4_transition;
-
-    static {
-        int numStates = DFA4_transitionS.length;
-        DFA4_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA4_transition[i] = DFA.unpackEncodedString(DFA4_transitionS[i]);
-        }
-    }
-
-    class DFA4 extends DFA {
-
-        public DFA4(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 4;
-            this.eot = DFA4_eot;
-            this.eof = DFA4_eof;
-            this.min = DFA4_min;
-            this.max = DFA4_max;
-            this.accept = DFA4_accept;
-            this.special = DFA4_special;
-            this.transition = DFA4_transition;
-        }
-        public String getDescription() {
-            return "()+ loopback of 84:14: (e= oexpr )+";
-        }
-    }
+    protected DFA12 dfa12 = new DFA12(this);
+    protected DFA14 dfa14 = new DFA14(this);
+    protected DFA17 dfa17 = new DFA17(this);
     static final String DFA5_eotS =
         "\30\uffff";
     static final String DFA5_eofS =
@@ -2988,11 +2946,12 @@ public class PufParser extends Parser {
     static final String DFA5_maxS =
         "\1\66\27\uffff";
     static final String DFA5_acceptS =
-        "\1\uffff\1\2\6\uffff\1\1\17\uffff";
+        "\1\uffff\1\2\7\uffff\11\1\6\uffff";
     static final String DFA5_specialS =
         "\30\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\1\10\17\1\5\uffff\14\1\1\uffff\3\1",
+            "\10\1\1\12\1\11\6\1\5\uffff\1\1\1\13\2\1\1\16\1\1\1\15\2\1"+
+            "\1\14\1\1\1\20\1\uffff\1\17\1\21\1\1",
             "",
             "",
             "",
@@ -3048,7 +3007,7 @@ public class PufParser extends Parser {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "()* loopback of 96:41: ( OR e1= aexpr )*";
+            return "()+ loopback of 84:14: (e= oexpr )+";
         }
     }
     static final String DFA6_eotS =
@@ -3064,7 +3023,7 @@ public class PufParser extends Parser {
     static final String DFA6_specialS =
         "\30\uffff}>";
     static final String[] DFA6_transitionS = {
-            "\1\1\1\10\16\1\5\uffff\14\1\1\uffff\3\1",
+            "\1\10\17\1\5\uffff\14\1\1\uffff\3\1",
             "",
             "",
             "",
@@ -3120,7 +3079,7 @@ public class PufParser extends Parser {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "()* loopback of 102:41: ( AND e1= cexpr )*";
+            return "()* loopback of 96:41: ( OR e1= aexpr )*";
         }
     }
     static final String DFA7_eotS =
@@ -3132,11 +3091,11 @@ public class PufParser extends Parser {
     static final String DFA7_maxS =
         "\1\66\27\uffff";
     static final String DFA7_acceptS =
-        "\1\uffff\1\1\1\2\25\uffff";
+        "\1\uffff\1\2\6\uffff\1\1\17\uffff";
     static final String DFA7_specialS =
         "\30\uffff}>";
     static final String[] DFA7_transitionS = {
-            "\12\2\6\1\5\uffff\14\2\1\uffff\3\2",
+            "\1\1\1\10\16\1\5\uffff\14\1\1\uffff\3\1",
             "",
             "",
             "",
@@ -3192,7 +3151,7 @@ public class PufParser extends Parser {
             this.transition = DFA7_transition;
         }
         public String getDescription() {
-            return "108:41: (c= cop e1= lexpr )?";
+            return "()* loopback of 102:41: ( AND e1= cexpr )*";
         }
     }
     static final String DFA8_eotS =
@@ -3204,11 +3163,11 @@ public class PufParser extends Parser {
     static final String DFA8_maxS =
         "\1\66\27\uffff";
     static final String DFA8_acceptS =
-        "\1\uffff\1\2\6\uffff\1\1\17\uffff";
+        "\1\uffff\1\1\1\2\25\uffff";
     static final String DFA8_specialS =
         "\30\uffff}>";
     static final String[] DFA8_transitionS = {
-            "\2\1\1\10\15\1\5\uffff\14\1\1\uffff\3\1",
+            "\12\2\6\1\5\uffff\14\2\1\uffff\3\2",
             "",
             "",
             "",
@@ -3264,7 +3223,7 @@ public class PufParser extends Parser {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "()* loopback of 114:41: ( CONS e1= pexpr )*";
+            return "108:41: (c= cop e1= lexpr )?";
         }
     }
     static final String DFA9_eotS =
@@ -3280,7 +3239,7 @@ public class PufParser extends Parser {
     static final String DFA9_specialS =
         "\30\uffff}>";
     static final String[] DFA9_transitionS = {
-            "\3\1\2\10\13\1\5\uffff\14\1\1\uffff\3\1",
+            "\2\1\1\10\15\1\5\uffff\14\1\1\uffff\3\1",
             "",
             "",
             "",
@@ -3336,7 +3295,7 @@ public class PufParser extends Parser {
             this.transition = DFA9_transition;
         }
         public String getDescription() {
-            return "()* loopback of 120:41: (o= ( PLUS | MINUS ) e1= mexpr )*";
+            return "()* loopback of 114:41: ( CONS e1= pexpr )*";
         }
     }
     static final String DFA10_eotS =
@@ -3352,7 +3311,7 @@ public class PufParser extends Parser {
     static final String DFA10_specialS =
         "\30\uffff}>";
     static final String[] DFA10_transitionS = {
-            "\5\1\3\10\10\1\5\uffff\14\1\1\uffff\3\1",
+            "\3\1\2\10\13\1\5\uffff\14\1\1\uffff\3\1",
             "",
             "",
             "",
@@ -3408,73 +3367,23 @@ public class PufParser extends Parser {
             this.transition = DFA10_transition;
         }
         public String getDescription() {
-            return "()* loopback of 126:41: (o= ( STAR | SLASH | PERCENT ) e1= fexpr )*";
+            return "()* loopback of 120:41: (o= ( PLUS | MINUS ) e1= mexpr )*";
         }
     }
     static final String DFA11_eotS =
-        "\103\uffff";
+        "\30\uffff";
     static final String DFA11_eofS =
-        "\103\uffff";
+        "\30\uffff";
     static final String DFA11_minS =
-        "\1\32\1\22\4\uffff\1\33\23\uffff\2\32\1\uffff\3\33\1\32\42\uffff";
+        "\1\22\27\uffff";
     static final String DFA11_maxS =
-        "\1\65\1\66\4\uffff\1\50\23\uffff\2\65\1\uffff\1\50\1\33\1\63\1\65"+
-        "\42\uffff";
+        "\1\66\27\uffff";
     static final String DFA11_acceptS =
-        "\2\uffff\1\3\1\4\1\5\1\6\1\uffff\1\10\1\11\1\12\1\2\15\uffff\2\1"+
-        "\7\uffff\1\7\1\13\40\1";
+        "\1\uffff\1\2\6\uffff\1\1\17\uffff";
     static final String DFA11_specialS =
-        "\103\uffff}>";
+        "\30\uffff}>";
     static final String[] DFA11_transitionS = {
-            "\1\2\1\1\14\uffff\1\3\2\uffff\1\6\1\uffff\1\5\2\uffff\1\4\1"+
-            "\uffff\1\10\1\uffff\1\7\1\11",
-            "\10\12\1\31\1\30\6\12\5\uffff\1\12\1\32\2\12\1\35\4\12\1\33"+
-            "\1\12\1\37\1\uffff\1\36\1\40\1\12",
-            "",
-            "",
-            "",
-            "",
-            "\1\41\14\uffff\1\42",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\44\1\43\14\uffff\1\45\2\uffff\1\50\1\uffff\1\47\2\uffff"+
-            "\1\46\1\uffff\1\52\1\uffff\1\51\1\53",
-            "\1\55\1\54\14\uffff\1\56\2\uffff\1\61\1\uffff\1\60\2\uffff"+
-            "\1\57\1\uffff\1\63\1\uffff\1\62\1\64",
-            "",
-            "\1\66\14\uffff\1\65",
-            "\1\67",
-            "\1\70\27\uffff\1\71",
-            "\1\73\1\72\14\uffff\1\74\2\uffff\1\77\1\uffff\1\76\2\uffff"+
-            "\1\75\1\uffff\1\101\1\uffff\1\100\1\102",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\5\1\3\10\10\1\5\uffff\14\1\1\uffff\3\1",
             "",
             "",
             "",
@@ -3530,24 +3439,149 @@ public class PufParser extends Parser {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
+            return "()* loopback of 126:41: (o= ( STAR | SLASH | PERCENT ) e1= fexpr )*";
+        }
+    }
+    static final String DFA12_eotS =
+        "\105\uffff";
+    static final String DFA12_eofS =
+        "\105\uffff";
+    static final String DFA12_minS =
+        "\1\32\1\22\4\uffff\1\33\3\uffff\1\32\2\uffff\1\32\3\33\1\32\63"+
+        "\uffff";
+    static final String DFA12_maxS =
+        "\1\65\1\66\4\uffff\1\50\3\uffff\1\65\2\uffff\1\65\1\50\1\33\1\63"+
+        "\1\65\63\uffff";
+    static final String DFA12_acceptS =
+        "\2\uffff\1\3\1\4\1\5\1\6\1\uffff\1\10\1\11\1\12\1\uffff\2\1\5\uffff"+
+        "\1\2\16\uffff\1\13\1\7\42\1";
+    static final String DFA12_specialS =
+        "\105\uffff}>";
+    static final String[] DFA12_transitionS = {
+            "\1\2\1\1\14\uffff\1\3\2\uffff\1\6\1\uffff\1\5\2\uffff\1\4\1"+
+            "\uffff\1\10\1\uffff\1\7\1\11",
+            "\10\22\1\14\1\13\6\22\5\uffff\1\22\1\12\2\22\1\16\4\22\1\15"+
+            "\1\22\1\20\1\uffff\1\17\1\21\1\22",
+            "",
+            "",
+            "",
+            "",
+            "\1\42\14\uffff\1\41",
+            "",
+            "",
+            "",
+            "\1\44\1\43\14\uffff\1\45\1\54\1\55\1\50\1\uffff\1\47\2\uffff"+
+            "\1\46\1\uffff\1\52\1\uffff\1\51\1\53",
+            "",
+            "",
+            "\1\57\1\56\14\uffff\1\60\2\uffff\1\63\1\uffff\1\62\2\uffff"+
+            "\1\61\1\uffff\1\65\1\uffff\1\64\1\66",
+            "\1\70\14\uffff\1\67",
+            "\1\71",
+            "\1\72\27\uffff\1\73",
+            "\1\75\1\74\14\uffff\1\76\2\uffff\1\101\1\uffff\1\100\2\uffff"+
+            "\1\77\1\uffff\1\103\1\uffff\1\102\1\104",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA12_eot = DFA.unpackEncodedString(DFA12_eotS);
+    static final short[] DFA12_eof = DFA.unpackEncodedString(DFA12_eofS);
+    static final char[] DFA12_min = DFA.unpackEncodedStringToUnsignedChars(DFA12_minS);
+    static final char[] DFA12_max = DFA.unpackEncodedStringToUnsignedChars(DFA12_maxS);
+    static final short[] DFA12_accept = DFA.unpackEncodedString(DFA12_acceptS);
+    static final short[] DFA12_special = DFA.unpackEncodedString(DFA12_specialS);
+    static final short[][] DFA12_transition;
+
+    static {
+        int numStates = DFA12_transitionS.length;
+        DFA12_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA12_transition[i] = DFA.unpackEncodedString(DFA12_transitionS[i]);
+        }
+    }
+
+    class DFA12 extends DFA {
+
+        public DFA12(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 12;
+            this.eot = DFA12_eot;
+            this.eof = DFA12_eof;
+            this.min = DFA12_min;
+            this.max = DFA12_max;
+            this.accept = DFA12_accept;
+            this.special = DFA12_special;
+            this.transition = DFA12_transition;
+        }
+        public String getDescription() {
             return "130:1: fexpr returns [Expression v] : ( fappl | id | integer | tuple | list | iexpr | let | letrec | lambda | casee | tlet );";
         }
     }
-    static final String DFA13_eotS =
-        "\u00c0\uffff";
-    static final String DFA13_eofS =
-        "\u00c0\uffff";
-    static final String DFA13_minS =
-        "\1\22\20\uffff\2\32\5\uffff\2\22\3\32\3\33\1\32\2\22\3\32\3\33\1"+
-        "\32\u0096\uffff";
-    static final String DFA13_maxS =
-        "\1\66\20\uffff\2\65\5\uffff\5\65\1\50\1\33\1\63\6\65\1\50\1\33\1"+
-        "\63\1\65\u0096\uffff";
-    static final String DFA13_acceptS =
-        "\1\uffff\1\2\15\uffff\2\1\31\uffff\u0096\1";
-    static final String DFA13_specialS =
-        "\u00c0\uffff}>";
-    static final String[] DFA13_transitionS = {
+    static final String DFA14_eotS =
+        "\u00cf\uffff";
+    static final String DFA14_eofS =
+        "\u00cf\uffff";
+    static final String DFA14_minS =
+        "\1\22\20\uffff\2\32\5\uffff\2\22\3\32\3\33\2\32\1\uffff\2\22\3"+
+        "\32\3\33\1\32\u00a3\uffff";
+    static final String DFA14_maxS =
+        "\1\66\20\uffff\2\65\5\uffff\5\65\1\50\1\33\1\63\2\65\1\uffff\5"+
+        "\65\1\50\1\33\1\63\1\65\u00a3\uffff";
+    static final String DFA14_acceptS =
+        "\1\uffff\1\2\15\uffff\2\1\21\uffff\1\1\11\uffff\u00a3\1";
+    static final String DFA14_specialS =
+        "\u00cf\uffff}>";
+    static final String[] DFA14_transitionS = {
             "\10\1\1\20\1\17\6\1\5\uffff\1\1\1\21\7\1\1\22\2\1\1\uffff\3"+
             "\1",
             "",
@@ -3566,49 +3600,66 @@ public class PufParser extends Parser {
             "",
             "",
             "",
-            "\1\31\1\30\14\uffff\1\32\2\uffff\1\35\1\uffff\1\34\2\uffff"+
+            "\1\31\1\30\14\uffff\1\32\1\41\1\42\1\35\1\uffff\1\34\2\uffff"+
             "\1\33\1\uffff\1\37\1\uffff\1\36\1\40",
-            "\1\42\1\41\14\uffff\1\43\2\uffff\1\46\1\uffff\1\45\2\uffff"+
-            "\1\44\1\uffff\1\50\1\uffff\1\47\1\51",
+            "\1\44\1\43\14\uffff\1\45\2\uffff\1\50\1\uffff\1\47\2\uffff"+
+            "\1\46\1\uffff\1\52\1\uffff\1\51\1\53",
             "",
             "",
             "",
             "",
             "",
-            "\1\57\1\56\1\54\2\53\3\52\1\63\1\62\6\55\6\uffff\1\64\1\60"+
-            "\1\61\1\67\1\uffff\1\66\2\uffff\1\65\1\uffff\1\71\1\uffff\1"+
-            "\70\1\72",
-            "\1\100\1\77\1\75\2\74\3\73\1\104\1\103\6\76\6\uffff\1\105\1"+
-            "\101\1\102\1\110\1\uffff\1\107\2\uffff\1\106\1\uffff\1\112\1"+
-            "\uffff\1\111\1\113",
-            "\1\115\1\114\14\uffff\1\116\2\uffff\1\121\1\uffff\1\120\2\uffff"+
-            "\1\117\1\uffff\1\123\1\uffff\1\122\1\124",
-            "\1\126\1\125\14\uffff\1\127\2\uffff\1\132\1\uffff\1\131\2\uffff"+
-            "\1\130\1\uffff\1\134\1\uffff\1\133\1\135",
-            "\1\137\1\136\14\uffff\1\140\2\uffff\1\143\1\uffff\1\142\2\uffff"+
-            "\1\141\1\uffff\1\145\1\uffff\1\144\1\146",
-            "\1\147\14\uffff\1\150",
-            "\1\151",
-            "\1\152\27\uffff\1\153",
-            "\1\155\1\154\14\uffff\1\156\2\uffff\1\161\1\uffff\1\160\2\uffff"+
-            "\1\157\1\uffff\1\163\1\uffff\1\162\1\164",
-            "\1\u0082\1\u0081\1\177\2\176\3\175\1\167\1\166\6\u0080\6\uffff"+
-            "\1\165\1\u0083\1\uffff\1\171\1\uffff\1\u0085\2\uffff\1\170\1"+
-            "\u0084\1\173\1\uffff\1\172\1\174",
-            "\1\u008b\1\u008a\1\u0088\2\u0087\3\u0086\1\u008f\1\u008e\6"+
-            "\u0089\6\uffff\1\u0090\1\u008c\1\uffff\1\u0093\1\uffff\1\u0092"+
-            "\2\uffff\1\u0091\1\u008d\1\u0095\1\uffff\1\u0094\1\u0096",
-            "\1\u0098\1\u0097\14\uffff\1\u0099\2\uffff\1\u009c\1\uffff\1"+
-            "\u009b\2\uffff\1\u009a\1\uffff\1\u009e\1\uffff\1\u009d\1\u009f",
-            "\1\u00a1\1\u00a0\14\uffff\1\u00a2\2\uffff\1\u00a5\1\uffff\1"+
-            "\u00a4\2\uffff\1\u00a3\1\uffff\1\u00a7\1\uffff\1\u00a6\1\u00a8",
-            "\1\u00aa\1\u00a9\14\uffff\1\u00ab\2\uffff\1\u00ae\1\uffff\1"+
-            "\u00ad\2\uffff\1\u00ac\1\uffff\1\u00b0\1\uffff\1\u00af\1\u00b1",
-            "\1\u00b3\14\uffff\1\u00b2",
-            "\1\u00b4",
-            "\1\u00b5\27\uffff\1\u00b6",
-            "\1\u00b8\1\u00b7\14\uffff\1\u00b9\2\uffff\1\u00bc\1\uffff\1"+
-            "\u00bb\2\uffff\1\u00ba\1\uffff\1\u00be\1\uffff\1\u00bd\1\u00bf",
+            "\1\61\1\60\1\56\2\55\3\54\1\65\1\64\6\57\6\uffff\1\66\1\62"+
+            "\1\63\1\71\1\uffff\1\70\2\uffff\1\67\1\uffff\1\73\1\uffff\1"+
+            "\72\1\74",
+            "\1\102\1\101\1\77\2\76\3\75\1\106\1\105\6\100\6\uffff\1\107"+
+            "\1\103\1\104\1\112\1\uffff\1\111\2\uffff\1\110\1\uffff\1\114"+
+            "\1\uffff\1\113\1\115",
+            "\1\117\1\116\14\uffff\1\120\1\127\1\130\1\123\1\uffff\1\122"+
+            "\2\uffff\1\121\1\uffff\1\125\1\uffff\1\124\1\126",
+            "\1\132\1\131\14\uffff\1\133\2\uffff\1\136\1\uffff\1\135\2"+
+            "\uffff\1\134\1\uffff\1\140\1\uffff\1\137\1\141",
+            "\1\143\1\142\14\uffff\1\144\2\uffff\1\147\1\uffff\1\146\2"+
+            "\uffff\1\145\1\uffff\1\151\1\uffff\1\150\1\152",
+            "\1\154\14\uffff\1\153",
+            "\1\155",
+            "\1\156\27\uffff\1\157",
+            "\1\161\1\160\14\uffff\1\162\2\uffff\1\165\1\uffff\1\164\2"+
+            "\uffff\1\163\1\uffff\1\167\1\uffff\1\166\1\170",
+            "\1\172\1\171\14\uffff\1\173\2\uffff\1\176\1\uffff\1\175\2"+
+            "\uffff\1\174\1\uffff\1\u0080\1\uffff\1\177\1\u0081",
+            "",
+            "\1\u008f\1\u008e\1\u008c\2\u008b\3\u008a\1\u0084\1\u0083\6"+
+            "\u008d\6\uffff\1\u0082\1\u0090\1\uffff\1\u0086\1\uffff\1\u0092"+
+            "\2\uffff\1\u0085\1\u0091\1\u0088\1\uffff\1\u0087\1\u0089",
+            "\1\u0098\1\u0097\1\u0095\2\u0094\3\u0093\1\u009c\1\u009b\6"+
+            "\u0096\6\uffff\1\u009d\1\u0099\1\uffff\1\u00a0\1\uffff\1\u009f"+
+            "\2\uffff\1\u009e\1\u009a\1\u00a2\1\uffff\1\u00a1\1\u00a3",
+            "\1\u00a5\1\u00a4\14\uffff\1\u00a6\1\u00ad\1\u00ae\1\u00a9"+
+            "\1\uffff\1\u00a8\2\uffff\1\u00a7\1\uffff\1\u00ab\1\uffff\1\u00aa"+
+            "\1\u00ac",
+            "\1\u00b0\1\u00af\14\uffff\1\u00b1\2\uffff\1\u00b4\1\uffff"+
+            "\1\u00b3\2\uffff\1\u00b2\1\uffff\1\u00b6\1\uffff\1\u00b5\1\u00b7",
+            "\1\u00b9\1\u00b8\14\uffff\1\u00ba\2\uffff\1\u00bd\1\uffff"+
+            "\1\u00bc\2\uffff\1\u00bb\1\uffff\1\u00bf\1\uffff\1\u00be\1\u00c0",
+            "\1\u00c2\14\uffff\1\u00c1",
+            "\1\u00c3",
+            "\1\u00c4\27\uffff\1\u00c5",
+            "\1\u00c7\1\u00c6\14\uffff\1\u00c8\2\uffff\1\u00cb\1\uffff"+
+            "\1\u00ca\2\uffff\1\u00c9\1\uffff\1\u00cd\1\uffff\1\u00cc\1\u00ce",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -3761,37 +3812,98 @@ public class PufParser extends Parser {
             ""
     };
 
-    static final short[] DFA13_eot = DFA.unpackEncodedString(DFA13_eotS);
-    static final short[] DFA13_eof = DFA.unpackEncodedString(DFA13_eofS);
-    static final char[] DFA13_min = DFA.unpackEncodedStringToUnsignedChars(DFA13_minS);
-    static final char[] DFA13_max = DFA.unpackEncodedStringToUnsignedChars(DFA13_maxS);
-    static final short[] DFA13_accept = DFA.unpackEncodedString(DFA13_acceptS);
-    static final short[] DFA13_special = DFA.unpackEncodedString(DFA13_specialS);
-    static final short[][] DFA13_transition;
+    static final short[] DFA14_eot = DFA.unpackEncodedString(DFA14_eotS);
+    static final short[] DFA14_eof = DFA.unpackEncodedString(DFA14_eofS);
+    static final char[] DFA14_min = DFA.unpackEncodedStringToUnsignedChars(DFA14_minS);
+    static final char[] DFA14_max = DFA.unpackEncodedStringToUnsignedChars(DFA14_maxS);
+    static final short[] DFA14_accept = DFA.unpackEncodedString(DFA14_acceptS);
+    static final short[] DFA14_special = DFA.unpackEncodedString(DFA14_specialS);
+    static final short[][] DFA14_transition;
 
     static {
-        int numStates = DFA13_transitionS.length;
-        DFA13_transition = new short[numStates][];
+        int numStates = DFA14_transitionS.length;
+        DFA14_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA13_transition[i] = DFA.unpackEncodedString(DFA13_transitionS[i]);
+            DFA14_transition[i] = DFA.unpackEncodedString(DFA14_transitionS[i]);
         }
     }
 
-    class DFA13 extends DFA {
+    class DFA14 extends DFA {
 
-        public DFA13(BaseRecognizer recognizer) {
+        public DFA14(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 13;
-            this.eot = DFA13_eot;
-            this.eof = DFA13_eof;
-            this.min = DFA13_min;
-            this.max = DFA13_max;
-            this.accept = DFA13_accept;
-            this.special = DFA13_special;
-            this.transition = DFA13_transition;
+            this.decisionNumber = 14;
+            this.eot = DFA14_eot;
+            this.eof = DFA14_eof;
+            this.min = DFA14_min;
+            this.max = DFA14_max;
+            this.accept = DFA14_accept;
+            this.special = DFA14_special;
+            this.transition = DFA14_transition;
         }
         public String getDescription() {
             return "()+ loopback of 148:14: (e= fmarg )+";
+        }
+    }
+    static final String DFA17_eotS =
+        "\14\uffff";
+    static final String DFA17_eofS =
+        "\14\uffff";
+    static final String DFA17_minS =
+        "\1\32\13\uffff";
+    static final String DFA17_maxS =
+        "\1\65\13\uffff";
+    static final String DFA17_acceptS =
+        "\1\uffff\1\1\10\uffff\1\2\1\uffff";
+    static final String DFA17_specialS =
+        "\14\uffff}>";
+    static final String[] DFA17_transitionS = {
+            "\2\1\14\uffff\1\1\2\12\1\1\1\uffff\1\1\2\uffff\1\1\1\uffff"+
+            "\1\1\1\uffff\2\1",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA17_eot = DFA.unpackEncodedString(DFA17_eotS);
+    static final short[] DFA17_eof = DFA.unpackEncodedString(DFA17_eofS);
+    static final char[] DFA17_min = DFA.unpackEncodedStringToUnsignedChars(DFA17_minS);
+    static final char[] DFA17_max = DFA.unpackEncodedStringToUnsignedChars(DFA17_maxS);
+    static final short[] DFA17_accept = DFA.unpackEncodedString(DFA17_acceptS);
+    static final short[] DFA17_special = DFA.unpackEncodedString(DFA17_specialS);
+    static final short[][] DFA17_transition;
+
+    static {
+        int numStates = DFA17_transitionS.length;
+        DFA17_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA17_transition[i] = DFA.unpackEncodedString(DFA17_transitionS[i]);
+        }
+    }
+
+    class DFA17 extends DFA {
+
+        public DFA17(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 17;
+            this.eot = DFA17_eot;
+            this.eof = DFA17_eof;
+            this.min = DFA17_min;
+            this.max = DFA17_max;
+            this.accept = DFA17_accept;
+            this.special = DFA17_special;
+            this.transition = DFA17_transition;
+        }
+        public String getDescription() {
+            return "177:18: (e= expr )?";
         }
     }
  
@@ -3804,104 +3916,104 @@ public class PufParser extends Parser {
     public static final BitSet FOLLOW_expr_in_rdecl246 = new BitSet(new long[]{0x0000008000000000L});
     public static final BitSet FOLLOW_39_in_rdecl248 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rdecl_in_ldecl278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_tlhs339 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_id_in_tlhs345 = new BitSet(new long[]{0x0000060000000000L});
-    public static final BitSet FOLLOW_41_in_tlhs350 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_id_in_tlhs356 = new BitSet(new long[]{0x0000060000000000L});
-    public static final BitSet FOLLOW_42_in_tlhs362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_oexpr_in_expr414 = new BitSet(new long[]{0x003529000C000002L});
-    public static final BitSet FOLLOW_aexpr_in_oexpr468 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_OR_in_oexpr473 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_aexpr_in_oexpr479 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_cexpr_in_aexpr534 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_AND_in_aexpr539 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_cexpr_in_aexpr545 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_lexpr_in_cexpr600 = new BitSet(new long[]{0x00000003F0000002L});
-    public static final BitSet FOLLOW_cop_in_cexpr609 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_lexpr_in_cexpr615 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pexpr_in_lexpr670 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_CONS_in_lexpr675 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_pexpr_in_lexpr681 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_mexpr_in_pexpr736 = new BitSet(new long[]{0x0000000000600002L});
-    public static final BitSet FOLLOW_set_in_pexpr745 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_mexpr_in_pexpr757 = new BitSet(new long[]{0x0000000000600002L});
-    public static final BitSet FOLLOW_fexpr_in_mexpr812 = new BitSet(new long[]{0x0000000003800002L});
-    public static final BitSet FOLLOW_set_in_mexpr821 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_fexpr_in_mexpr837 = new BitSet(new long[]{0x0000000003800002L});
-    public static final BitSet FOLLOW_fappl_in_fexpr872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_fexpr893 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integer_in_fexpr917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tuple_in_fexpr936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_list_in_fexpr957 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_iexpr_in_fexpr979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_let_in_fexpr1000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_letrec_in_fexpr1023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lambda_in_fexpr1043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_casee_in_fexpr1063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tlet_in_fexpr1084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_fappl1130 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_fargm_in_fappl1133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_fsarg_in_fappl1139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_fmarg_in_fargm1192 = new BitSet(new long[]{0x000101000C000002L});
-    public static final BitSet FOLLOW_tuple_in_fmarg1226 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_fmarg1245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integer_in_fmarg1267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_list_in_fmarg1284 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_let_in_fsarg1317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_letrec_in_fsarg1338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lambda_in_fsarg1356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_casee_in_fsarg1374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tlet_in_fsarg1393 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_tlet1438 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_tlhs_in_tlet1440 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_tlet1442 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_tlet1448 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_tlet1450 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_tlet1456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_iexpr1497 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_iexpr1503 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_iexpr1505 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_iexpr1511 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_47_in_iexpr1513 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_iexpr1519 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_tuple1576 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_tuple1582 = new BitSet(new long[]{0x0000060000000000L});
-    public static final BitSet FOLLOW_41_in_tuple1587 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_tuple1593 = new BitSet(new long[]{0x0000060000000000L});
-    public static final BitSet FOLLOW_42_in_tuple1600 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_list1647 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_list1653 = new BitSet(new long[]{0x0002020000000000L});
-    public static final BitSet FOLLOW_41_in_list1658 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_list1664 = new BitSet(new long[]{0x0002020000000000L});
-    public static final BitSet FOLLOW_49_in_list1671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_lambda1716 = new BitSet(new long[]{0x0008000008000000L});
-    public static final BitSet FOLLOW_id_in_lambda1723 = new BitSet(new long[]{0x0008000008000000L});
-    public static final BitSet FOLLOW_51_in_lambda1729 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_lambda1735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_let1783 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_ldecl_in_let1790 = new BitSet(new long[]{0x0000100008000000L});
-    public static final BitSet FOLLOW_44_in_let1796 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_let1802 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_letrec1847 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_rdecl_in_letrec1854 = new BitSet(new long[]{0x0000100008000000L});
-    public static final BitSet FOLLOW_44_in_letrec1860 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_letrec1866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_casee1896 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_casee1902 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_casee1904 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_nalt_in_casee1910 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_39_in_casee1912 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_calt_in_casee1918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_nalt1949 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_nalt1951 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_nalt1957 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_calt1992 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_CONS_in_calt1994 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_id_in_calt2000 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_calt2002 = new BitSet(new long[]{0x003529000C000000L});
-    public static final BitSet FOLLOW_expr_in_calt2008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_integer2047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_id2080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_tlhs339 = new BitSet(new long[]{0x0000060008000000L});
+    public static final BitSet FOLLOW_id_in_tlhs346 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_tlhs353 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_id_in_tlhs359 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_tlhs365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_oexpr_in_expr417 = new BitSet(new long[]{0x003529000C000002L});
+    public static final BitSet FOLLOW_aexpr_in_oexpr471 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_OR_in_oexpr476 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_aexpr_in_oexpr482 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_cexpr_in_aexpr537 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_AND_in_aexpr542 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_cexpr_in_aexpr548 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_lexpr_in_cexpr603 = new BitSet(new long[]{0x00000003F0000002L});
+    public static final BitSet FOLLOW_cop_in_cexpr612 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_lexpr_in_cexpr618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pexpr_in_lexpr673 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_CONS_in_lexpr678 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_pexpr_in_lexpr684 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_mexpr_in_pexpr739 = new BitSet(new long[]{0x0000000000600002L});
+    public static final BitSet FOLLOW_set_in_pexpr748 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_mexpr_in_pexpr760 = new BitSet(new long[]{0x0000000000600002L});
+    public static final BitSet FOLLOW_fexpr_in_mexpr815 = new BitSet(new long[]{0x0000000003800002L});
+    public static final BitSet FOLLOW_set_in_mexpr824 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_fexpr_in_mexpr840 = new BitSet(new long[]{0x0000000003800002L});
+    public static final BitSet FOLLOW_fappl_in_fexpr875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_fexpr896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integer_in_fexpr920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tuple_in_fexpr939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_list_in_fexpr960 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_iexpr_in_fexpr982 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_let_in_fexpr1003 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_letrec_in_fexpr1026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lambda_in_fexpr1046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_casee_in_fexpr1066 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tlet_in_fexpr1087 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_fappl1133 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_fargm_in_fappl1136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fsarg_in_fappl1142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fmarg_in_fargm1195 = new BitSet(new long[]{0x000101000C000002L});
+    public static final BitSet FOLLOW_tuple_in_fmarg1229 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_fmarg1248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integer_in_fmarg1270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_list_in_fmarg1287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_let_in_fsarg1320 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_letrec_in_fsarg1341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lambda_in_fsarg1359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_casee_in_fsarg1377 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tlet_in_fsarg1396 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_tlet1441 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_tlhs_in_tlet1443 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_tlet1445 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_tlet1451 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_44_in_tlet1453 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_tlet1459 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_iexpr1500 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_iexpr1506 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_iexpr1508 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_iexpr1514 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_iexpr1516 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_iexpr1522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_tuple1579 = new BitSet(new long[]{0x00352F000C000000L});
+    public static final BitSet FOLLOW_expr_in_tuple1586 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_41_in_tuple1593 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_tuple1599 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_42_in_tuple1606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_list1653 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_list1659 = new BitSet(new long[]{0x0002020000000000L});
+    public static final BitSet FOLLOW_41_in_list1664 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_list1670 = new BitSet(new long[]{0x0002020000000000L});
+    public static final BitSet FOLLOW_49_in_list1677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_lambda1722 = new BitSet(new long[]{0x0008000008000000L});
+    public static final BitSet FOLLOW_id_in_lambda1729 = new BitSet(new long[]{0x0008000008000000L});
+    public static final BitSet FOLLOW_51_in_lambda1735 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_lambda1741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_let1789 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_ldecl_in_let1796 = new BitSet(new long[]{0x0000100008000000L});
+    public static final BitSet FOLLOW_44_in_let1802 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_let1808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_letrec1853 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_rdecl_in_letrec1860 = new BitSet(new long[]{0x0000100008000000L});
+    public static final BitSet FOLLOW_44_in_letrec1866 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_letrec1872 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_casee1902 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_casee1908 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_casee1910 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_nalt_in_casee1916 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_39_in_casee1918 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_calt_in_casee1924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_nalt1955 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_51_in_nalt1957 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_nalt1963 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_calt1998 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_CONS_in_calt2000 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_id_in_calt2006 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_51_in_calt2008 = new BitSet(new long[]{0x003529000C000000L});
+    public static final BitSet FOLLOW_expr_in_calt2014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_integer2053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_id2086 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_cop0 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -1,0 +1,2 @@
+main = let (y,z) = f 2 in y + z;
+f x = (x,x);
