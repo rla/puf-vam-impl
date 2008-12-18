@@ -18,27 +18,37 @@ public class CodeC {
 	 * @see MaMa slides page 62.
 	 */
 	public static void codeC(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
-		Label A = context.makeLabel();
-		Label B = context.makeLabel();
-		
-		Collection<Identifier> free = e.getFreeVariables();
-		Environment environment1 = new Environment(environment);
-		
-		int i = 0;
-		for (Identifier identifier : free) {
-			Code.getvar(identifier, environment, context, sd + i);
-			environment1.addVariable(new Variable(identifier, i, VariableType.GLOBAL));
-			i++;
+		if (context.isDebug()) {
+			System.out.println("CodeC: " + e);
 		}
-		
-		int g = free.size();
-		
-		context.addInstruction(new MkVec(g));
-		context.addInstruction(new MkClos(A));
-		context.addInstruction(new Jump(B));
-		context.addInstruction(A);
-		CodeV.codeV(environment1, context, e, 0);
-		context.addInstruction(new Update());
-		context.addInstruction(B);
+		if (context.isTryToEliminateClosures() && (e.isSimpleStrict() || context.isStrict(e))) {
+			if (context.isDebug()) {
+				System.out.println("CodeC: will not create a closure");
+			}
+			CodeV.codeV(environment, context, e, sd);
+		} else {
+			Label A = context.makeLabel();
+			Label B = context.makeLabel();
+			
+			Collection<Identifier> free = e.getFreeVariables();
+			Environment environment1 = new Environment(environment);
+			
+			int i = 0;
+			for (Identifier identifier : free) {
+				Code.getvar(identifier, environment, context, sd + i);
+				environment1.addVariable(new Variable(identifier, i, VariableType.GLOBAL));
+				i++;
+			}
+			
+			int g = free.size();
+			
+			context.addInstruction(new MkVec(g));
+			context.addInstruction(new MkClos(A));
+			context.addInstruction(new Jump(B));
+			context.addInstruction(A);
+			CodeV.codeV(environment1, context, e, 0);
+			context.addInstruction(new Update());
+			context.addInstruction(B);
+		}
 	}
 }

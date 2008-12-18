@@ -4,27 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class IfThenElse extends Expression {
-	private final Expression condition;
-	private final Expression thenExpression;
-	private final Expression elseExpression;
-
-	public IfThenElse(int line, Expression condition, Expression thenExpression, Expression elseExpression) {
-		super(line);
+	public final Expression condition;
+	public final Expression thenExpression;
+	public final Expression elseExpression;
+	
+	public IfThenElse(Expression condition, Expression thenExpression, Expression elseExpression) {
 		this.condition = condition;
-		this.elseExpression = elseExpression;
 		this.thenExpression = thenExpression;
+		this.elseExpression = elseExpression;
 	}
 
-	public Expression getCondition() {
-		return condition;
-	}
-
-	public Expression getThenExpression() {
-		return thenExpression;
-	}
-
-	public Expression getElseExpression() {
-		return elseExpression;
+	@Override
+	public String toString() {
+		return "if " + condition + " then " + thenExpression + " else " + elseExpression;
 	}
 
 	@Override
@@ -38,18 +30,24 @@ public class IfThenElse extends Expression {
 	}
 
 	@Override
-	public String toString() {
-		return "(if " + condition + " then " + thenExpression + " else " + elseExpression + ")";
+	public boolean isSimpleStrict() {
+		return false;
 	}
 
 	@Override
-	public Set<Identifier> getIdentifiers() {
-		Set<Identifier> identifiers = new HashSet<Identifier>();
-		identifiers.addAll(condition.getIdentifiers());
-		identifiers.addAll(elseExpression.getIdentifiers());
-		identifiers.addAll(thenExpression.getIdentifiers());
-		
-		return identifiers;
+	public void markEnclosingLambda(Lambda lambda) {
+		setEnclosingLambda(lambda);
+		condition.markEnclosingLambda(lambda);
+		thenExpression.markEnclosingLambda(lambda);
+		elseExpression.markEnclosingLambda(lambda);
+	}
+
+	@Override
+	public void markEnclosingLet(LetBase let) {
+		setEnclosingLet(let);
+		condition.markEnclosingLet(let);
+		thenExpression.markEnclosingLet(let);
+		elseExpression.markEnclosingLet(let);
 	}
 
 }

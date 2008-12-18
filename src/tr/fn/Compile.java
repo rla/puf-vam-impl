@@ -1,9 +1,7 @@
 package tr.fn;
 
 import java.io.File;
-import java.io.IOException;
 
-import org.antlr.runtime.tree.Tree;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
@@ -11,26 +9,23 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import tr.fn.ast.AstBuilder;
 import tr.fn.ast.LetRec;
 import tr.fn.gen.CodeV;
 import tr.fn.gen.Environment;
-import tr.fn.gen.GenerateException;
 import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
 import tr.fn.opt.DeadCodeEliminator;
 import tr.fn.opt.OptimizationContext;
-import tr.fn.opt.OptimizationException;
+import tr.fn.opt.StrictnessAnalysis;
 import tr.fn.pre.IncludePreprocessor;
 import tr.fn.pre.PreprocessContext;
-import tr.fn.pre.PreprocessorException;
 
 /**
  * Main class for the compiler.
  */
 public class Compile {
 	
-	public static void main(String[] args) throws PreprocessorException, GenerateException, IOException, OptimizationException {
+	public static void main(String[] args) throws Exception {
 		CommandLineParser parser = new GnuParser();
 		Options options = new CompileOptions();
 		CommandLine command = null;
@@ -52,23 +47,22 @@ public class Compile {
 		compile(inputFile, outputFile, command.hasOption(CompileOptions.OPTION_DEBUG), command.hasOption(CompileOptions.OPTION_DEADCODE));
 	}
 	
-	public static void compile(File inputFile, File outputFile, boolean debug, boolean nodead) throws PreprocessorException, GenerateException, IOException, OptimizationException {
+	public static void compile(File inputFile, File outputFile, boolean debug, boolean nodead) throws Exception {
 		// Executing "#include"
 		PreprocessContext preprocessContext = new PreprocessContext(inputFile, debug);
 		new IncludePreprocessor(preprocessContext).execute();
 		
-		// Concrete syntax tree
-		Tree tree = preprocessContext.getTreeAfterPreprocess();
-		
-		// Tree of statements
-		AstBuilder builder = new AstBuilder();
-		LetRec program = builder.buildProgram(tree);
+		// Ast after preprocessing
+		LetRec program = preprocessContext.getAstAfterPreprocessing();
 		
 		// Optimizations
 		OptimizationContext optimizationContext = new OptimizationContext(program, debug);
 		if (nodead) {
 			new DeadCodeEliminator(optimizationContext).execute();
 		}
+		
+		// FIXME strictness switch
+		//new StrictnessAnalysis(optimizationContext).execute();
 		
 		// Generate output code
 		GenerationContext generationContext = new GenerationContext();

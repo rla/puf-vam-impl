@@ -5,37 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Tuple extends Expression {
-	private List<Expression> expressions;
+	public final List<? extends Expression> arguments;
 
-	public Tuple(int line, List<Expression> expressions) {
-		super(line);
-		this.expressions = expressions;
-	}
-
-	@Override
-	public Set<Identifier> getFreeVariables() {
-		Set<Identifier> free = new HashSet<Identifier>();
-		
-		for (Expression e : expressions) {
-			free.addAll(e.getFreeVariables());
-		}
-		
-		return free;
-	}
-
-	@Override
-	public Set<Identifier> getIdentifiers() {
-		Set<Identifier> identifiers = new HashSet<Identifier>();
-		
-		for (Expression e : expressions) {
-			identifiers.addAll(e.getIdentifiers());
-		}
-		
-		return identifiers;
-	}
-
-	public List<Expression> getExpressions() {
-		return expressions;
+	public Tuple(List<? extends Expression> arguments) {
+		this.arguments = arguments;
 	}
 
 	@Override
@@ -44,17 +17,54 @@ public class Tuple extends Expression {
 		
 		builder.append('(');
 		boolean first = true;
-		for (Expression e : expressions) {
+		for (Expression arg : arguments) {
 			if (first) {
 				first = false;
 			} else {
 				builder.append(',');
 			}
-			builder.append(e);
+			builder.append(arg);
 		}
 		builder.append(')');
 		
 		return builder.toString();
 	}
 
+	@Override
+	public Set<Identifier> getFreeVariables() {
+		Set<Identifier> free = new HashSet<Identifier>();
+		
+		for (Expression argument : arguments) {
+			free.addAll(argument.getFreeVariables());
+		}
+		
+		return free;
+	}
+
+	@Override
+	public boolean isSimpleStrict() {
+		for (Expression argument : arguments) {
+			if (!argument.isSimpleStrict()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public void markEnclosingLambda(Lambda lambda) {
+		setEnclosingLambda(lambda);
+		for (Expression argument : arguments) {
+			argument.markEnclosingLambda(lambda);
+		}
+	}
+
+	@Override
+	public void markEnclosingLet(LetBase let) {
+		setEnclosingLet(let);
+		for (Expression argument : arguments) {
+			argument.markEnclosingLet(let);
+		}
+	}
+	
 }

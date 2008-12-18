@@ -3,22 +3,28 @@ package tr.fn.ast;
 import java.util.List;
 import java.util.Set;
 
-public class Lambda extends Expression {
-	private final Expression expression;
-	private final List<Identifier> arguments;
 
-	public Lambda(int line, List<Identifier> arguments, Expression expression) {
-		super(line);
+public class Lambda extends Expression {
+	public final Expression expression;
+	public final List<Identifier> arguments;
+	
+	public Lambda(List<Identifier> arguments, Expression expression) {
 		this.arguments = arguments;
 		this.expression = expression;
 	}
 
-	public Expression getExpression() {
-		return expression;
-	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("fn" );
 
-	public List<Identifier> getArguments() {
-		return arguments;
+		for (Identifier arg : arguments) {
+				builder.append(' ').append(arg);
+		}
+		builder.append(" -> ").append(expression);
+		
+		return builder.toString();
 	}
 
 	@Override
@@ -30,32 +36,20 @@ public class Lambda extends Expression {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("fn");
-		
-		if (!arguments.isEmpty()) {
-			builder.append(" ");
-			boolean first = true;
-			for (Identifier argument : arguments) {
-				if (first) {
-					first = false;
-				} else {
-					builder.append(' ');
-				}
-				builder.append(argument);
-			}
-		}
-		
-		builder.append(" -> ");
-		builder.append(expression.toString());
-		
-		return builder.toString();
+	public boolean isSimpleStrict() {
+		return false;
 	}
 
 	@Override
-	public Set<Identifier> getIdentifiers() {
-		return expression.getIdentifiers();
+	public void markEnclosingLambda(Lambda lambda) {
+		setEnclosingLambda(lambda);
+		expression.markEnclosingLambda(this);
 	}
 
+	@Override
+	public void markEnclosingLet(LetBase let) {
+		setEnclosingLet(let);
+		expression.markEnclosingLet(let);
+	}
+	
 }

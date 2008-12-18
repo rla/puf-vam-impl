@@ -1,36 +1,45 @@
 package tr.fn.ast;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class LetBase extends Expression {
-	private final List<Declaration> declarations;
-	private final Expression inExpression;
+public abstract class LetBase extends Expression {
+	public final List<Declaration> declarations;
+	public final Expression inExpression;
 	
-	public LetBase(int line, List<Declaration> declarations, Expression inExpression) {
-		super(line);
+	public LetBase(List<Declaration> declarations, Expression inExpression) {
 		this.declarations = declarations;
 		this.inExpression = inExpression;
 	}
 
-	public List<Declaration> getDeclarations() {
-		return declarations;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append(getTypeName());
+		for (Declaration declaration : declarations) {
+			builder.append(' ').append(declaration).append(';');
+		}
+		
+		builder.append(" in ").append(inExpression);
+		
+		return builder.toString();
 	}
-
-	public Expression getInExpression() {
-		return inExpression;
-	}
-
+	
+	protected abstract String getTypeName();
+	
 	@Override
 	public Set<Identifier> getFreeVariables() {
 		Set<Identifier> nonFree = new HashSet<Identifier>();
 		Set<Identifier> free = new HashSet<Identifier>(inExpression.getFreeVariables());
 		
 		for (Declaration declaration : declarations) {
-			nonFree.add(declaration.getName());
-			free.addAll(declaration.getExpression().getFreeVariables());
+			if (declaration instanceof Declaration) {
+				nonFree.add(((Declaration) declaration).name);
+			}
+			
+			free.addAll(declaration.expression.getFreeVariables());
 		}
 		
 		free.removeAll(nonFree);
@@ -39,24 +48,26 @@ public class LetBase extends Expression {
 	}
 
 	@Override
-	public Set<Identifier> getIdentifiers() {
-		Set<Identifier> identifiers = new HashSet<Identifier>(inExpression.getIdentifiers());
-		
-		for (Declaration declaration : declarations) {
-			identifiers.addAll(declaration.getExpression().getIdentifiers());
-		}
-		
-		return identifiers;
+	public boolean isSimpleStrict() {
+		return false;
 	}
 
-	public Collection<Identifier> getDefinedIdentifiers() {
-		Set<Identifier> identifiers = new HashSet<Identifier>();
-		
+	@Override
+	public void markEnclosingLambda(Lambda lambda) {
+		setEnclosingLambda(lambda);
 		for (Declaration declaration : declarations) {
-			identifiers.add(declaration.getName());
+			declaration.markEnclosingLambda(lambda);
 		}
-		
-		return identifiers;
+		inExpression.markEnclosingLambda(lambda);
 	}
 
+	@Override
+	public void markEnclosingLet(LetBase let) {
+		setEnclosingLet(let);
+		for (Declaration declaration : declarations) {
+			declaration.markEnclosingLet(this);
+		}
+		inExpression.markEnclosingLet(this);
+	}
+	
 }

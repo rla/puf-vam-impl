@@ -9,7 +9,6 @@ import java.util.Set;
 import tr.fn.ast.Declaration;
 import tr.fn.ast.Identifier;
 import tr.fn.ast.LetRec;
-import tr.fn.debug.Debug;
 
 /**
  * Currently eliminates top-level declarations that are
@@ -22,7 +21,6 @@ public class DeadCodeEliminator {
 		this.context = context;
 	}
 	
-	// TODO currently uses very primitive algorithm, does not remove all dead code.
 	public void execute() throws OptimizationException {
 		LetRec top = (LetRec) context.getProgram();
 		
@@ -31,8 +29,8 @@ public class DeadCodeEliminator {
 		}
 		
 		Declaration main = null;
-		for (Declaration declaration : top.getDeclarations()) {
-			if (declaration.getName().getName().equals(Declaration.MAIN_NAME)) {
+		for (Declaration declaration : top.declarations) {
+			if (declaration.name.name.equals(Declaration.MAIN_NAME)) {
 				main = declaration;
 				break;
 			}
@@ -46,15 +44,15 @@ public class DeadCodeEliminator {
 		Set<Identifier> idsForMain = new HashSet<Identifier>();
 		List<Declaration> current = new ArrayList<Declaration>();
 		current.add(main);
-		idsForMain.add(main.getName());
+		idsForMain.add(main.name);
 		while (!current.isEmpty()) {
 			List<Declaration> next = new ArrayList<Declaration>();
 			for (Declaration decl : current) {
 				Collection<Identifier> ids = decl.getFreeVariables();
-				for (Declaration topDecl : top.getDeclarations()) {
-					if (ids.contains(topDecl.getName()) && !idsForMain.contains(topDecl.getName())) {
+				for (Declaration topDecl : top.declarations) {
+					if (ids.contains(topDecl.name) && !idsForMain.contains(topDecl.name)) {
 						next.add(topDecl);
-						idsForMain.add(topDecl.getName());
+						idsForMain.add(topDecl.name);
 					}
 				}
 			}
@@ -62,20 +60,20 @@ public class DeadCodeEliminator {
 		}
 		
 		if (context.isDebug()) {
-			System.out.println("  Main uses: " + Debug.collectionToString(idsForMain));
+			System.out.println("  Main uses: " + idsForMain);
 		}
 		
 		List<Declaration> keepDeclarations = new ArrayList<Declaration>();
 		
 		// Remove those from top letrec that are certanly not used
-		for (Declaration declaration : top.getDeclarations()) {
-			if (idsForMain.contains(declaration.getName())) {
+		for (Declaration declaration : top.declarations) {
+			if (idsForMain.contains(declaration.name)) {
 				// This one might be used, keep into the program
 				keepDeclarations.add(declaration);
 			}
 		}
 		
-		context.setProgram(new LetRec(top.getLine(), keepDeclarations, top.getInExpression()));
+		context.setProgram(new LetRec(keepDeclarations, top.inExpression));
 	}
 
 }
