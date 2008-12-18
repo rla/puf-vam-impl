@@ -21,7 +21,7 @@
 	
     <target name="gen-code" description="Generate code from grammar files">
     	<java classpathref="compile.classpath" classname="org.antlr.Tool">
-    		<arg value="${src}/tr/fn/grammar/Fun.g" />
+    		<arg value="${src}/tr/fn/grammar/Puf.g" />
     		<arg value="-o ${src}/tr/fn/grammar" />
     	</java>
     </target>
