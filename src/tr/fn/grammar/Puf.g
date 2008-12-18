@@ -25,8 +25,8 @@ tokens {
 @header {
 package tr.fn.grammar;
 
-import tr.fn.grammar.ast.*;
-import tr.fn.grammar.ast.list.*;
+import tr.fn.ast.*;
+import tr.fn.ast.list.*;
 import java.util.Collections;
 }
 
@@ -50,10 +50,10 @@ program    returns [List<Declaration> v]
 rdecl      returns [Declaration v]
            @init { List<Identifier> a = new ArrayList<Identifier>(); }
            : f = id (arg = id { a.add($arg.v); })* '=' e = expr ';' {
-               if ($e.v instanceof Simple) {
-                   $v = new NamedDeclaration($f.v, $e.v);
+               if ($e.v instanceof Simple && a.isEmpty()) {
+                   $v = new Declaration($f.v, $e.v);
                } else {
-                   $v = new NamedDeclaration($f.v, new Lambda(a, $e.v));
+                   $v = new Declaration($f.v, new Lambda(a, $e.v));
                }
            };
 
@@ -93,42 +93,43 @@ expr       returns [Expression v]
 
 oexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : e = aexpr { l.add($e.v); } (OR e = aexpr { l.add($e.v); } )* {
+           : e = aexpr { l.add($e.v); } (OR e1 = aexpr { l.add($e1.v); } )* {
                 $v = AstUtil.makeBinaryOperator($OR.text, l, true);
            };
 
 aexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : e = cexpr { l.add($e.v); } (AND e = cexpr { l.add($e.v); } )* {
+           : e = cexpr { l.add($e.v); } (AND e1 = cexpr { l.add($e1.v); } )* {
                $v = AstUtil.makeBinaryOperator($AND.text, l, true);
            };
 
 cexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : e = lexpr { l.add($e.v); } (c = cop e = lexpr { l.add($e.v); } )? {
+           : e = lexpr { l.add($e.v); } (c = cop e1 = lexpr { l.add($e1.v); } )? {
                $v = AstUtil.makeBinaryOperator($c.text, l, true);
            };
 
 lexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : e = pexpr { l.add($e.v); } (CONS e = pexpr { l.add($e.v); } )* {
+           : e = pexpr { l.add($e.v); } (CONS e1 = pexpr { l.add($e1.v); } )* {
                $v = AstUtil.makeHeadTailList(l);
            };
 
 pexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : e = mexpr { l.add($e.v); } (o = (PLUS | MINUS) e = mexpr { l.add($e.v); } )* {
+           : e = mexpr { l.add($e.v); } (o = (PLUS | MINUS) e1 = mexpr { l.add($e1.v); } )* {
                $v = AstUtil.makeBinaryOperator($o.text, l, true);
            };
 
 mexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : e = fexpr { l.add($e.v); } (o = (STAR | SLASH | PERCENT) e = fexpr { l.add($e.v); } )* {
+           : e = fexpr { l.add($e.v); } (o = (STAR | SLASH | PERCENT) e1 = fexpr { l.add($e1.v); } )* {
                $v = AstUtil.makeBinaryOperator($o.text, l, true);
            };
 
 fexpr      returns [Expression v]
-           : id        { $v = $id.v; }
+           : fappl     { $v = $fappl.v; }
+           | id        { $v = $id.v; }
            | integer   { $v = $integer.v; }
            | tuple     { $v = $tuple.v; }
            | list      { $v = $list.v; }
@@ -138,6 +139,28 @@ fexpr      returns [Expression v]
            | lambda    { $v = $lambda.v; }
            | casee     { $v = $casee.v; }
            | tlet      { $v = $tlet.v; };
+           
+fappl      returns [Expression v]
+           : id (fargm { $v = new Application($id.v, $fargm.v); } | fsarg { $v = new Application($id.v, $fsarg.v); }) ;
+
+fargm      returns [List<Expression> v]
+           @init { List<Expression> l = new ArrayList<Expression>(); }
+           : (e = fmarg { l.add($e.v); })+ {
+               $v = l;
+           };
+
+fmarg      returns [Expression v]
+           : tuple   { $v = $tuple.v; }
+           | id      { $v = $id.v; }
+           | integer { $v = $integer.v; }
+           | list    { $v = $list.v; };
+
+fsarg      returns [List<Expression> v]
+           : let     { $v = Collections.singletonList((Expression) $let.v); }
+           | letrec  { $v = Collections.singletonList((Expression) $letrec.v); }
+           | lambda  { $v = Collections.singletonList((Expression) $lambda.v); }
+           | casee   { $v = Collections.singletonList((Expression) $casee.v); }
+           | tlet    { $v = Collections.singletonList((Expression) $tlet.v); };
            
 tlet       returns [Expression v]
            : 'let' tlhs '=' e1 = expr 'in' e2 = expr {
@@ -198,9 +221,9 @@ calt       returns [Calt v]
                $v = new Calt($i1.v, $i2.v, $e.v);
            };
            
-integer    returns [tr.fn.grammar.ast.Number v]
+integer    returns [tr.fn.ast.Number v]
            : INT {
-               $v = new tr.fn.grammar.ast.Number(Integer.valueOf($INT.text));
+               $v = new tr.fn.ast.Number(Integer.valueOf($INT.text));
            };
 
 id         returns [Identifier v]

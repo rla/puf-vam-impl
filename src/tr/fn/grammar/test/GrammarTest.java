@@ -16,6 +16,36 @@ import tr.fn.grammar.PufParser;
 
 public class GrammarTest extends TestCase {
 	
+	public void testBinOpApp() throws Exception {
+		List<Declaration> l = getDeclarations("main = n * f 2;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> (n * (f 2))", l.get(0).toString());
+	}
+	
+	public void testBinOpApp2() throws Exception {
+		List<Declaration> l = getDeclarations("main = n * f 2 4;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> (n * (f 2 4))", l.get(0).toString());
+	}
+	
+	public void testBinOpLet() throws Exception {
+		List<Declaration> l = getDeclarations("main = n * f let x = 2; in x;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> (n * (f let x = 2; in x))", l.get(0).toString());
+	}
+	
+	public void testLetAppLet() throws Exception {
+		List<Declaration> l = getDeclarations("main = let x = f; in x let g = 2; in g + 2;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> let x = f; in (x let g = 2; in (g + 2))", l.get(0).toString());
+	}
+	
+	public void testLetFarg() throws Exception {
+		List<Declaration> l = getDeclarations("main = let I x = x; in I 2;");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> let I = fn x -> x; in (I 2)", l.get(0).toString());
+	}
+	
 	public void testCase() throws Exception {
 		List<Declaration> l = getDeclarations("main = case x of [] -> 1; h:t -> h + t;");
 		assertEquals(1, l.size());
@@ -35,9 +65,9 @@ public class GrammarTest extends TestCase {
 	}
 
 	public void testList1() throws Exception {
-		List<Declaration> l = getDeclarations("main = 2 : 3 : 5;");
+		List<Declaration> l = getDeclarations("main = 2 : 3 : f;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> 2 : 3 : 5 : []", l.get(0).toString());
+		assertEquals("main = fn -> 2 : 3 : f : []", l.get(0).toString());
 	}
 	
 	public void testList2() throws Exception {
