@@ -31,11 +31,7 @@ public class Environment {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for (Variable variable : variables.values()) {
-			builder.append(variable.getIdentifier() + " -> (" + (variable.isLocal() ? "L" : "G") + "," + variable.getId() + ")\n");
-		}
-		return builder.toString();
+		return variables.values().toString();
 	}
 
 	public Environment getParent() {

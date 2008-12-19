@@ -41,6 +41,8 @@ import tr.fn.gen.instr.Targ;
 public class CodeV {
 	
 	public static void codeV(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
+		context.debug("codeV " + environment + " " + e);
+		
 		if (e instanceof Identifier) {
 			codeVIdentifier(environment, context, (Identifier) e, sd);
 		} else if (e instanceof Number) {
@@ -117,7 +119,7 @@ public class CodeV {
 	 * 
 	 * @see MaMa slides page 34.
 	 */
-	private static void codeVApplication(Environment environment, GenerationContext context, Application e, int sd) throws GenerateException {
+	private static void codeVApplication(Environment environment, GenerationContext context, Application e, int sd) throws GenerateException {	
 		Label A = context.makeLabel();
 		context.addInstruction(new Mark(A));
 		
@@ -230,6 +232,7 @@ public class CodeV {
 		if (variable == null) {
 			throw new GenerateException("Unknown variable " + e + "\nEnvironment: \n" + environment.toString());
 		}
+		
 		if (variable.isLocal()) {
 			context.addInstruction(new Pushloc(sd - variable.getId()));
 			context.addInstruction(new Eval());
@@ -275,6 +278,7 @@ public class CodeV {
 	 */
 	private static void codeVTupleLet(Environment environment, GenerationContext context, TupleLet e, int sd) throws GenerateException {
 		int n = e.tuple.arguments.size();
+		
 		codeV(environment, context, e.expression, sd);
 		context.addInstruction(new GetVec(n));
 		
@@ -285,7 +289,7 @@ public class CodeV {
 			environment1.addVariable(new Variable(id, sd + i, VariableType.LOCAL));
 			i++;
 		}
-		codeV(environment1,context,e.inExpression,sd);
+		codeV(environment1, context, e.inExpression, sd + n - 1);
 		context.addInstruction(new Slide(n));
 	}
 	
