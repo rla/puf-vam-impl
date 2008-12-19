@@ -8,6 +8,7 @@ import tr.fn.gen.instr.Pushloc;
 public class Code {
 	
 	public static void code(LetRec program, GenerationContext context) throws GenerateException {
+		program.markScopeExpression(null);
 		CodeV.codeV(new Environment(), context, program, 0);
 	}
 	

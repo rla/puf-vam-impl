@@ -10,6 +10,7 @@ import tr.fn.opt.InterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public class Identifier extends Expression implements Simple {
+	public static final String SELECT = "#";
 	public final String name;
 
 	public Identifier(String name) {
@@ -34,6 +35,9 @@ public class Identifier extends Expression implements Simple {
 	@Override
 	public Set<Identifier> getFreeVariables() {
 		Set<Identifier> free = new HashSet<Identifier>();
+		if (SELECT.equals(name)) {
+			return free;
+		}
 		free.add(this);
 		
 		return free;
