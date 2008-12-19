@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import tr.fn.opt.AmbiguousException;
 import tr.fn.opt.InterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
@@ -64,5 +65,30 @@ public class Identifier extends Expression implements Simple {
 
 	@Override
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {}
+	
+	public Declaration findDeclaration() {
+		Expression scopeExpression = this.scopeExpression;
+		while (scopeExpression != null) {
+			if (scopeExpression instanceof LetBase) {
+				LetBase let = (LetBase) scopeExpression;
+				try {
+					Declaration declaration = let.getDeclaration(this);
+					if (declaration != null) {
+						return declaration;
+					}
+				} catch (AmbiguousException e) {
+					return null;
+				}
+			} else if (scopeExpression instanceof Lambda) {
+				Lambda lambda = (Lambda) scopeExpression;
+				if (lambda.arguments.contains(name)) {
+					return null;
+				}
+			}
+			scopeExpression = scopeExpression.scopeExpression;
+		}
+		
+		return null;
+	}
 	
 }
