@@ -1,6 +1,7 @@
 package tr.fn.gen;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import tr.fn.ast.Application;
@@ -28,6 +29,7 @@ import tr.fn.gen.instr.MkBasic;
 import tr.fn.gen.instr.MkFunval;
 import tr.fn.gen.instr.MkVec;
 import tr.fn.gen.instr.GetVec;
+import tr.fn.gen.instr.Get;
 import tr.fn.gen.instr.Pushglob;
 import tr.fn.gen.instr.Pushloc;
 import tr.fn.gen.instr.Return;
@@ -120,6 +122,13 @@ public class CodeV {
 	 * @see MaMa slides page 34.
 	 */
 	private static void codeVApplication(Environment environment, GenerationContext context, Application e, int sd) throws GenerateException {	
+		if (e.functionExpression instanceof Identifier){
+			Identifier id = (Identifier) e.functionExpression;
+			if (id.name.equals(Identifier.SELECT)){
+				codeVSelect(environment, context, e, sd);
+				return;
+			}
+		}
 		Label A = context.makeLabel();
 		context.addInstruction(new Mark(A));
 		
@@ -263,11 +272,9 @@ public class CodeV {
 	 */
 	private static void codeVTuple(Environment environment, GenerationContext context, Tuple e, int sd) throws GenerateException {
 		int n = e.arguments.size();
-
 		for (int i = 0; i < n; i++) {
 			CodeC.codeC(environment, context, e.arguments.get(i), sd + i);
 		}
-		
 		context.addInstruction(new MkVec(n));
 	}
 	
@@ -291,6 +298,28 @@ public class CodeV {
 		}
 		codeV(environment1, context, e.inExpression, sd + n - 1);
 		context.addInstruction(new Slide(n));
+	}
+	
+	/**
+	 * Creates code for the select operator
+	 * 
+	 * @see MaMa slides page 86.
+	 */
+	private static void codeVSelect(Environment environment, GenerationContext context, Application e, int sd) throws GenerateException {
+			Expression n = e.argumentExpressions.get(0);
+			if (n instanceof Number){
+				List<Expression> list = Collections.emptyList();
+				Expression arg = e.argumentExpressions.get(1);
+				if (arg instanceof Identifier){
+					Identifier id = (Identifier) arg;
+					if (id.findDeclaration() != null){
+						arg = new Application(arg, list);
+					}					
+				}
+				codeV(environment, context, arg, sd);
+				context.addInstruction(new Get(((Number) n).value));
+				context.addInstruction(new Eval());
+			}
 	}
 	
 }
