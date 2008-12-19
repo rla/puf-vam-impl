@@ -1,7 +1,12 @@
 package tr.fn.ast;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 public class IfThenElse extends Expression {
 	public final Expression condition;
@@ -35,19 +40,38 @@ public class IfThenElse extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
-		condition.markEnclosingLambda(lambda);
-		thenExpression.markEnclosingLambda(lambda);
-		elseExpression.markEnclosingLambda(lambda);
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		condition.markScopeExpression(scopeExpression);
+		thenExpression.markScopeExpression(scopeExpression);
+		elseExpression.markScopeExpression(scopeExpression);
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		setEnclosingLet(let);
-		condition.markEnclosingLet(let);
-		thenExpression.markEnclosingLet(let);
-		elseExpression.markEnclosingLet(let);
+	public void collectDeclarations(List<Declaration> declarations) {
+		condition.collectDeclarations(declarations);
+		thenExpression.collectDeclarations(declarations);
+		elseExpression.collectDeclarations(declarations);
+	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return condition.isInterpretable(localScope)
+			&& thenExpression.isInterpretable(localScope)
+			&& elseExpression.isInterpretable(localScope);
+	}
+
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		condition.findApplicationDeclarations(declarations);
+		thenExpression.findApplicationDeclarations(declarations);
+		elseExpression.findApplicationDeclarations(declarations);
 	}
 
 }

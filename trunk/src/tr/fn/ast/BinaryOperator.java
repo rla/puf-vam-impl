@@ -1,6 +1,11 @@
 package tr.fn.ast;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 public class BinaryOperator extends Expression {
 	public final Type type;
@@ -71,17 +76,35 @@ public class BinaryOperator extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
-		left.markEnclosingLambda(lambda);
-		right.markEnclosingLambda(lambda);
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		left.markScopeExpression(scopeExpression);
+		right.markScopeExpression(scopeExpression);
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		setEnclosingLet(let);
-		left.markEnclosingLet(let);
-		right.markEnclosingLet(let);
+	public void collectDeclarations(List<Declaration> declarations) {
+		left.collectDeclarations(declarations);
+		right.collectDeclarations(declarations);
 	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return left.isInterpretable(localScope) && right.isInterpretable(localScope);
+	}
+
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		left.findApplicationDeclarations(declarations);
+		right.findApplicationDeclarations(declarations);
+	}
+	
+	
 	
 }
