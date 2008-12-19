@@ -1,11 +1,14 @@
 package tr.fn.ast.list;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import tr.fn.ast.Declaration;
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
-import tr.fn.ast.Lambda;
-import tr.fn.ast.LetBase;
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 public class Nalt extends Expression {
 	public final Expression expression;
@@ -30,15 +33,30 @@ public class Nalt extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		setEnclosingLet(let);
-		expression.markEnclosingLet(let);
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		expression.markScopeExpression(scopeExpression);
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
-		expression.markEnclosingLambda(lambda);
+	public void collectDeclarations(List<Declaration> declarations) {
+		expression.collectDeclarations(declarations);
+	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return false;
+	}
+
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		throw new NotAbsInterpretableException();
 	}
 		
 }

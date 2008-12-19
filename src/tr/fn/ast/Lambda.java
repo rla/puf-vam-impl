@@ -1,7 +1,11 @@
 package tr.fn.ast;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 
 public class Lambda extends Expression {
@@ -41,15 +45,29 @@ public class Lambda extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
-		expression.markEnclosingLambda(this);
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		expression.markScopeExpression(this);
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		setEnclosingLet(let);
-		expression.markEnclosingLet(let);
+	public void collectDeclarations(List<Declaration> declarations) {
+		expression.collectDeclarations(declarations);
+	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return false;
+	}
+
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		throw new NotAbsInterpretableException();
 	}
 	
 }

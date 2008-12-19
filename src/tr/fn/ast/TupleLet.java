@@ -1,6 +1,11 @@
 package tr.fn.ast;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 public class TupleLet extends Expression {
 	public final Tuple tuple;
@@ -31,20 +36,36 @@ public class TupleLet extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		expression.markScopeExpression(scopeExpression);
+		inExpression.markScopeExpression(this);
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		// TODO Auto-generated method stub
+	public void collectDeclarations(List<Declaration> declarations) {
+		expression.collectDeclarations(declarations);
+		inExpression.collectDeclarations(declarations);
+	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return false;
 	}
 
 	@Override
 	public String toString() {
 		return "let " + tuple + " = " + expression + " ; in " + inExpression;
 	}
-	
-	
 
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		throw new NotAbsInterpretableException();
+	}
+	
 }

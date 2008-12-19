@@ -2,7 +2,12 @@ package tr.fn.ast;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import tr.fn.opt.AmbiguousException;
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 public abstract class LetBase extends Expression {
 	public final List<Declaration> declarations;
@@ -53,21 +58,52 @@ public abstract class LetBase extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		inExpression.markScopeExpression(this);
 		for (Declaration declaration : declarations) {
-			declaration.markEnclosingLambda(lambda);
+			declaration.markScopeExpression(this);
 		}
-		inExpression.markEnclosingLambda(lambda);
+	}
+
+	public Declaration getDeclaration(Identifier name) throws AmbiguousException {
+		boolean found = false;
+		Declaration ret = null;
+		for (Declaration declaration : declarations) {
+			if (declaration.name.equals(name)) {
+				if (found) {
+					throw new AmbiguousException();
+				}
+				found = true;
+				ret = declaration;
+			}
+		}
+		
+		return ret;
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		setEnclosingLet(let);
-		for (Declaration declaration : declarations) {
-			declaration.markEnclosingLet(this);
+	public void collectDeclarations(List<Declaration> declarations) {
+		for (Declaration declaration : this.declarations) {
+			declarations.add(declaration);
+			declaration.collectDeclarations(declarations);
 		}
-		inExpression.markEnclosingLet(this);
+	}
+
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		inExpression.findApplicationDeclarations(declarations);
+	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return inExpression.isInterpretable(localScope);
 	}
 	
 }

@@ -1,12 +1,15 @@
 package tr.fn.ast.list;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import tr.fn.ast.Declaration;
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
-import tr.fn.ast.Lambda;
-import tr.fn.ast.LetBase;
+import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.NotAbsInterpretableException;
 
 public class HeadTailList extends Expression {
 	public final Expression head;
@@ -47,17 +50,33 @@ public class HeadTailList extends Expression {
 	}
 
 	@Override
-	public void markEnclosingLambda(Lambda lambda) {
-		setEnclosingLambda(lambda);
-		head.markEnclosingLambda(lambda);
-		tail.markEnclosingLambda(lambda);
+	public void markScopeExpression(Expression scopeExpression) {
+		this.scopeExpression = scopeExpression;
+		head.markScopeExpression(scopeExpression);
+		tail.markScopeExpression(scopeExpression);
 	}
 
 	@Override
-	public void markEnclosingLet(LetBase let) {
-		setEnclosingLet(let);
-		head.markEnclosingLet(let);
-		tail.markEnclosingLet(let);
+	public void collectDeclarations(List<Declaration> declarations) {
+		head.collectDeclarations(declarations);
+		tail.collectDeclarations(declarations);
+	}
+
+	@Override
+	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isInterpretable(List<Identifier> localScope) {
+		return head.isInterpretable(localScope) && tail.isInterpretable(localScope);
+	}
+
+	@Override
+	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
+		head.findApplicationDeclarations(declarations);
+		tail.findApplicationDeclarations(declarations);
 	}
 	
 }
