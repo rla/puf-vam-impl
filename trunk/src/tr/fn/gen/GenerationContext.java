@@ -122,4 +122,11 @@ public class GenerationContext {
 		this.tryToEliminateClosures = tryToEliminateClosures;
 	}
 	
+	public void debug(String string) {
+		// FIXME arendamise ajal sees
+		if (true || debug) {
+			System.out.println(string);
+		}
+	}
+	
 }

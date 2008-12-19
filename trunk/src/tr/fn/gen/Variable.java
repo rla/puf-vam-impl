@@ -28,5 +28,10 @@ public class Variable {
 	public boolean isLocal() {
 		return type == VariableType.LOCAL;
 	}
+
+	@Override
+	public String toString() {
+		return identifier + "->(" + (isLocal() ? "L" : "G") + "," + id + ")";
+	}
 	
 }
