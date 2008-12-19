@@ -11,6 +11,8 @@ import tr.fn.opt.NotAbsInterpretableException;
 
 public class Identifier extends Expression implements Simple {
 	public static final String SELECT = "#";
+	public static final String NOT = "not";
+	public static final String NEG = "neg";	
 	public final String name;
 
 	public Identifier(String name) {
@@ -35,7 +37,7 @@ public class Identifier extends Expression implements Simple {
 	@Override
 	public Set<Identifier> getFreeVariables() {
 		Set<Identifier> free = new HashSet<Identifier>();
-		if (SELECT.equals(name)) {
+		if (SELECT.equals(name) || NOT.equals(name) || NEG.equals(name)) {
 			return free;
 		}
 		free.add(this);

@@ -30,6 +30,8 @@ import tr.fn.gen.instr.MkFunval;
 import tr.fn.gen.instr.MkVec;
 import tr.fn.gen.instr.GetVec;
 import tr.fn.gen.instr.Get;
+import tr.fn.gen.instr.Neg;
+import tr.fn.gen.instr.Not;
 import tr.fn.gen.instr.Pushglob;
 import tr.fn.gen.instr.Pushloc;
 import tr.fn.gen.instr.Return;
@@ -126,6 +128,14 @@ public class CodeV {
 			Identifier id = (Identifier) e.functionExpression;
 			if (id.name.equals(Identifier.SELECT)){
 				codeVSelect(environment, context, e, sd);
+				return;
+			}
+			else if (id.name.equals(Identifier.NOT)){
+				codeVNot(environment, context, e, sd);
+				return;
+			}
+			else if (id.name.equals(Identifier.NEG)){
+				codeVNeg(environment, context, e, sd);
 				return;
 			}
 		}
@@ -320,6 +330,44 @@ public class CodeV {
 				context.addInstruction(new Get(((Number) n).value));
 				context.addInstruction(new Eval());
 			}
+	}
+	
+	/**
+	 * Unary operation NOT
+	 * 
+	 * @see MaMa slides page 12.
+	 */
+	private static void codeVNot(Environment environment, GenerationContext context, Application e, int sd) throws GenerateException {
+		List<Expression> list = Collections.emptyList();
+		Expression arg = e.argumentExpressions.get(0);
+		if (arg instanceof Identifier){
+			Identifier id = (Identifier) arg;
+			if (id.findDeclaration() != null){
+				arg = new Application(arg, list);
+			}					
+		}
+		CodeB.codeB(environment, context, arg, sd);
+		context.addInstruction(new Not());
+		context.addInstruction(new MkBasic());
+	}
+	
+	/**
+	 * Unary operation NEG
+	 * 
+	 * @see MaMa slides page 12.
+	 */
+	private static void codeVNeg(Environment environment, GenerationContext context, Application e, int sd) throws GenerateException {
+		List<Expression> list = Collections.emptyList();
+		Expression arg = e.argumentExpressions.get(0);
+		if (arg instanceof Identifier){
+			Identifier id = (Identifier) arg;
+			if (id.findDeclaration() != null){
+				arg = new Application(arg, list);
+			}					
+		}
+		CodeB.codeB(environment, context, arg, sd);
+		context.addInstruction(new Neg());
+		context.addInstruction(new MkBasic());
 	}
 	
 }
