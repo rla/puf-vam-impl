@@ -1,10 +1,9 @@
 package tr.fn.ast;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public class BinaryOperator extends Expression {
@@ -89,9 +88,8 @@ public class BinaryOperator extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		return left.interpretation(context) && right.interpretation(context);
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class RunUtil {
 			out.delete();
 		}
 		
-		Compile.compile(file, out, true, true);
+		Compile.compile(file, out, true, false, true, true);
 		
 		return RunUtil.runProgram(out);
 	}

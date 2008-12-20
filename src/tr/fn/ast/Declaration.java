@@ -2,10 +2,9 @@ package tr.fn.ast;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public class Declaration extends Expression {
@@ -47,9 +46,13 @@ public class Declaration extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		if (expression instanceof Lambda) {
+			Lambda lambda = (Lambda) expression;
+			return lambda.expression.interpretation(context);
+		} else {
+			return expression.interpretation(context);
+		}
 	}
 
 	@Override
@@ -69,7 +72,34 @@ public class Declaration extends Expression {
 
 	@Override
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
-		throw new NotAbsInterpretableException();
+		if (expression instanceof Lambda) {
+			Lambda lambda = (Lambda) expression;
+			lambda.expression.findApplicationDeclarations(declarations);
+		} else {
+			expression.findApplicationDeclarations(declarations);
+		}
+	}
+	
+	public boolean isFunctionWithNArgs(int n) {
+		return getNumberOfArguments() == n;
+	}
+	
+	public int getNumberOfArguments() {
+		if (expression instanceof Lambda) {
+			Lambda lambda = (Lambda) expression;
+			return lambda.arguments.size();
+		} else {
+			return 0;
+		}
+	}
+	
+	public List<Identifier> getArguments() {
+		if (expression instanceof Lambda) {
+			Lambda lambda = (Lambda) expression;
+			return lambda.arguments;
+		} else {
+			return Collections.emptyList();
+		}
 	}
 
 }

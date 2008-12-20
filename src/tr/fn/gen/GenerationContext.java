@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import tr.fn.ast.Expression;
+import tr.fn.ast.Declaration;
 import tr.fn.gen.instr.Halt;
 import tr.fn.gen.instr.Instruction;
 import tr.fn.gen.instr.Label;
-import tr.fn.opt.StrictnessInfo;
+import tr.fn.opt.BooleanTable;
 
 /**
  * Helper class for code generation.
@@ -21,9 +21,10 @@ public class GenerationContext {
 	private List<Instruction> instructions;
 	private List<Instruction> instructionsAfterHalt;
 	private LabelContext labelContext;
-	private Map<Expression, StrictnessInfo> strictness;
+	private Map<Declaration, BooleanTable> strictness;
 	
 	private boolean debug = false;
+	private boolean debugInstr = false;
 	private boolean noSpaghetti = true;
 	private boolean tryToEliminateClosures = true;
 	
@@ -38,7 +39,7 @@ public class GenerationContext {
 	 */
 	public void addInstruction(Instruction instruction) {
 		instructions.add(instruction);
-		if (debug) {
+		if (debug && debugInstr) {
 			System.out.println("INSTR: " + instruction);
 		}
 	}
@@ -102,16 +103,14 @@ public class GenerationContext {
 		this.noSpaghetti = noSpaghetti;
 	}
 
-	public Map<Expression, StrictnessInfo> getStrictness() {
-		return strictness;
-	}
-
-	public void setStrictness(Map<Expression, StrictnessInfo> strictness) {
-		this.strictness = strictness;
-	}
-
-	public boolean isStrict(Expression e) {
-		return false;
+	public boolean isStrict(Declaration e, int argument) {
+		if (!strictness.containsKey(e)) {
+			return false;
+		}
+		
+		BooleanTable table = strictness.get(e);
+		
+		return argument < table.getNumberOfColumns() && !table.isTrueWithNthArgumentFalse(argument);
 	}
 
 	public boolean isTryToEliminateClosures() {
@@ -123,10 +122,21 @@ public class GenerationContext {
 	}
 	
 	public void debug(String string) {
-		// FIXME arendamise ajal sees
-		if (true || debug) {
+		if (debug) {
 			System.out.println(string);
 		}
+	}
+	
+	public boolean hasStrictnessInformation(Declaration declaration) {
+		return strictness.containsKey(declaration);
+	}
+
+	public void setStrictness(Map<Declaration, BooleanTable> strictness) {
+		this.strictness = strictness;
+	}
+
+	public void setDebugInstr(boolean debugInstr) {
+		this.debugInstr = debugInstr;
 	}
 	
 }

@@ -9,9 +9,11 @@ import java.util.Set;
  * of true table.
  */
 public class BooleanTable {
+	private int numberOfColumns;
 	private Set<TableRow> tableRows;
 	
-	public BooleanTable() {
+	public BooleanTable(int numberOfColumns) {
+		this.numberOfColumns = numberOfColumns;
 		tableRows = new HashSet<TableRow>();
 	}
 	
@@ -27,6 +29,28 @@ public class BooleanTable {
 		tableRows.remove(new TableRow(values));
 	}
 	
+	public void assertValue(boolean[] values, boolean result) {
+		if (result) {
+			assertTrue(values);
+		} else {
+			assertFalse(values);
+		}
+	}
+	
+	public boolean isTrueWithNthArgumentFalse(int argument) {
+		for (TableRow row : tableRows) {
+			if (!row.values[argument]) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public int getNumberOfColumns() {
+		return numberOfColumns;
+	}
+
 	private static class TableRow {
 		private boolean[] values;
 
@@ -61,4 +85,5 @@ public class BooleanTable {
 		}
 		
 	}
+	
 }

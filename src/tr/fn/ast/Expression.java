@@ -1,14 +1,13 @@
 package tr.fn.ast;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public abstract class Expression {
-	protected Expression scopeExpression;
+	public Expression scopeExpression;
 
 	/**
 	 * Traverses the expressions recursively and marks expressions
@@ -45,7 +44,7 @@ public abstract class Expression {
 	 * as it appeared in the function whose arguments are
 	 * stored in localScope.
 	 */
-	public abstract boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context);
+	public abstract boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException;
 
 	/**
 	 * Returns the list of declarations that are used in function
@@ -54,4 +53,5 @@ public abstract class Expression {
 	 * @throws NotAbsInterpretableException if the expression is not meant for the abstract interpretation.
 	 */
 	public abstract void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException;
+	
 }

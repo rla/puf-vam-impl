@@ -16,6 +16,12 @@ import tr.fn.grammar.PufParser;
 
 public class GrammarTest extends TestCase {
 	
+	public void testTupleAccess() throws Exception {
+		List<Declaration> l = getDeclarations("main = #2 (1,2,3);");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> (# 2 (1,2,3))", l.get(0).toString());
+	}
+	
 	public void testEmptyTuple() throws Exception {
 		List<Declaration> l = getDeclarations("main = ();");
 		assertEquals(1, l.size());
