@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
+import tr.fn.ast.Lambda;
 import tr.fn.gen.instr.Jump;
 import tr.fn.gen.instr.Label;
 import tr.fn.gen.instr.MkClos;
@@ -19,7 +20,7 @@ public class CodeC {
 	 */
 	public static void codeC(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
 		context.debug("codeC " + environment + " " + e);
-		if (context.isTryToEliminateClosures() && (e.isSimpleStrict())) {
+		if (context.isTryToEliminateClosures() && (e.isSimpleStrict() || e instanceof Lambda)) {
 			context.debug("CodeC will not create a closure");
 			CodeV.codeV(environment, context, e, sd);
 		} else {

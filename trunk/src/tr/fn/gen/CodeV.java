@@ -89,13 +89,7 @@ public class CodeV {
 			}
 			
 			Expression dExp = declaration.expression;
-			if (context.isTryToEliminateClosures()
-				&& declaration.expression instanceof Lambda) {
-				// Construct function object directly
-				codeV(environment1, context, dExp, sd + j);
-			} else {
-				CodeC.codeC(environment1, context, dExp, sd + j);
-			}
+			CodeC.codeC(environment1, context, dExp, sd + j);
 			
 			j++;
 		}
@@ -235,13 +229,7 @@ public class CodeV {
 		i = 0;
 		for (Declaration declaration : e.declarations) {
 			Expression dExp = declaration.expression;
-			if (context.isTryToEliminateClosures()
-				&& declaration.expression instanceof Lambda) {
-				// Construct function object directly
-				codeV(environment1, context, dExp, sd + n);
-			} else {
-				CodeC.codeC(environment1, context, dExp, sd + n);
-			}
+			CodeC.codeC(environment1, context, dExp, sd + n);
 			context.addInstruction(new Rewrite(n - i));
 			i++;
 		}
