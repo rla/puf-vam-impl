@@ -13,4 +13,8 @@ public class MkFunval extends Instruction {
 		return "mkfunval " + label.getLabel();
 	}
 
+	public Label getLabel() {
+		return label;
+	}
+
 }

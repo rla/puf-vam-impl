@@ -13,4 +13,8 @@ public class Jump extends Instruction {
 		return "jump " + label.getLabel();
 	}
 
+	public Label getLabel() {
+		return label;
+	}
+
 }

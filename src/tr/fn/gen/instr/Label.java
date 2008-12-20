@@ -16,5 +16,15 @@ public class Label extends Instruction {
 	public String getLabel() {
 		return label;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof Label && ((Label) obj).getLabel().equals(label);
+	}
+
+	@Override
+	public int hashCode() {
+		return label.hashCode();
+	}
 	
 }

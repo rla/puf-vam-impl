@@ -201,6 +201,7 @@ public class CodeV {
 		int k = arguments.size();
 		context.addInstruction(new MkVec(g));
 		context.addInstruction(new MkFunval(A));
+		
 		context.addInstruction(new Jump(B));
 		context.addInstruction(A);
 		context.addInstruction(new Targ(k));
