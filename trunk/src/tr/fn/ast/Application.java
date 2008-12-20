@@ -2,11 +2,9 @@ package tr.fn.ast;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import tr.fn.opt.AmbiguousException;
-import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 
@@ -72,28 +70,8 @@ public class Application extends Expression {
 			return null;
 		}
 		Identifier name = (Identifier) functionExpression;
-		Expression scopeExpression = this.scopeExpression;
-		while (scopeExpression != null) {
-			if (scopeExpression instanceof LetBase) {
-				LetBase let = (LetBase) scopeExpression;
-				try {
-					Declaration declaration = let.getDeclaration(name);
-					if (declaration != null) {
-						return declaration;
-					}
-				} catch (AmbiguousException e) {
-					return null;
-				}
-			} else if (scopeExpression instanceof Lambda) {
-				Lambda lambda = (Lambda) scopeExpression;
-				if (lambda.arguments.contains(name)) {
-					return null;
-				}
-			}
-			scopeExpression = scopeExpression.scopeExpression;
-		}
 		
-		return null;
+		return name.findDeclaration();
 	}
 
 	@Override
@@ -105,9 +83,16 @@ public class Application extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		boolean[] argumentValues = new boolean[argumentExpressions.size()];
+		
+		int i = 0;
+		for (Expression arg : argumentExpressions) {
+			argumentValues[i] = arg.interpretation(context);
+			i++;
+		}
+		
+		return context.check(findDeclaration(), argumentValues);
 	}
 
 	@Override
@@ -127,6 +112,9 @@ public class Application extends Expression {
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
 		Declaration declaration = findDeclaration();
 		if (declaration == null) {
+			throw new NotAbsInterpretableException();
+		}
+		if (!declaration.isFunctionWithNArgs(argumentExpressions.size())) {
 			throw new NotAbsInterpretableException();
 		}
 		

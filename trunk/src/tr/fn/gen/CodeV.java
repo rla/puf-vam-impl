@@ -87,7 +87,16 @@ public class CodeV {
 			for (int i = 0; i < j; i++) {
 				environment1.addVariable(new Variable(e.declarations.get(i).name, sd + i + 1, VariableType.LOCAL));
 			}
-			CodeC.codeC(environment1, context, declaration.expression, sd + j);
+			
+			Expression dExp = declaration.expression;
+			if (context.isTryToEliminateClosures()
+				&& declaration.expression instanceof Lambda) {
+				// Construct function object directly
+				codeV(environment1, context, dExp, sd + j);
+			} else {
+				CodeC.codeC(environment1, context, dExp, sd + j);
+			}
+			
 			j++;
 		}
 		
@@ -142,19 +151,22 @@ public class CodeV {
 		Label A = context.makeLabel();
 		context.addInstruction(new Mark(A));
 		
-		if (context.isDebug()) {
-			System.out.println("Function application");
-			System.out.println("Expression: " + e);
-			System.out.println("Arguments: ");
-			for (Expression arg : e.argumentExpressions) {
-				System.out.println("  " + arg);
-			}
-			System.out.println();
-		}
+		Declaration declaration = e.findDeclaration();
 		
 		int m = 0;
-		for (int i = e.argumentExpressions.size() - 1; i >= 0; i--) {
-			CodeC.codeC(environment, context, e.argumentExpressions.get(i), sd + 3 + m);
+		int n = e.argumentExpressions.size();
+		for (int i = n - 1; i >= 0; i--) {
+			
+			if (context.isTryToEliminateClosures()
+				&& declaration != null
+				&& context.hasStrictnessInformation(declaration)
+				&& context.isStrict(declaration, i)) {
+				
+				context.debug("Passing argument " + i + " strictly");
+				codeV(environment, context, e.argumentExpressions.get(i), sd + 3 + m);
+			} else {
+				CodeC.codeC(environment, context, e.argumentExpressions.get(i), sd + 3 + m);
+			}
 			m++;
 		}
 		
@@ -222,7 +234,14 @@ public class CodeV {
 		
 		i = 0;
 		for (Declaration declaration : e.declarations) {
-			CodeC.codeC(environment1, context, declaration.expression, sd + n);
+			Expression dExp = declaration.expression;
+			if (context.isTryToEliminateClosures()
+				&& declaration.expression instanceof Lambda) {
+				// Construct function object directly
+				codeV(environment1, context, dExp, sd + n);
+			} else {
+				CodeC.codeC(environment1, context, dExp, sd + n);
+			}
 			context.addInstruction(new Rewrite(n - i));
 			i++;
 		}

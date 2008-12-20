@@ -20,6 +20,7 @@ public class CodeB {
 	 * @see MaMa slides page 9.
 	 */
 	public static final void codeB(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
+		context.debug("codeB " + environment + " " + e);
 		if (e instanceof Number) {
 			codeBInteger(environment, context, (Number) e, sd);
 		} else if (e instanceof BinaryOperator) {

@@ -2,11 +2,10 @@ package tr.fn.ast;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.AmbiguousException;
-import tr.fn.opt.InterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public class Identifier extends Expression implements Simple {
@@ -59,9 +58,8 @@ public class Identifier extends Expression implements Simple {
 	public void collectDeclarations(List<Declaration> declarations) {}
 
 	@Override
-	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean interpretation(AbsInterpretationContext context) {
+		return context.checkArg(this);
 	}
 
 	@Override

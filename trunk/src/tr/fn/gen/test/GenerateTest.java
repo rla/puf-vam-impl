@@ -8,9 +8,11 @@ import tr.fn.ast.LetRec;
 import tr.fn.gen.Code;
 import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
+import tr.fn.opt.OptimizationContext;
+import tr.fn.opt.StrictnessAnalysis;
 
 public class GenerateTest extends TestCase {
-	
+	/*
 	public void testMainFArgCall() throws Exception {
 		LetRec program = AstUtil.getAst(new File("test/fmainfarg.fn"));
 		System.out.println(program);
@@ -21,17 +23,23 @@ public class GenerateTest extends TestCase {
 		
 		context.saveToFile(new File("test/out/fmain.f"));
 
-	}
+	}*/
 	
 	public void testTuple() throws Exception {
-		LetRec program = AstUtil.getAst(new File("test/tuplelet.fn"));
+		LetRec program = AstUtil.getAst(new File("test/fact.fn"));
 		System.out.println(program);
+		
+		program.markScopeExpression(null);
+		OptimizationContext optimizationContext = new OptimizationContext(program, true);
+		new StrictnessAnalysis(optimizationContext).execute();
 
 		GenerationContext context = new GenerationContext();
+		context.setTryToEliminateClosures(true);
+		context.setStrictness(optimizationContext.getStrictnessInfo());
 		Code.code(program, context);
 		context.addInstruction(new Halt());
 		
-		context.saveToFile(new File("test/out/tuplelet.cbn"));
+		context.saveToFile(new File("test/out/fact.f"));
 	}
 	
 	/*

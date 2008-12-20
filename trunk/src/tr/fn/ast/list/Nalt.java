@@ -1,13 +1,12 @@
 package tr.fn.ast.list;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import tr.fn.ast.Declaration;
 import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
-import tr.fn.opt.InterpretationContext;
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public class Nalt extends Expression {
@@ -44,9 +43,8 @@ public class Nalt extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		throw new NotAbsInterpretableException();
 	}
 
 	@Override

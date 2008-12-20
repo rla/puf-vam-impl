@@ -44,10 +44,24 @@ public class Compile {
 		File inputFile = new File(options.getOption(CompileOptions.OPTION_IN).getValue());
 		File outputFile = new File(options.getOption(CompileOptions.OPTION_OUT).getValue());
 		
-		compile(inputFile, outputFile, command.hasOption(CompileOptions.OPTION_DEBUG), command.hasOption(CompileOptions.OPTION_DEADCODE));
+		compile(
+			inputFile,
+			outputFile,
+			command.hasOption(CompileOptions.OPTION_DEBUG),
+			command.hasOption(CompileOptions.OPTION_DEBUG_INSTR),
+			command.hasOption(CompileOptions.OPTION_DEADCODE),
+			command.hasOption(CompileOptions.OPTION_STRICTNESS)
+		);
 	}
 	
-	public static void compile(File inputFile, File outputFile, boolean debug, boolean nodead) throws Exception {
+	public static void compile(
+		File inputFile,
+		File outputFile,
+		boolean debug,
+		boolean debugInstr,
+		boolean nodead,
+		boolean strictness) throws Exception {
+		
 		// Executing "#include"
 		PreprocessContext preprocessContext = new PreprocessContext(inputFile, debug);
 		new IncludePreprocessor(preprocessContext).execute();
@@ -55,18 +69,26 @@ public class Compile {
 		// Ast after preprocessing
 		LetRec program = preprocessContext.getAstAfterPreprocessing();
 		
+		program.markScopeExpression(null);
+		
 		// Optimizations
 		OptimizationContext optimizationContext = new OptimizationContext(program, debug);
 		if (nodead) {
 			new DeadCodeEliminator(optimizationContext).execute();
 		}
 		
-		// FIXME strictness switch
-		//new StrictnessAnalysis(optimizationContext).execute();
+		if (strictness) {
+			new StrictnessAnalysis(optimizationContext).execute();
+		}
 		
 		// Generate output code
 		GenerationContext generationContext = new GenerationContext();
+		
 		generationContext.setDebug(debug);
+		generationContext.setDebugInstr(debugInstr);
+		generationContext.setTryToEliminateClosures(strictness);
+		generationContext.setStrictness(optimizationContext.getStrictnessInfo());
+		
 		CodeV.codeV(new Environment(null), generationContext, optimizationContext.getProgram(), 0);
 		generationContext.addInstruction(new Halt());
 		
@@ -83,13 +105,17 @@ public class Compile {
 		public static final String OPTION_IN = "in";
 		public static final String OPTION_OUT = "out";
 		public static final String OPTION_DEBUG = "debug";
+		public static final String OPTION_DEBUG_INSTR = "debuginstr";
 		public static final String OPTION_DEADCODE = "nodead";
+		public static final String OPTION_STRICTNESS = "strictness";
 		
 		public CompileOptions() {
 			addOption(OPTION_IN, true, "Input file for the PuF code");
 			addOption(OPTION_OUT, true, "Output file");
-			addOption(OPTION_DEBUG, false, "If present, excessively verbose debug info is written to the output");
+			addOption(OPTION_DEBUG, false, "If present, debug info is written to the output");
+			addOption(OPTION_DEBUG_INSTR, false, "If present, more verbose debug info is written to the output");
 			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate unused declarations");
+			addOption(OPTION_STRICTNESS, false, "If present, runs strictness analysis and tries to remove unneeded closures");
 		}
 	}
 }

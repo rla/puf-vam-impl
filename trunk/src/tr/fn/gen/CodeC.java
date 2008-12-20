@@ -18,13 +18,9 @@ public class CodeC {
 	 * @see MaMa slides page 62.
 	 */
 	public static void codeC(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
-		if (context.isDebug()) {
-			System.out.println("CodeC: " + e);
-		}
-		if (context.isTryToEliminateClosures() && (e.isSimpleStrict() || context.isStrict(e))) {
-			if (context.isDebug()) {
-				System.out.println("CodeC: will not create a closure");
-			}
+		context.debug("codeC " + environment + " " + e);
+		if (context.isTryToEliminateClosures() && (e.isSimpleStrict())) {
+			context.debug("CodeC will not create a closure");
 			CodeV.codeV(environment, context, e, sd);
 		} else {
 			Label A = context.makeLabel();

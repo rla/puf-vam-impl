@@ -2,11 +2,10 @@ package tr.fn.ast;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
+import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.AmbiguousException;
-import tr.fn.opt.InterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
 
 public abstract class LetBase extends Expression {
@@ -96,9 +95,8 @@ public abstract class LetBase extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(Map<Identifier, Boolean> localScope, InterpretationContext context) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		return inExpression.interpretation(context);
 	}
 
 	@Override
