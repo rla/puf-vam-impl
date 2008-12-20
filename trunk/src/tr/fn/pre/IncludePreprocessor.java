@@ -52,6 +52,7 @@ public class IncludePreprocessor {
 					addIncludes(file, FileUtils.readLines(file, ENCODING));
 				}
 				includes.add(file);
+				linesClean.add("\n");
 			} else {
 				linesClean.add(line);
 			}

@@ -17,6 +17,8 @@ import tr.fn.gen.instr.Halt;
 import tr.fn.opt.DeadCodeEliminator;
 import tr.fn.opt.OptimizationContext;
 import tr.fn.opt.StrictnessAnalysis;
+import tr.fn.post.PostprocessContext;
+import tr.fn.post.SpaghettiRemover;
 import tr.fn.pre.IncludePreprocessor;
 import tr.fn.pre.PreprocessContext;
 
@@ -50,7 +52,8 @@ public class Compile {
 			command.hasOption(CompileOptions.OPTION_DEBUG),
 			command.hasOption(CompileOptions.OPTION_DEBUG_INSTR),
 			command.hasOption(CompileOptions.OPTION_DEADCODE),
-			command.hasOption(CompileOptions.OPTION_STRICTNESS)
+			command.hasOption(CompileOptions.OPTION_STRICTNESS),
+			command.hasOption(CompileOptions.OPTION_NOSPAGHETTI)
 		);
 	}
 	
@@ -60,7 +63,8 @@ public class Compile {
 		boolean debug,
 		boolean debugInstr,
 		boolean nodead,
-		boolean strictness) throws Exception {
+		boolean strictness,
+		boolean noSphagetti) throws Exception {
 		
 		// Executing "#include"
 		PreprocessContext preprocessContext = new PreprocessContext(inputFile, debug);
@@ -92,8 +96,13 @@ public class Compile {
 		CodeV.codeV(new Environment(null), generationContext, optimizationContext.getProgram(), 0);
 		generationContext.addInstruction(new Halt());
 		
+		PostprocessContext postProcessContext = new PostprocessContext(generationContext.getInstructions());
+		if (noSphagetti) {
+			new SpaghettiRemover(postProcessContext).execute();
+		}
+		
 		// Save it to file
-		generationContext.saveToFile(outputFile);
+		postProcessContext.saveToFile(outputFile);
 	}
 	
 	private static void printHelp(Options options) {
@@ -108,6 +117,7 @@ public class Compile {
 		public static final String OPTION_DEBUG_INSTR = "debuginstr";
 		public static final String OPTION_DEADCODE = "nodead";
 		public static final String OPTION_STRICTNESS = "strictness";
+		public static final String OPTION_NOSPAGHETTI = "nospaghetti";
 		
 		public CompileOptions() {
 			addOption(OPTION_IN, true, "Input file for the PuF code");
@@ -116,6 +126,7 @@ public class Compile {
 			addOption(OPTION_DEBUG_INSTR, false, "If present, more verbose debug info is written to the output");
 			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate unused declarations");
 			addOption(OPTION_STRICTNESS, false, "If present, runs strictness analysis and tries to remove unneeded closures");
+			addOption(OPTION_NOSPAGHETTI, false, "If present, mama will eat no spaghetti");
 		}
 	}
 }

@@ -10,6 +10,8 @@ import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
 import tr.fn.opt.OptimizationContext;
 import tr.fn.opt.StrictnessAnalysis;
+import tr.fn.post.PostprocessContext;
+import tr.fn.post.SpaghettiRemover;
 
 public class GenerateTest extends TestCase {
 	/*
@@ -34,12 +36,17 @@ public class GenerateTest extends TestCase {
 		new StrictnessAnalysis(optimizationContext).execute();
 
 		GenerationContext context = new GenerationContext();
-		context.setTryToEliminateClosures(true);
+		context.setDebug(true);
+		context.setDebugInstr(true);
+		context.setTryToEliminateClosures(false);
 		context.setStrictness(optimizationContext.getStrictnessInfo());
 		Code.code(program, context);
 		context.addInstruction(new Halt());
 		
-		context.saveToFile(new File("test/out/fact.f"));
+		PostprocessContext postProcessContext = new PostprocessContext(context.getInstructions());
+		new SpaghettiRemover(postProcessContext).execute();
+		
+		postProcessContext.saveToFile(new File("test/out/fact.f"));
 	}
 	
 	/*
