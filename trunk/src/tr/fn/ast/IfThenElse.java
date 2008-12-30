@@ -74,10 +74,10 @@ public class IfThenElse extends Expression {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {
-		condition.markTailCall(false);
-		thenExpression.markTailCall(tail);
-		elseExpression.markTailCall(tail);
+	public void markTailCall(boolean tail, int upperArgNum) {
+		condition.markTailCall(false, upperArgNum);
+		thenExpression.markTailCall(tail, upperArgNum);
+		elseExpression.markTailCall(tail, upperArgNum);
 	}
 
 	@Override

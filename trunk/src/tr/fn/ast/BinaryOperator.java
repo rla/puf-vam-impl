@@ -105,9 +105,9 @@ public class BinaryOperator extends Expression {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {
-		left.markTailCall(false);
-		right.markTailCall(false);
+	public void markTailCall(boolean tail, int upperArgNum) {
+		left.markTailCall(false, 0);
+		right.markTailCall(false, 0);
 	}
 
 	@Override

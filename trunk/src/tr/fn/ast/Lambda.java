@@ -71,8 +71,8 @@ public class Lambda extends Expression {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {
-		expression.markTailCall(true);
+	public void markTailCall(boolean tail, int upperArgNum) {
+		expression.markTailCall(true, arguments.size());
 	}
 
 	@Override

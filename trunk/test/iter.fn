@@ -1,0 +1,3 @@
+main = f1 1;
+f1 x = f2 x;
+f2 x = x;

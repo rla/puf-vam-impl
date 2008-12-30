@@ -104,8 +104,8 @@ public class Declaration extends Expression {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {
-		expression.markTailCall(tail);
+	public void markTailCall(boolean tail, int upperArgNum) {
+		expression.markTailCall(tail, getNumberOfArguments());
 	}
 
 	@Override

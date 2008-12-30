@@ -40,7 +40,7 @@ public class GenerateTest extends TestCase {
 		GenerationContext context = new GenerationContext();
 		context.setDebug(true);
 		context.setDebugInstr(true);
-		context.setTryToEliminateClosures(false);
+		context.setTryToEliminateClosures(true);
 		context.setStrictness(optimizationContext.getStrictnessInfo());
 		Code.code(program, context);
 		context.addInstruction(new Halt());

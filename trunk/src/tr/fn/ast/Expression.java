@@ -60,7 +60,7 @@ public abstract class Expression {
 	 * TODO currently it does not consider "case of" and list expressions.
 	 * By default, all function applications are marked non-tail-recursive.
 	 */
-	public abstract void markTailCall(boolean tail);
+	public abstract void markTailCall(boolean tail, int upperArgNum);
 	
 	/**
 	 * Outputs debug information about tail calls.

@@ -13,7 +13,9 @@ public class Application extends Expression {
 	public final Expression functionExpression;
 	public final List<Expression> argumentExpressions;
 	
+	// Both used in tail call optimization.
 	private boolean tailCall = false;
+	private int upperArgNum;
 	
 	public Application(Expression functionExpression, List<Expression> argumentExpressions) {
 		this.functionExpression = functionExpression;
@@ -125,11 +127,13 @@ public class Application extends Expression {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {
-		tailCall = tail;
-		functionExpression.markTailCall(false);
+	public void markTailCall(boolean tail, int upperArgNum) {
+		this.tailCall = tail;
+		this.upperArgNum = upperArgNum;
+		
+		functionExpression.markTailCall(false, 0);
 		for (Expression arg : argumentExpressions) {
-			arg.markTailCall(false);
+			arg.markTailCall(false, 0);
 		}
 	}
 
@@ -140,8 +144,12 @@ public class Application extends Expression {
 	@Override
 	public void dumpTailCalls(OptimizationContext context) {
 		if (tailCall) {
-			context.debug(toString());
+			context.debug(toString() + " k=" + upperArgNum);
 		}
+	}
+
+	public int getUpperArgNum() {
+		return upperArgNum;
 	}
 	
 }
