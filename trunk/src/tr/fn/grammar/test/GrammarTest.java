@@ -19,7 +19,19 @@ public class GrammarTest extends TestCase {
 	public void testTupleAccess() throws Exception {
 		List<Declaration> l = getDeclarations("main = #2 (1,2,3);");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> (# 2 (1,2,3))", l.get(0).toString());
+		assertEquals("main = fn -> `(# 2 (1,2,3))", l.get(0).toString());
+	}
+	
+	public void testEmptyList() throws Exception {
+		List<Declaration> l = getDeclarations("main = [];");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> []", l.get(0).toString());
+	}
+	
+	public void testSingletonList() throws Exception {
+		List<Declaration> l = getDeclarations("main = [3];");
+		assertEquals(1, l.size());
+		assertEquals("main = fn -> [3]", l.get(0).toString());
 	}
 	
 	public void testEmptyTuple() throws Exception {
@@ -37,31 +49,31 @@ public class GrammarTest extends TestCase {
 	public void testBinOpApp() throws Exception {
 		List<Declaration> l = getDeclarations("main = n * f 2;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> (n * (f 2))", l.get(0).toString());
+		assertEquals("main = fn -> (n * `(f 2))", l.get(0).toString());
 	}
 	
 	public void testBinOpApp2() throws Exception {
 		List<Declaration> l = getDeclarations("main = n * f 2 4;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> (n * (f 2 4))", l.get(0).toString());
+		assertEquals("main = fn -> (n * `(f 2 4))", l.get(0).toString());
 	}
 	
 	public void testBinOpLet() throws Exception {
 		List<Declaration> l = getDeclarations("main = n * f let x = 2; in x;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> (n * (f let x = 2; in x))", l.get(0).toString());
+		assertEquals("main = fn -> (n * `(f let x = 2; in x))", l.get(0).toString());
 	}
 	
 	public void testLetAppLet() throws Exception {
 		List<Declaration> l = getDeclarations("main = let x = f; in x let g = 2; in g + 2;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> let x = f; in (x let g = 2; in (g + 2))", l.get(0).toString());
+		assertEquals("main = fn -> let x = f; in `(x let g = 2; in (g + 2))", l.get(0).toString());
 	}
 	
 	public void testLetFarg() throws Exception {
 		List<Declaration> l = getDeclarations("main = let I x = x; in I 2;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> let I = fn x -> x; in (I 2)", l.get(0).toString());
+		assertEquals("main = fn -> let I = fn x -> x; in `(I 2)", l.get(0).toString());
 	}
 	
 	public void testCase() throws Exception {
@@ -71,9 +83,9 @@ public class GrammarTest extends TestCase {
 	}
 	
 	public void testTupleLet() throws Exception {
-		List<Declaration> l = getDeclarations("main = let (y,z) = f 2; in s x y z;");
+		List<Declaration> l = getDeclarations("main = let (y,z) = f 2 in s x y z;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> let (y,z) = (f 2) ; in (s x y z)", l.get(0).toString());
+		assertEquals("main = fn -> let (y,z) = `(f 2) ; in `(s x y z)", l.get(0).toString());
 	}
 	
 	public void testLetRec() throws Exception {
@@ -109,7 +121,7 @@ public class GrammarTest extends TestCase {
 	public void testLambdaAppl() throws Exception {
 		List<Declaration> l = getDeclarations("main = (fn x -> x + 1) 2;");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> (fn x -> (x + 1) 2)", l.get(0).toString());
+		assertEquals("main = fn -> `(fn x -> (x + 1) 2)", l.get(0).toString());
 	}
 	
 	public void testTuple() throws Exception {
