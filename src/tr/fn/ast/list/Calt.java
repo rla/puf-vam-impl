@@ -44,7 +44,7 @@ public class Calt extends Expression {
 	@Override
 	public void markScopeExpression(Expression scopeExpression) {
 		this.scopeExpression = scopeExpression;
-		scopeExpression.markScopeExpression(scopeExpression);
+		expression.markScopeExpression(scopeExpression);
 		head.markScopeExpression(this);
 		tail.markScopeExpression(this);
 	}

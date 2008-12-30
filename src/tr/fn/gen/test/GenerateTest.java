@@ -28,7 +28,7 @@ public class GenerateTest extends TestCase {
 
 	}*/
 	
-	public void testList() throws Exception {
+	/*public void testList() throws Exception {
 		LetRec program = AstUtil.getAst(new File("test/list1.fn"));
 		System.out.println(program);
 		
@@ -48,10 +48,10 @@ public class GenerateTest extends TestCase {
 		new SpaghettiRemover(postProcessContext).execute();
 		
 		postProcessContext.saveToFile(new File("test/out/list1.f"));
-	}
+	}*/
 	
-	/*public void testCaseList() throws Exception {
-		LetRec program = AstUtil.getAst(new File("test/listcase.fn"));
+	public void testCaseList() throws Exception {
+		LetRec program = AstUtil.getAst(new File("test/singeltonlist.fn"));
 		System.out.println(program);
 		
 		program.markScopeExpression(null);
@@ -70,7 +70,7 @@ public class GenerateTest extends TestCase {
 		new SpaghettiRemover(postProcessContext).execute();
 		
 		postProcessContext.saveToFile(new File("test/out/listcase.f"));
-	}*/
+	}
 	
 	
 	/*public void testTuple() throws Exception {

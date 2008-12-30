@@ -77,7 +77,7 @@ public class CodeV {
 		} else if (e instanceof HeadTailList) {
 			codeVHeadTailList(environment, context, (HeadTailList) e, sd);	
 		} else if (e instanceof Case) {
-			codeVCase(environment, context, (Case) e, sd);	
+			codeVCase(environment, context, (Case) e, sd);
 		} else {
 			throw new GenerateException("Unknown expression: " + e.getClass());
 		}
@@ -451,7 +451,7 @@ public class CodeV {
 		
 		codeV(environment, context, e.expression, sd);
 		context.addInstruction(new Tlist(A));
-		codeV(environment, context, e.nalt, sd);
+		codeV(environment, context, e.nalt.expression, sd);
 		context.addInstruction(new Jump(B));
 		context.addInstruction(A);
 		
@@ -460,7 +460,7 @@ public class CodeV {
 		environment1.addVariable(new Variable(ht.head, sd + 1, VariableType.LOCAL));
 		environment1.addVariable(new Variable(ht.tail, sd + 2, VariableType.LOCAL));
 
-		codeV(environment1, context, e.calt, sd + 2);
+		codeV(environment1, context, e.calt.expression, sd + 2);
 		context.addInstruction(new Slide(2));
 		context.addInstruction(B);
 	}
