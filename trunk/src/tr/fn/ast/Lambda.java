@@ -5,6 +5,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 
 public class Lambda extends Expression {
@@ -67,6 +68,16 @@ public class Lambda extends Expression {
 	@Override
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
 		throw new NotAbsInterpretableException();
+	}
+
+	@Override
+	public void markTailCall(boolean tail) {
+		expression.markTailCall(true);
+	}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {
+		expression.dumpTailCalls(context);
 	}
 	
 }

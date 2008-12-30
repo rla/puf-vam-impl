@@ -5,6 +5,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class TupleLet extends Expression {
 	public final Tuple tuple;
@@ -66,5 +67,11 @@ public class TupleLet extends Expression {
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
 		throw new NotAbsInterpretableException();
 	}
+
+	@Override
+	public void markTailCall(boolean tail) {}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {}
 	
 }

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class Declaration extends Expression {
 	public static final String MAIN_NAME = "main";
@@ -100,6 +101,16 @@ public class Declaration extends Expression {
 		} else {
 			return Collections.emptyList();
 		}
+	}
+
+	@Override
+	public void markTailCall(boolean tail) {
+		expression.markTailCall(tail);
+	}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {
+		expression.dumpTailCalls(context);
 	}
 
 }

@@ -10,6 +10,7 @@ import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
 import tr.fn.opt.OptimizationContext;
 import tr.fn.opt.StrictnessAnalysis;
+import tr.fn.opt.TailCallFinder;
 import tr.fn.post.PostprocessContext;
 import tr.fn.post.SpaghettiRemover;
 
@@ -28,12 +29,13 @@ public class GenerateTest extends TestCase {
 	}*/
 	
 	public void testTuple() throws Exception {
-		LetRec program = AstUtil.getAst(new File("test/fact.fn"));
+		LetRec program = AstUtil.getAst(new File("test/tailfact.fn"));
 		System.out.println(program);
 		
 		program.markScopeExpression(null);
 		OptimizationContext optimizationContext = new OptimizationContext(program, true);
 		new StrictnessAnalysis(optimizationContext).execute();
+		new TailCallFinder(optimizationContext).execute();
 
 		GenerationContext context = new GenerationContext();
 		context.setDebug(true);
@@ -46,7 +48,7 @@ public class GenerateTest extends TestCase {
 		PostprocessContext postProcessContext = new PostprocessContext(context.getInstructions());
 		new SpaghettiRemover(postProcessContext).execute();
 		
-		postProcessContext.saveToFile(new File("test/out/fact.f"));
+		postProcessContext.saveToFile(new File("test/out/tailfact.f"));
 	}
 	
 	/*

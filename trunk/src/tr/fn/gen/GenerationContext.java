@@ -20,6 +20,7 @@ public class GenerationContext {
 	private boolean debug = false;
 	private boolean debugInstr = false;
 	private boolean tryToEliminateClosures = true;
+	private boolean tailcalls = true;
 	
 	public GenerationContext() {
 		instructions = new ArrayList<Instruction>();
@@ -91,6 +92,14 @@ public class GenerationContext {
 
 	public List<Instruction> getInstructions() {
 		return instructions;
+	}
+
+	public boolean isTailcalls() {
+		return tailcalls;
+	}
+
+	public void setTailcalls(boolean tailcalls) {
+		this.tailcalls = tailcalls;
 	}
 	
 }

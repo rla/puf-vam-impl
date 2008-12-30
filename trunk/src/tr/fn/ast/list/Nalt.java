@@ -8,6 +8,7 @@ import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class Nalt extends Expression {
 	public final Expression expression;
@@ -56,5 +57,11 @@ public class Nalt extends Expression {
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
 		throw new NotAbsInterpretableException();
 	}
+
+	@Override
+	public void markTailCall(boolean tail) {}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {}
 		
 }

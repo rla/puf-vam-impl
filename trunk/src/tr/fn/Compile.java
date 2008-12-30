@@ -17,6 +17,7 @@ import tr.fn.gen.instr.Halt;
 import tr.fn.opt.DeadCodeEliminator;
 import tr.fn.opt.OptimizationContext;
 import tr.fn.opt.StrictnessAnalysis;
+import tr.fn.opt.TailCallFinder;
 import tr.fn.post.PostprocessContext;
 import tr.fn.post.SpaghettiRemover;
 import tr.fn.pre.IncludePreprocessor;
@@ -53,7 +54,8 @@ public class Compile {
 			command.hasOption(CompileOptions.OPTION_DEBUG_INSTR),
 			command.hasOption(CompileOptions.OPTION_DEADCODE),
 			command.hasOption(CompileOptions.OPTION_STRICTNESS),
-			command.hasOption(CompileOptions.OPTION_NOSPAGHETTI)
+			command.hasOption(CompileOptions.OPTION_NOSPAGHETTI),
+			command.hasOption(CompileOptions.OPTION_TAILCALLS)
 		);
 	}
 	
@@ -64,7 +66,8 @@ public class Compile {
 		boolean debugInstr,
 		boolean nodead,
 		boolean strictness,
-		boolean noSphagetti) throws Exception {
+		boolean noSphagetti,
+		boolean tailcalls) throws Exception {
 		
 		// Executing "#include"
 		PreprocessContext preprocessContext = new PreprocessContext(inputFile, debug);
@@ -85,6 +88,10 @@ public class Compile {
 			new StrictnessAnalysis(optimizationContext).execute();
 		}
 		
+		if (tailcalls) {
+			new TailCallFinder(optimizationContext).execute();
+		}
+		
 		// Generate output code
 		GenerationContext generationContext = new GenerationContext();
 		
@@ -92,6 +99,7 @@ public class Compile {
 		generationContext.setDebugInstr(debugInstr);
 		generationContext.setTryToEliminateClosures(strictness);
 		generationContext.setStrictness(optimizationContext.getStrictnessInfo());
+		generationContext.setTailcalls(tailcalls);
 		
 		CodeV.codeV(new Environment(null), generationContext, optimizationContext.getProgram(), 0);
 		generationContext.addInstruction(new Halt());
@@ -118,6 +126,7 @@ public class Compile {
 		public static final String OPTION_DEADCODE = "nodead";
 		public static final String OPTION_STRICTNESS = "strictness";
 		public static final String OPTION_NOSPAGHETTI = "nospaghetti";
+		public static final String OPTION_TAILCALLS = "tailcalls";
 		
 		public CompileOptions() {
 			addOption(OPTION_IN, true, "Input file for the PuF code");
@@ -127,6 +136,7 @@ public class Compile {
 			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate unused declarations");
 			addOption(OPTION_STRICTNESS, false, "If present, runs strictness analysis and tries to remove unneeded closures");
 			addOption(OPTION_NOSPAGHETTI, false, "If present, mama will eat no spaghetti");
+			addOption(OPTION_TAILCALLS, false, "If present, special code will be generated for tail calls");
 		}
 	}
 }

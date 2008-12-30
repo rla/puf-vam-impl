@@ -6,6 +6,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class IfThenElse extends Expression {
 	public final Expression condition;
@@ -70,6 +71,20 @@ public class IfThenElse extends Expression {
 		condition.findApplicationDeclarations(declarations);
 		thenExpression.findApplicationDeclarations(declarations);
 		elseExpression.findApplicationDeclarations(declarations);
+	}
+
+	@Override
+	public void markTailCall(boolean tail) {
+		condition.markTailCall(false);
+		thenExpression.markTailCall(tail);
+		elseExpression.markTailCall(tail);
+	}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {
+		condition.dumpTailCalls(context);
+		thenExpression.dumpTailCalls(context);
+		elseExpression.dumpTailCalls(context);
 	}
 
 }

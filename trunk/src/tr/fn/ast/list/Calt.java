@@ -9,6 +9,7 @@ import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class Calt extends Expression {
 	public final Identifier head;
@@ -67,5 +68,11 @@ public class Calt extends Expression {
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
 		throw new NotAbsInterpretableException();
 	}
+
+	@Override
+	public void markTailCall(boolean tail) {}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {}
 	
 }
