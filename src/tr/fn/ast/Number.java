@@ -52,7 +52,7 @@ public class Number extends Expression implements Simple {
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {}
 
 	@Override
-	public void markTailCall(boolean tail) {}
+	public void markTailCall(boolean tail, int upperArgNum) {}
 
 	@Override
 	public void dumpTailCalls(OptimizationContext context) {}

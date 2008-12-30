@@ -106,10 +106,10 @@ public abstract class LetBase extends Expression {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {
-		inExpression.markTailCall(tail);
+	public void markTailCall(boolean tail, int upperArgNum) {
+		inExpression.markTailCall(tail, upperArgNum);
 		for (Declaration decl : declarations) {
-			decl.markTailCall(true);
+			decl.markTailCall(true, upperArgNum);
 		}
 	}
 	

@@ -97,7 +97,7 @@ public class Identifier extends Expression implements Simple {
 	}
 
 	@Override
-	public void markTailCall(boolean tail) {}
+	public void markTailCall(boolean tail, int upperArgNum) {}
 
 	@Override
 	public void dumpTailCalls(OptimizationContext context) {}

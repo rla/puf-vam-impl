@@ -30,6 +30,7 @@ import tr.fn.gen.instr.MkFunval;
 import tr.fn.gen.instr.MkVec;
 import tr.fn.gen.instr.GetVec;
 import tr.fn.gen.instr.Get;
+import tr.fn.gen.instr.Move;
 import tr.fn.gen.instr.Neg;
 import tr.fn.gen.instr.Not;
 import tr.fn.gen.instr.Pushglob;
@@ -45,7 +46,7 @@ import tr.fn.gen.instr.Targ;
 public class CodeV {
 	
 	public static void codeV(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
-		context.debug("codeV " + environment + " " + e);
+		context.debug("codeV " + environment + " " + e + " " + sd);
 		
 		if (e instanceof Identifier) {
 			codeVIdentifier(environment, context, (Identifier) e, sd);
@@ -142,10 +143,17 @@ public class CodeV {
 				return;
 			}
 		}
-		Label A = context.makeLabel();
-		context.addInstruction(new Mark(A));
 		
 		Declaration declaration = e.findDeclaration();
+		
+		if (declaration != null && e.isTailCall()) {
+			context.debug("Tail call");
+			codeVTailApplication(environment, context, e, sd, declaration);
+			return;
+		}
+		
+		Label A = context.makeLabel();
+		context.addInstruction(new Mark(A));
 		
 		int m = 0;
 		int n = e.argumentExpressions.size();
@@ -168,6 +176,35 @@ public class CodeV {
 		
 		context.addInstruction(new Apply());
 		context.addInstruction(A);
+	}
+	
+	/**
+	 * Generates code for function application in tail position.
+	 * 
+	 * @see Other slides page 222.
+	 */
+	private static void codeVTailApplication(Environment environment, GenerationContext context, Application e, int sd, Declaration declaration) throws GenerateException {
+		int k = e.getUpperArgNum();
+		int n = e.argumentExpressions.size();
+		int m = 0;
+		for (int i = n - 1; i >= 0; i--) {
+			if (context.isTryToEliminateClosures()
+				&& declaration != null
+				&& context.hasStrictnessInformation(declaration)
+				&& context.isStrict(declaration, i)) {
+				
+				context.debug("Passing argument " + i + " strictly");
+				codeV(environment, context, e.argumentExpressions.get(i), sd + m);
+			} else {
+				CodeC.codeC(environment, context, e.argumentExpressions.get(i), sd + m);
+			}
+			m++;
+		}
+		
+		codeV(environment, context, e.functionExpression, sd + m);
+		
+		context.addInstruction(new Move(sd + k, m + 1));
+		context.addInstruction(new Apply());
 	}
 
 	/**

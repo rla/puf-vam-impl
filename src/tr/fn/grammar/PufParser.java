@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-18 16:38:49
+// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-19 16:07:59
 
 package tr.fn.grammar;
 
@@ -2950,8 +2950,8 @@ public class PufParser extends Parser {
     static final String DFA5_specialS =
         "\30\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\10\1\1\12\1\11\6\1\5\uffff\1\1\1\13\2\1\1\16\1\1\1\15\2\1"+
-            "\1\14\1\1\1\20\1\uffff\1\17\1\21\1\1",
+            "\10\1\1\12\1\11\6\1\5\uffff\1\1\1\13\2\1\1\16\1\1\1\15\2\1\1"+
+            "\14\1\1\1\20\1\uffff\1\17\1\21\1\1",
             "",
             "",
             "",
@@ -3447,8 +3447,7 @@ public class PufParser extends Parser {
     static final String DFA12_eofS =
         "\105\uffff";
     static final String DFA12_minS =
-        "\1\32\1\22\4\uffff\1\33\3\uffff\1\32\2\uffff\1\32\3\33\1\32\63"+
-        "\uffff";
+        "\1\32\1\22\4\uffff\1\33\3\uffff\1\32\2\uffff\1\32\3\33\1\32\63\uffff";
     static final String DFA12_maxS =
         "\1\65\1\66\4\uffff\1\50\3\uffff\1\65\2\uffff\1\65\1\50\1\33\1\63"+
         "\1\65\63\uffff";
@@ -3572,11 +3571,11 @@ public class PufParser extends Parser {
     static final String DFA14_eofS =
         "\u00cf\uffff";
     static final String DFA14_minS =
-        "\1\22\20\uffff\2\32\5\uffff\2\22\3\32\3\33\2\32\1\uffff\2\22\3"+
-        "\32\3\33\1\32\u00a3\uffff";
+        "\1\22\20\uffff\2\32\5\uffff\2\22\3\32\3\33\2\32\1\uffff\2\22\3\32"+
+        "\3\33\1\32\u00a3\uffff";
     static final String DFA14_maxS =
-        "\1\66\20\uffff\2\65\5\uffff\5\65\1\50\1\33\1\63\2\65\1\uffff\5"+
-        "\65\1\50\1\33\1\63\1\65\u00a3\uffff";
+        "\1\66\20\uffff\2\65\5\uffff\5\65\1\50\1\33\1\63\2\65\1\uffff\5\65"+
+        "\1\50\1\33\1\63\1\65\u00a3\uffff";
     static final String DFA14_acceptS =
         "\1\uffff\1\2\15\uffff\2\1\21\uffff\1\1\11\uffff\u00a3\1";
     static final String DFA14_specialS =
@@ -3617,17 +3616,17 @@ public class PufParser extends Parser {
             "\1\uffff\1\113\1\115",
             "\1\117\1\116\14\uffff\1\120\1\127\1\130\1\123\1\uffff\1\122"+
             "\2\uffff\1\121\1\uffff\1\125\1\uffff\1\124\1\126",
-            "\1\132\1\131\14\uffff\1\133\2\uffff\1\136\1\uffff\1\135\2"+
-            "\uffff\1\134\1\uffff\1\140\1\uffff\1\137\1\141",
-            "\1\143\1\142\14\uffff\1\144\2\uffff\1\147\1\uffff\1\146\2"+
-            "\uffff\1\145\1\uffff\1\151\1\uffff\1\150\1\152",
+            "\1\132\1\131\14\uffff\1\133\2\uffff\1\136\1\uffff\1\135\2\uffff"+
+            "\1\134\1\uffff\1\140\1\uffff\1\137\1\141",
+            "\1\143\1\142\14\uffff\1\144\2\uffff\1\147\1\uffff\1\146\2\uffff"+
+            "\1\145\1\uffff\1\151\1\uffff\1\150\1\152",
             "\1\154\14\uffff\1\153",
             "\1\155",
             "\1\156\27\uffff\1\157",
-            "\1\161\1\160\14\uffff\1\162\2\uffff\1\165\1\uffff\1\164\2"+
-            "\uffff\1\163\1\uffff\1\167\1\uffff\1\166\1\170",
-            "\1\172\1\171\14\uffff\1\173\2\uffff\1\176\1\uffff\1\175\2"+
-            "\uffff\1\174\1\uffff\1\u0080\1\uffff\1\177\1\u0081",
+            "\1\161\1\160\14\uffff\1\162\2\uffff\1\165\1\uffff\1\164\2\uffff"+
+            "\1\163\1\uffff\1\167\1\uffff\1\166\1\170",
+            "\1\172\1\171\14\uffff\1\173\2\uffff\1\176\1\uffff\1\175\2\uffff"+
+            "\1\174\1\uffff\1\u0080\1\uffff\1\177\1\u0081",
             "",
             "\1\u008f\1\u008e\1\u008c\2\u008b\3\u008a\1\u0084\1\u0083\6"+
             "\u008d\6\uffff\1\u0082\1\u0090\1\uffff\1\u0086\1\uffff\1\u0092"+
@@ -3635,18 +3634,18 @@ public class PufParser extends Parser {
             "\1\u0098\1\u0097\1\u0095\2\u0094\3\u0093\1\u009c\1\u009b\6"+
             "\u0096\6\uffff\1\u009d\1\u0099\1\uffff\1\u00a0\1\uffff\1\u009f"+
             "\2\uffff\1\u009e\1\u009a\1\u00a2\1\uffff\1\u00a1\1\u00a3",
-            "\1\u00a5\1\u00a4\14\uffff\1\u00a6\1\u00ad\1\u00ae\1\u00a9"+
-            "\1\uffff\1\u00a8\2\uffff\1\u00a7\1\uffff\1\u00ab\1\uffff\1\u00aa"+
+            "\1\u00a5\1\u00a4\14\uffff\1\u00a6\1\u00ad\1\u00ae\1\u00a9\1"+
+            "\uffff\1\u00a8\2\uffff\1\u00a7\1\uffff\1\u00ab\1\uffff\1\u00aa"+
             "\1\u00ac",
-            "\1\u00b0\1\u00af\14\uffff\1\u00b1\2\uffff\1\u00b4\1\uffff"+
-            "\1\u00b3\2\uffff\1\u00b2\1\uffff\1\u00b6\1\uffff\1\u00b5\1\u00b7",
-            "\1\u00b9\1\u00b8\14\uffff\1\u00ba\2\uffff\1\u00bd\1\uffff"+
-            "\1\u00bc\2\uffff\1\u00bb\1\uffff\1\u00bf\1\uffff\1\u00be\1\u00c0",
+            "\1\u00b0\1\u00af\14\uffff\1\u00b1\2\uffff\1\u00b4\1\uffff\1"+
+            "\u00b3\2\uffff\1\u00b2\1\uffff\1\u00b6\1\uffff\1\u00b5\1\u00b7",
+            "\1\u00b9\1\u00b8\14\uffff\1\u00ba\2\uffff\1\u00bd\1\uffff\1"+
+            "\u00bc\2\uffff\1\u00bb\1\uffff\1\u00bf\1\uffff\1\u00be\1\u00c0",
             "\1\u00c2\14\uffff\1\u00c1",
             "\1\u00c3",
             "\1\u00c4\27\uffff\1\u00c5",
-            "\1\u00c7\1\u00c6\14\uffff\1\u00c8\2\uffff\1\u00cb\1\uffff"+
-            "\1\u00ca\2\uffff\1\u00c9\1\uffff\1\u00cd\1\uffff\1\u00cc\1\u00ce",
+            "\1\u00c7\1\u00c6\14\uffff\1\u00c8\2\uffff\1\u00cb\1\uffff\1"+
+            "\u00ca\2\uffff\1\u00c9\1\uffff\1\u00cd\1\uffff\1\u00cc\1\u00ce",
             "",
             "",
             "",
@@ -3858,8 +3857,8 @@ public class PufParser extends Parser {
     static final String DFA17_specialS =
         "\14\uffff}>";
     static final String[] DFA17_transitionS = {
-            "\2\1\14\uffff\1\1\2\12\1\1\1\uffff\1\1\2\uffff\1\1\1\uffff"+
-            "\1\1\1\uffff\2\1",
+            "\2\1\14\uffff\1\1\2\12\1\1\1\uffff\1\1\2\uffff\1\1\1\uffff\1"+
+            "\1\1\uffff\2\1",
             "",
             "",
             "",

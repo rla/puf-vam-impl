@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-18 16:38:50
+// $ANTLR 3.1.1 src/tr/fn/grammar/Puf.g 2008-12-19 16:08:00
 
 package tr.fn.grammar;
 
@@ -1720,11 +1720,10 @@ public class PufLexer extends Lexer {
     static final String DFA13_eofS =
         "\106\uffff";
     static final String DFA13_minS =
-        "\1\11\1\75\4\uffff\1\145\1\146\1\150\1\154\1\135\1\uffff\1\156"+
-        "\1\76\1\141\1\146\2\75\5\uffff\1\52\10\uffff\1\164\2\60\1\145\1"+
-        "\163\2\uffff\1\60\2\uffff\1\163\1\60\7\uffff\1\60\2\uffff\1\156"+
-        "\1\145\1\uffff\1\145\1\uffff\1\145\1\uffff\3\60\1\143\3\uffff\1"+
-        "\60\1\uffff";
+        "\1\11\1\75\4\uffff\1\145\1\146\1\150\1\154\1\135\1\uffff\1\156\1"+
+        "\76\1\141\1\146\2\75\5\uffff\1\52\10\uffff\1\164\2\60\1\145\1\163"+
+        "\2\uffff\1\60\2\uffff\1\163\1\60\7\uffff\1\60\2\uffff\1\156\1\145"+
+        "\1\uffff\1\145\1\uffff\1\145\1\uffff\3\60\1\143\3\uffff\1\60\1\uffff";
     static final String DFA13_maxS =
         "\1\174\1\75\4\uffff\1\145\1\156\1\150\1\154\1\135\1\uffff\1\156"+
         "\1\76\1\141\1\146\2\75\5\uffff\1\57\10\uffff\1\164\2\172\1\145\1"+
@@ -1732,11 +1731,11 @@ public class PufLexer extends Lexer {
         "\1\145\1\uffff\1\145\1\uffff\1\145\1\uffff\3\172\1\143\3\uffff\1"+
         "\172\1\uffff";
     static final String DFA13_acceptS =
-        "\2\uffff\1\2\1\3\1\4\1\5\5\uffff\1\14\6\uffff\1\26\1\31\1\32\1"+
-        "\33\1\35\1\uffff\1\37\1\40\1\41\1\42\1\43\1\44\1\25\1\1\5\uffff"+
-        "\1\22\1\13\1\uffff\1\16\1\34\2\uffff\1\27\1\23\1\30\1\24\1\45\1"+
-        "\46\1\36\1\uffff\1\7\1\10\2\uffff\1\15\1\uffff\1\21\1\uffff\1\6"+
-        "\4\uffff\1\11\1\12\1\20\1\uffff\1\17";
+        "\2\uffff\1\2\1\3\1\4\1\5\5\uffff\1\14\6\uffff\1\26\1\31\1\32\1\33"+
+        "\1\35\1\uffff\1\37\1\40\1\41\1\42\1\43\1\44\1\25\1\1\5\uffff\1\22"+
+        "\1\13\1\uffff\1\16\1\34\2\uffff\1\27\1\23\1\30\1\24\1\45\1\46\1"+
+        "\36\1\uffff\1\7\1\10\2\uffff\1\15\1\uffff\1\21\1\uffff\1\6\4\uffff"+
+        "\1\11\1\12\1\20\1\uffff\1\17";
     static final String DFA13_specialS =
         "\106\uffff}>";
     static final String[] DFA13_transitionS = {

@@ -9,7 +9,7 @@ public class TailCallFinder {
 	
 	public void execute() {
 		context.debug("Marking tail calls");
-		context.getProgram().markTailCall(false);
+		context.getProgram().markTailCall(false, 0);
 		if (context.isDebug()) {
 			context.getProgram().dumpTailCalls(context);
 		}
