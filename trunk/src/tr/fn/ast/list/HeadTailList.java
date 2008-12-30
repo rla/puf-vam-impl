@@ -38,6 +38,9 @@ public class HeadTailList extends Expression {
 
 	@Override
 	public Set<Identifier> getFreeVariables() {
+		if (isEmpty()) {
+			return new HashSet<Identifier>();
+		}		
 		Set<Identifier> free = new HashSet<Identifier>(tail.getFreeVariables());
 		free.addAll(head.getFreeVariables());
 		
@@ -46,36 +49,43 @@ public class HeadTailList extends Expression {
 
 	@Override
 	public boolean isSimpleStrict() {
-		return false;
+		return isEmpty() || head.isSimpleStrict() && tail.isSimpleStrict();
 	}
 
 	@Override
 	public void markScopeExpression(Expression scopeExpression) {
 		this.scopeExpression = scopeExpression;
-		head.markScopeExpression(scopeExpression);
-		tail.markScopeExpression(scopeExpression);
+		if (!isEmpty()){
+		    head.markScopeExpression(scopeExpression);
+		    tail.markScopeExpression(scopeExpression);			
+		}
+
 	}
 
 	@Override
 	public void collectDeclarations(List<Declaration> declarations) {
-		head.collectDeclarations(declarations);
-		tail.collectDeclarations(declarations);
+		if (!isEmpty()){
+			head.collectDeclarations(declarations);
+			tail.collectDeclarations(declarations);
+		}
 	}
 
 	@Override
 	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
-		return head.interpretation(context) && tail.interpretation(context);
+		return isEmpty() || head.interpretation(context) && tail.interpretation(context);
 	}
 
 	@Override
 	public boolean isInterpretable(List<Identifier> localScope) {
-		return head.isInterpretable(localScope) && tail.isInterpretable(localScope);
+		return isEmpty() || head.isInterpretable(localScope) && tail.isInterpretable(localScope);
 	}
 
 	@Override
 	public void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException {
-		head.findApplicationDeclarations(declarations);
-		tail.findApplicationDeclarations(declarations);
+		if (!isEmpty()) {
+			head.findApplicationDeclarations(declarations);
+			tail.findApplicationDeclarations(declarations);
+		}
 	}
 
 	@Override

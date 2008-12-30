@@ -28,7 +28,52 @@ public class GenerateTest extends TestCase {
 
 	}*/
 	
-	public void testTuple() throws Exception {
+	public void testList() throws Exception {
+		LetRec program = AstUtil.getAst(new File("test/list1.fn"));
+		System.out.println(program);
+		
+		program.markScopeExpression(null);
+		OptimizationContext optimizationContext = new OptimizationContext(program, true);
+		new StrictnessAnalysis(optimizationContext).execute();
+
+		GenerationContext context = new GenerationContext();
+		context.setDebug(true);
+		context.setDebugInstr(true);
+		context.setTryToEliminateClosures(true);
+		context.setStrictness(optimizationContext.getStrictnessInfo());
+		Code.code(program, context);
+		context.addInstruction(new Halt());
+		
+		PostprocessContext postProcessContext = new PostprocessContext(context.getInstructions());
+		new SpaghettiRemover(postProcessContext).execute();
+		
+		postProcessContext.saveToFile(new File("test/out/list1.f"));
+	}
+	
+	/*public void testCaseList() throws Exception {
+		LetRec program = AstUtil.getAst(new File("test/listcase.fn"));
+		System.out.println(program);
+		
+		program.markScopeExpression(null);
+		OptimizationContext optimizationContext = new OptimizationContext(program, true);
+		new StrictnessAnalysis(optimizationContext).execute();
+
+		GenerationContext context = new GenerationContext();
+		context.setDebug(true);
+		context.setDebugInstr(true);
+		context.setTryToEliminateClosures(true);
+		context.setStrictness(optimizationContext.getStrictnessInfo());
+		Code.code(program, context);
+		context.addInstruction(new Halt());
+		
+		PostprocessContext postProcessContext = new PostprocessContext(context.getInstructions());
+		new SpaghettiRemover(postProcessContext).execute();
+		
+		postProcessContext.saveToFile(new File("test/out/listcase.f"));
+	}*/
+	
+	
+	/*public void testTuple() throws Exception {
 		LetRec program = AstUtil.getAst(new File("test/tailfact.fn"));
 		System.out.println(program);
 		
@@ -49,7 +94,7 @@ public class GenerateTest extends TestCase {
 		new SpaghettiRemover(postProcessContext).execute();
 		
 		postProcessContext.saveToFile(new File("test/out/tailfact.f"));
-	}
+	}*/
 	
 	/*
 	public void testMain2FArgCall() throws PuFException, IOException {
