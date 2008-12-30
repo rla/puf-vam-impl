@@ -31,7 +31,7 @@ public class GrammarTest extends TestCase {
 	public void testSingletonList() throws Exception {
 		List<Declaration> l = getDeclarations("main = [3];");
 		assertEquals(1, l.size());
-		assertEquals("main = fn -> [3]", l.get(0).toString());
+		assertEquals("main = fn -> 3 : []", l.get(0).toString());
 	}
 	
 	public void testEmptyTuple() throws Exception {
