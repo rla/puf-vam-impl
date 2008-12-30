@@ -112,7 +112,7 @@ cexpr      returns [Expression v]
 lexpr      returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
            : e = pexpr { l.add($e.v); } (CONS e1 = pexpr { l.add($e1.v); } )* {
-               $v = AstUtil.makeHeadTailList(l);
+               $v = AstUtil.makeHeadTailList(l, true);
            };
 
 pexpr      returns [Expression v]
@@ -185,10 +185,10 @@ tuple      returns [Expression v]
 list       returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
            : '[]' {
-               $v = AstUtil.makeHeadTailList(l);
+               $v = AstUtil.makeHeadTailList(l, false);
            }
            | '[' e = expr { l.add($e.v); } (',' e = expr { l.add($e.v); } )* ']' {
-               $v = AstUtil.makeHeadTailList(l);
+               $v = AstUtil.makeHeadTailList(l, false);
            };
 
 lambda     returns [Expression v]

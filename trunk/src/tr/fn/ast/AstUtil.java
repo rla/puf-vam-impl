@@ -48,8 +48,8 @@ public class AstUtil {
 		return new CommonTokenStream(new PufLexer(new ANTLRReaderStream(new StringReader(code))));
 	}
 	
-	public static Expression makeHeadTailList(List<Expression> expressions) {
-		if (expressions.size() == 1) {
+	public static Expression makeHeadTailList(List<Expression> expressions, boolean fromBinOp) {
+		if (fromBinOp && expressions.size() == 1) {
 			return expressions.get(0);
 		}
 		expressions = new ArrayList<Expression>(expressions);
