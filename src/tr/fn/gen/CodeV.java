@@ -16,9 +16,13 @@ import tr.fn.ast.LetRec;
 import tr.fn.ast.Number;
 import tr.fn.ast.Tuple;
 import tr.fn.ast.TupleLet;
+import tr.fn.ast.list.Calt;
+import tr.fn.ast.list.Case;
+import tr.fn.ast.list.HeadTailList;
 import tr.fn.gen.instr.Alloc;
 import tr.fn.gen.instr.Apply;
 import tr.fn.gen.instr.BinaryOpInstruction;
+import tr.fn.gen.instr.Cons;
 import tr.fn.gen.instr.Eval;
 import tr.fn.gen.instr.Jump;
 import tr.fn.gen.instr.Jumpz;
@@ -32,6 +36,7 @@ import tr.fn.gen.instr.GetVec;
 import tr.fn.gen.instr.Get;
 import tr.fn.gen.instr.Move;
 import tr.fn.gen.instr.Neg;
+import tr.fn.gen.instr.Nil;
 import tr.fn.gen.instr.Not;
 import tr.fn.gen.instr.Pushglob;
 import tr.fn.gen.instr.Pushloc;
@@ -39,6 +44,7 @@ import tr.fn.gen.instr.Return;
 import tr.fn.gen.instr.Rewrite;
 import tr.fn.gen.instr.Slide;
 import tr.fn.gen.instr.Targ;
+import tr.fn.gen.instr.Tlist;
 
 /**
  * codeV implementation for generating instructions.
@@ -47,7 +53,7 @@ public class CodeV {
 	
 	public static void codeV(Environment environment, GenerationContext context, Expression e, int sd) throws GenerateException {
 		context.debug("codeV " + environment + " " + e + " " + sd);
-		
+
 		if (e instanceof Identifier) {
 			codeVIdentifier(environment, context, (Identifier) e, sd);
 		} else if (e instanceof Number) {
@@ -68,6 +74,10 @@ public class CodeV {
 			codeVTuple(environment, context, (Tuple) e, sd);
 		} else if (e instanceof TupleLet) {
 			codeVTupleLet(environment, context, (TupleLet) e, sd);
+		} else if (e instanceof HeadTailList) {
+			codeVHeadTailList(environment, context, (HeadTailList) e, sd);	
+		} else if (e instanceof Case) {
+			codeVCase(environment, context, (Case) e, sd);	
 		} else {
 			throw new GenerateException("Unknown expression: " + e.getClass());
 		}
@@ -415,4 +425,43 @@ public class CodeV {
 		context.addInstruction(new MkBasic());
 	}
 	
+	/**
+	 * List operation for lists without the case operator
+	 * 
+	 * @see MaMa slides page 91.
+	 */
+	private static void codeVHeadTailList(Environment environment, GenerationContext context, HeadTailList e, int sd) throws GenerateException {
+		if (e.isEmpty()){
+			context.addInstruction(new Nil());
+		} else {
+			CodeC.codeC(environment, context, e.head, sd);	
+			CodeC.codeC(environment, context, e.tail, sd + 1);
+			context.addInstruction(new Cons());
+		}
+	}
+	
+	/**
+	 * List making with case operator
+	 * 
+	 * @see MaMa slides page 94.
+	 */
+	private static void codeVCase(Environment environment, GenerationContext context, Case e, int sd) throws GenerateException {
+		Label A = context.makeLabel();
+		Label B = context.makeLabel();
+		
+		codeV(environment, context, e.expression, sd);
+		context.addInstruction(new Tlist(A));
+		codeV(environment, context, e.nalt, sd);
+		context.addInstruction(new Jump(B));
+		context.addInstruction(A);
+		
+		Environment environment1 = environment.getCopy();
+		Calt ht = (Calt) e.calt;
+		environment1.addVariable(new Variable(ht.head, sd + 1, VariableType.LOCAL));
+		environment1.addVariable(new Variable(ht.tail, sd + 2, VariableType.LOCAL));
+
+		codeV(environment1, context, e.calt, sd + 2);
+		context.addInstruction(new Slide(2));
+		context.addInstruction(B);
+	}
 }
