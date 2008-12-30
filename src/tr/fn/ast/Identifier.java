@@ -7,6 +7,7 @@ import java.util.Set;
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.AmbiguousException;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class Identifier extends Expression implements Simple {
 	public static final String SELECT = "#";
@@ -94,5 +95,11 @@ public class Identifier extends Expression implements Simple {
 		
 		return null;
 	}
+
+	@Override
+	public void markTailCall(boolean tail) {}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {}
 	
 }

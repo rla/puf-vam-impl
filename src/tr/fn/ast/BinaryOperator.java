@@ -5,6 +5,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class BinaryOperator extends Expression {
 	public final Type type;
@@ -102,7 +103,17 @@ public class BinaryOperator extends Expression {
 		left.findApplicationDeclarations(declarations);
 		right.findApplicationDeclarations(declarations);
 	}
-	
-	
+
+	@Override
+	public void markTailCall(boolean tail) {
+		left.markTailCall(false);
+		right.markTailCall(false);
+	}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {
+		left.dumpTailCalls(context);
+		right.dumpTailCalls(context);
+	}
 	
 }

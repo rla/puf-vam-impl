@@ -9,6 +9,7 @@ import tr.fn.ast.Expression;
 import tr.fn.ast.Identifier;
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class HeadTailList extends Expression {
 	public final Expression head;
@@ -76,5 +77,11 @@ public class HeadTailList extends Expression {
 		head.findApplicationDeclarations(declarations);
 		tail.findApplicationDeclarations(declarations);
 	}
+
+	@Override
+	public void markTailCall(boolean tail) {}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {}
 	
 }

@@ -6,11 +6,14 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 
 public class Application extends Expression {
 	public final Expression functionExpression;
 	public final List<Expression> argumentExpressions;
+	
+	private boolean tailCall = false;
 	
 	public Application(Expression functionExpression, List<Expression> argumentExpressions) {
 		this.functionExpression = functionExpression;
@@ -20,7 +23,7 @@ public class Application extends Expression {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append('(').append(functionExpression);
+		builder.append("`(").append(functionExpression);
 		
 		for (Expression arg : argumentExpressions) {
 			builder.append(' ').append(arg);
@@ -119,6 +122,26 @@ public class Application extends Expression {
 		}
 		
 		declarations.add(declaration);
+	}
+
+	@Override
+	public void markTailCall(boolean tail) {
+		tailCall = tail;
+		functionExpression.markTailCall(false);
+		for (Expression arg : argumentExpressions) {
+			arg.markTailCall(false);
+		}
+	}
+
+	public boolean isTailCall() {
+		return tailCall;
+	}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {
+		if (tailCall) {
+			context.debug(toString());
+		}
 	}
 	
 }

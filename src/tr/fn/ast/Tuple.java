@@ -6,6 +6,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public class Tuple extends Expression {
 	public final List<? extends Expression> arguments;
@@ -89,7 +90,11 @@ public class Tuple extends Expression {
 			arg.findApplicationDeclarations(declarations);
 		}
 	}
-	
-	
+
+	@Override
+	public void markTailCall(boolean tail) {}
+
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {}
 	
 }

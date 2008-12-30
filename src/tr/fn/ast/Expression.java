@@ -5,6 +5,7 @@ import java.util.Set;
 
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public abstract class Expression {
 	public Expression scopeExpression;
@@ -53,5 +54,17 @@ public abstract class Expression {
 	 * @throws NotAbsInterpretableException if the expression is not meant for the abstract interpretation.
 	 */
 	public abstract void findApplicationDeclarations(List<Declaration> declarations) throws NotAbsInterpretableException;
+	
+	/**
+	 * Traverses the expression tree and marks tail-recursive calls.
+	 * TODO currently it does not consider "case of" and list expressions.
+	 * By default, all function applications are marked non-tail-recursive.
+	 */
+	public abstract void markTailCall(boolean tail);
+	
+	/**
+	 * Outputs debug information about tail calls.
+	 */
+	public abstract void dumpTailCalls(OptimizationContext context);
 	
 }

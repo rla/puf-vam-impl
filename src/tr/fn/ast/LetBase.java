@@ -7,6 +7,7 @@ import java.util.Set;
 import tr.fn.opt.AbsInterpretationContext;
 import tr.fn.opt.AmbiguousException;
 import tr.fn.opt.NotAbsInterpretableException;
+import tr.fn.opt.OptimizationContext;
 
 public abstract class LetBase extends Expression {
 	public final List<Declaration> declarations;
@@ -102,6 +103,22 @@ public abstract class LetBase extends Expression {
 	@Override
 	public boolean isInterpretable(List<Identifier> localScope) {
 		return inExpression.isInterpretable(localScope);
+	}
+
+	@Override
+	public void markTailCall(boolean tail) {
+		inExpression.markTailCall(tail);
+		for (Declaration decl : declarations) {
+			decl.markTailCall(true);
+		}
+	}
+	
+	@Override
+	public void dumpTailCalls(OptimizationContext context) {
+		inExpression.dumpTailCalls(context);
+		for (Declaration decl : declarations) {
+			decl.dumpTailCalls(context);
+		}
 	}
 	
 }
