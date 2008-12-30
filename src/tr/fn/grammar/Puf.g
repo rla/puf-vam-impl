@@ -184,7 +184,10 @@ tuple      returns [Expression v]
 
 list       returns [Expression v]
            @init { List<Expression> l = new ArrayList<Expression>(); }
-           : '[' e = expr { l.add($e.v); } (',' e = expr { l.add($e.v); } )* ']' {
+           : '[]' {
+               $v = AstUtil.makeHeadTailList(l);
+           }
+           | '[' e = expr { l.add($e.v); } (',' e = expr { l.add($e.v); } )* ']' {
                $v = AstUtil.makeHeadTailList(l);
            };
 
