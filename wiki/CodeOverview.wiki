@@ -1,0 +1,5 @@
+#summary Overview of the code layout.
+
+= Packages =
+
+  * {{{tr.fn.ast}}} - classes of abstract syntax tree. These also contain helper methods such as finding free variables and abstract interpretation.
