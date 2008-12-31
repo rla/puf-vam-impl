@@ -10,7 +10,6 @@ import tr.fn.gen.GenerationContext;
 import tr.fn.gen.instr.Halt;
 import tr.fn.opt.OptimizationContext;
 import tr.fn.opt.StrictnessAnalysis;
-import tr.fn.opt.TailCallFinder;
 import tr.fn.post.PostprocessContext;
 import tr.fn.post.SpaghettiRemover;
 
@@ -74,7 +73,7 @@ public class GenerateTest extends TestCase {
 	
 	
 	/*public void testTuple() throws Exception {
-		LetRec program = AstUtil.getAst(new File("test/tailfact.fn"));
+		LetRec program = AstUtil.getAst(new File("test/iter.fn"));
 		System.out.println(program);
 		
 		program.markScopeExpression(null);
@@ -85,7 +84,7 @@ public class GenerateTest extends TestCase {
 		GenerationContext context = new GenerationContext();
 		context.setDebug(true);
 		context.setDebugInstr(true);
-		context.setTryToEliminateClosures(true);
+		context.setTryToEliminateClosures(false);
 		context.setStrictness(optimizationContext.getStrictnessInfo());
 		Code.code(program, context);
 		context.addInstruction(new Halt());

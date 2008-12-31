@@ -38,6 +38,10 @@ public class Environment {
 		return parent;
 	}
 	
+	public int size() {
+		return variables.size();
+	}
+	
 	/**
 	 * Returns the copy of this environment. The added
 	 * variables will not appear in the original environment.

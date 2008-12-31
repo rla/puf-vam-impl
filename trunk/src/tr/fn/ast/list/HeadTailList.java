@@ -71,13 +71,13 @@ public class HeadTailList extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
-		return isEmpty() || head.interpretation(context) && tail.interpretation(context);
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		return isEmpty() || head.absInterpretation(context) && tail.absInterpretation(context);
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
-		return isEmpty() || head.isInterpretable(localScope) && tail.isInterpretable(localScope);
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
+		return isEmpty() || head.isAbsInterpretable(localScope) && tail.isAbsInterpretable(localScope);
 	}
 
 	@Override

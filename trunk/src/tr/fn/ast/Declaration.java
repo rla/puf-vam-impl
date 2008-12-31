@@ -47,27 +47,27 @@ public class Declaration extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
 		if (expression instanceof Lambda) {
 			Lambda lambda = (Lambda) expression;
-			return lambda.expression.interpretation(context);
+			return lambda.expression.absInterpretation(context);
 		} else {
-			return expression.interpretation(context);
+			return expression.absInterpretation(context);
 		}
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
 		return false;
 	}
 	
 	public boolean definesInterpretable() {
 		if (expression instanceof Lambda) {
 			Lambda lambda = (Lambda) expression;
-			return lambda.expression.isInterpretable(lambda.arguments);
+			return lambda.expression.isAbsInterpretable(lambda.arguments);
 		} else {
 			List<Identifier> args = Collections.emptyList();
-			return expression.isInterpretable(args);
+			return expression.isAbsInterpretable(args);
 		}
 	}
 
@@ -96,8 +96,7 @@ public class Declaration extends Expression {
 	
 	public List<Identifier> getArguments() {
 		if (expression instanceof Lambda) {
-			Lambda lambda = (Lambda) expression;
-			return lambda.arguments;
+			return ((Lambda) expression).arguments;
 		} else {
 			return Collections.emptyList();
 		}

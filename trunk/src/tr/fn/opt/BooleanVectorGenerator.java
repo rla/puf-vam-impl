@@ -4,8 +4,8 @@ import java.math.BigInteger;
 
 public class BooleanVectorGenerator {
 	private BigInteger integer;
-	private int vectorSize;
-	private int bound;
+	private final int vectorSize;
+	private final int bound;
 	
 	public BooleanVectorGenerator(int vectorSize) {
 		if (vectorSize > 10) {

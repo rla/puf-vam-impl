@@ -89,13 +89,13 @@ public class BinaryOperator extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
-		return left.interpretation(context) && right.interpretation(context);
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		return left.absInterpretation(context) && right.absInterpretation(context);
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
-		return left.isInterpretable(localScope) && right.isInterpretable(localScope);
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
+		return left.isAbsInterpretable(localScope) && right.isAbsInterpretable(localScope);
 	}
 
 	@Override

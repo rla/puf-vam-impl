@@ -13,8 +13,8 @@ import tr.fn.opt.BooleanTable;
  * Helper class for code generation.
  */
 public class GenerationContext {
-	private List<Instruction> instructions;
-	private LabelContext labelContext;
+	private final List<Instruction> instructions;
+	private final LabelContext labelContext;
 	private Map<Declaration, BooleanTable> strictness;
 	
 	private boolean debug = false;

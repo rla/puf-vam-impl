@@ -55,12 +55,12 @@ public class Calt extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
 		throw new NotAbsInterpretableException();
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
 		return false;
 	}
 

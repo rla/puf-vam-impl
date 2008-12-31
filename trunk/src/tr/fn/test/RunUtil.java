@@ -27,6 +27,26 @@ public class RunUtil {
 		return RunUtil.runProgram(out);
 	}
 	
+	public static int compileAndRun(
+		File file,
+		boolean nodead,
+		boolean strictness,
+		boolean noSphagetti,
+		boolean tailcalls) throws Exception {
+		
+		File dir = file.getParentFile();
+		String name = FilenameUtils.getBaseName(file.getName());
+		File out = new File(new File(dir, "out"), name + ".f");
+		
+		if (out.exists()) {
+			out.delete();
+		}
+		
+		Compile.compile(file, out, true, false, nodead, strictness, noSphagetti, tailcalls);
+		
+		return RunUtil.runProgram(out);
+	}
+	
 	private static int runProgram(File file) throws Exception {
 		if (!file.exists()) {
 			throw new IllegalArgumentException("File does not exist");

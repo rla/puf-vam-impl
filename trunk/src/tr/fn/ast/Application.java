@@ -88,12 +88,12 @@ public class Application extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
 		boolean[] argumentValues = new boolean[argumentExpressions.size()];
 		
 		int i = 0;
 		for (Expression arg : argumentExpressions) {
-			argumentValues[i] = arg.interpretation(context);
+			argumentValues[i] = arg.absInterpretation(context);
 			i++;
 		}
 		
@@ -101,7 +101,7 @@ public class Application extends Expression {
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
 		if (functionExpression instanceof Identifier) {
 			if (localScope.contains(functionExpression)) {
 				// Function passed as a declaration argument.

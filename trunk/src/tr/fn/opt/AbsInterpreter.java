@@ -11,8 +11,8 @@ import tr.fn.ast.LetRec;
 import tr.fn.opt.util.AbsInterpretationUtil;
 
 public class AbsInterpreter {
-	private LetRec program;
-	private boolean debug;
+	private final LetRec program;
+	private final boolean debug;
 	
 	public AbsInterpreter(LetRec program, boolean debug) {
 		this.program = program;
@@ -88,7 +88,7 @@ public class AbsInterpreter {
 	}
 
 	private boolean run(Declaration declaration, AbsInterpretationContext context) throws NotAbsInterpretableException {
-		boolean result = declaration.interpretation(context);
+		boolean result = declaration.absInterpretation(context);
 		if (debug) {
 			System.out.println("Int. " + context + " [" + declaration + "]" + " => " + result);
 		}

@@ -6,11 +6,11 @@ import java.util.Set;
 
 /**
  * Extremely primitive and inefficient implementation
- * of true table.
+ * of truth values table.
  */
 public class BooleanTable {
-	private int numberOfColumns;
-	private Set<TableRow> tableRows;
+	private final int numberOfColumns;
+	private final Set<TableRow> tableRows;
 	
 	public BooleanTable(int numberOfColumns) {
 		this.numberOfColumns = numberOfColumns;
@@ -60,7 +60,7 @@ public class BooleanTable {
 
 		@Override
 		public int hashCode() {
-			final int prime = 31;
+			int prime = 31;
 			int result = 1;
 			result = prime * result + Arrays.hashCode(values);
 			return result;

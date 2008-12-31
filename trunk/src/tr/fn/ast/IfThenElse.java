@@ -55,15 +55,15 @@ public class IfThenElse extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
-		return condition.interpretation(context) && (thenExpression.interpretation(context) || elseExpression.interpretation(context));
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		return condition.absInterpretation(context) && (thenExpression.absInterpretation(context) || elseExpression.absInterpretation(context));
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
-		return condition.isInterpretable(localScope)
-			&& thenExpression.isInterpretable(localScope)
-			&& elseExpression.isInterpretable(localScope);
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
+		return condition.isAbsInterpretable(localScope)
+			&& thenExpression.isAbsInterpretable(localScope)
+			&& elseExpression.isAbsInterpretable(localScope);
 	}
 
 	@Override

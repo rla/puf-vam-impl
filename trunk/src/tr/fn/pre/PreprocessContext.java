@@ -14,9 +14,9 @@ import tr.fn.ast.Declaration;
 import tr.fn.ast.LetRec;
 
 public class PreprocessContext {
-	private Map<File, List<String>> files;
-	private File main;
-	private boolean debug;
+	private final Map<File, List<String>> files;
+	private final File main;
+	private final boolean debug;
 	
 	public PreprocessContext(File main, boolean debug) {
 		this.files = new HashMap<File, List<String>>();
