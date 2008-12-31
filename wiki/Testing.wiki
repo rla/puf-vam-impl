@@ -1,4 +1,4 @@
-#summary Running Puf test
+#summary Running Puf tests
 
 = Testing =
 
