@@ -7,7 +7,7 @@ import tr.fn.ast.Declaration;
 
 
 public class StrictnessAnalysis {
-	private OptimizationContext context;
+	private final OptimizationContext context;
 
 	public StrictnessAnalysis(OptimizationContext context) {
 		this.context = context;

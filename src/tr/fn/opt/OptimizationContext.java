@@ -10,7 +10,7 @@ import tr.fn.ast.LetRec;
  */
 public class OptimizationContext {
 	private LetRec program;
-	private boolean debug;
+	private final boolean debug;
 	private Map<Declaration, BooleanTable> strictnessInfo;
 
 	public OptimizationContext(LetRec program, boolean debug) {

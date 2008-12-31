@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.print.attribute.standard.MediaSize.Other;
+
 import tr.fn.ast.Application;
 import tr.fn.ast.BinaryOperator;
 import tr.fn.ast.Declaration;
@@ -24,6 +26,8 @@ import tr.fn.gen.instr.Apply;
 import tr.fn.gen.instr.BinaryOpInstruction;
 import tr.fn.gen.instr.Cons;
 import tr.fn.gen.instr.Eval;
+import tr.fn.gen.instr.Get;
+import tr.fn.gen.instr.GetVec;
 import tr.fn.gen.instr.Jump;
 import tr.fn.gen.instr.Jumpz;
 import tr.fn.gen.instr.Label;
@@ -32,8 +36,6 @@ import tr.fn.gen.instr.Mark;
 import tr.fn.gen.instr.MkBasic;
 import tr.fn.gen.instr.MkFunval;
 import tr.fn.gen.instr.MkVec;
-import tr.fn.gen.instr.GetVec;
-import tr.fn.gen.instr.Get;
 import tr.fn.gen.instr.Move;
 import tr.fn.gen.instr.Neg;
 import tr.fn.gen.instr.Nil;

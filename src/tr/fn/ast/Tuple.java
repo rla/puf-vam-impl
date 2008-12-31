@@ -70,14 +70,14 @@ public class Tuple extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) {
+	public boolean absInterpretation(AbsInterpretationContext context) {
 		return true;
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
 		for (Expression arg : arguments) {
-			if (!arg.isInterpretable(localScope)) {
+			if (!arg.isAbsInterpretable(localScope)) {
 				return false;
 			}
 		}

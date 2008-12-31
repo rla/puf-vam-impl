@@ -39,12 +39,12 @@ public class Number extends Expression implements Simple {
 	public void collectDeclarations(List<Declaration> declarations) {}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) {
+	public boolean absInterpretation(AbsInterpretationContext context) {
 		return true;
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
 		return true;
 	}
 

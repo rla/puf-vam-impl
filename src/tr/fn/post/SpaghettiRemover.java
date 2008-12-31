@@ -11,7 +11,7 @@ import tr.fn.gen.instr.MkClos;
 import tr.fn.gen.instr.MkFunval;
 
 public class SpaghettiRemover {
-	private PostprocessContext context;
+	private final PostprocessContext context;
 
 	public SpaghettiRemover(PostprocessContext context) {
 		this.context = context;

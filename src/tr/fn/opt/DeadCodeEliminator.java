@@ -15,7 +15,7 @@ import tr.fn.ast.LetRec;
  * certanly not used in the 'main' function.
  */
 public class DeadCodeEliminator {
-	private OptimizationContext context;
+	private final OptimizationContext context;
 	
 	public DeadCodeEliminator(OptimizationContext context) {
 		this.context = context;

@@ -96,13 +96,13 @@ public abstract class LetBase extends Expression {
 	}
 
 	@Override
-	public boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
-		return inExpression.interpretation(context);
+	public boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException {
+		return inExpression.absInterpretation(context);
 	}
 
 	@Override
-	public boolean isInterpretable(List<Identifier> localScope) {
-		return inExpression.isInterpretable(localScope);
+	public boolean isAbsInterpretable(List<Identifier> localScope) {
+		return inExpression.isAbsInterpretable(localScope);
 	}
 
 	@Override

@@ -20,8 +20,8 @@ public class IncludePreprocessor {
 	private static final String ENCODING = "UTF-8";
 	private static final String INCLUDE_REGEX = "^\\#include\\s+?(.+)$";
 	
+	private final PreprocessContext context;
 	private Set<File> files;
-	private PreprocessContext context;
 
 	public IncludePreprocessor(PreprocessContext context) throws PreprocessorException {
 		this.context = context;

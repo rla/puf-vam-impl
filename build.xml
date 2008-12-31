@@ -11,6 +11,8 @@
 	<property name="doc.emma.reports" value="${doc}/coverage-reports" />
 	<property name="doc.pmd.reports" value="${doc}/pmd-reports" />
 	<property name="doc.profile.path" value="${doc}/profile-path" />
+	<property name="pmd.rules" value="basic" />
+	<property name="doc.pmd.reports" value="${doc}/pmd-reports" />
 
 	<path id="compile.classpath">
 		<pathelement path="${build}" />
@@ -100,5 +102,20 @@
 			<src path="${src}" />
 			<classpath refid="compile.classpath" />
 		</javac>
+	</target>
+	
+	<target name="pmd" description="Checks code with PMD and creates the report">
+		<delete dir="${doc.pmd.reports}" />
+		<mkdir dir="${doc.pmd.reports}" />
+
+		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="compile.classpath" />
+		<pmd shortFilenames="true" rulesetfiles="${basedir}/etc/pmd-rules.xml">
+			<formatter type="html" toFile="${doc.pmd.reports}/report.html" />
+			<fileset dir="${src}">
+				<include name="**/*.java" />
+				<exclude name="**/PufParser.java" />
+				<exclude name="**/PufLexer.java" />
+			</fileset>
+		</pmd>
 	</target>
 </project>

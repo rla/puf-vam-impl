@@ -38,14 +38,14 @@ public abstract class Expression {
 	 * higher order function calls. This is just necessary
 	 * condition but not sufficient.
 	 */
-	public abstract boolean isInterpretable(List<Identifier> localScope);
+	public abstract boolean isAbsInterpretable(List<Identifier> localScope);
 	
 	/**
 	 * Runs the abstract interpretation of this expression
 	 * as it appeared in the function whose arguments are
 	 * stored in localScope.
 	 */
-	public abstract boolean interpretation(AbsInterpretationContext context) throws NotAbsInterpretableException;
+	public abstract boolean absInterpretation(AbsInterpretationContext context) throws NotAbsInterpretableException;
 
 	/**
 	 * Returns the list of declarations that are used in function
