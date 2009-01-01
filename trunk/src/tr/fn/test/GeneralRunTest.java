@@ -7,7 +7,15 @@ import junit.framework.TestCase;
 public class GeneralRunTest extends TestCase {
 	
 	public void testSingletonList() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/singeltonlist.fn")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/list/singeltonlist.fn")));
+	}
+	
+	public void testCaseEmpty() throws Exception {
+		assertEquals(5, RunUtil.compileAndRun(new File("test/list/listcase.fn")));
+	}
+	
+	public void testCase() throws Exception {
+		assertEquals(1, RunUtil.compileAndRun(new File("test/list/listcaseempty.fn")));
 	}
 	
 	public void testTupleLet() throws Exception {

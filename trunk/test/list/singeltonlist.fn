@@ -1,0 +1,1 @@
+main = case [3] of [] -> 1; h:t -> h;
