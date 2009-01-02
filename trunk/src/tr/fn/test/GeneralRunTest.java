@@ -18,6 +18,18 @@ public class GeneralRunTest extends TestCase {
 		assertEquals(1, RunUtil.compileAndRun(new File("test/list/listcaseempty.fn")));
 	}
 	
+	public void testList1() throws Exception {
+		assertEquals(7, RunUtil.compileAndRun(new File("test/list/list1.fn")));
+	}
+	
+	public void testList2() throws Exception {
+		assertEquals(10, RunUtil.compileAndRun(new File("test/list/list2.fn")));
+	}
+	
+	public void testList3() throws Exception {
+		assertEquals(4, RunUtil.compileAndRun(new File("test/list/list3.fn")));
+	}
+	
 	public void testTupleLet() throws Exception {
 		assertEquals(10, RunUtil.compileAndRun(new File("test/tuple3.fn")));
 	}

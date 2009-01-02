@@ -1,0 +1,3 @@
+main = fir (app [1,2,3] 7);
+app = fn l y -> case l of [] -> y; h:t -> y:(h:t);
+fir = fn x -> case x of [] -> []; h:t -> h;
