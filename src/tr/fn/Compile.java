@@ -135,7 +135,7 @@ public class Compile {
 			addOption(OPTION_DEBUG_INSTR, false, "If present, more verbose debug info is written to the output");
 			addOption(OPTION_DEADCODE, false, "If present, tries to eliminate unused declarations");
 			addOption(OPTION_STRICTNESS, false, "If present, runs strictness analysis and tries to remove unneeded closures");
-			addOption(OPTION_NOSPAGHETTI, false, "If present, mama will eat no spaghetti");
+			addOption(OPTION_NOSPAGHETTI, false, "If present, tries to remove sphagetti code");
 			addOption(OPTION_TAILCALLS, false, "If present, special code will be generated for tail calls");
 		}
 	}

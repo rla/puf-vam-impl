@@ -42,75 +42,75 @@ public class OptimizationCombinationsTest {
 	}
 	
 	@Test public void testBasic2() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic2.puf")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic2.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testBasic3() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic3.puf")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic3.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testBasic4() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic4.puf")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic4.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testBasic5() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic5.puf")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/basic5.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testBasic6() throws Exception {
-		assertEquals(4, RunUtil.compileAndRun(new File("test/varmo/basic6.puf")));
+		assertEquals(4, RunUtil.compileAndRun(new File("test/varmo/basic6.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testBasic7() throws Exception {
-		assertEquals(5, RunUtil.compileAndRun(new File("test/varmo/basic7.puf")));
+		assertEquals(5, RunUtil.compileAndRun(new File("test/varmo/basic7.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testBasic8() throws Exception {
-		assertEquals(8, RunUtil.compileAndRun(new File("test/varmo/basic8.puf")));
+		assertEquals(8, RunUtil.compileAndRun(new File("test/varmo/basic8.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testFact() throws Exception {
-		assertEquals(120, RunUtil.compileAndRun(new File("test/varmo/fact.puf")));
+		assertEquals(120, RunUtil.compileAndRun(new File("test/varmo/fact.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testFibo() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/fibo.puf")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/fibo.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testFlist1() throws Exception {
-		assertEquals(4, RunUtil.compileAndRun(new File("test/varmo/flist1.puf")));
+		assertEquals(4, RunUtil.compileAndRun(new File("test/varmo/flist1.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testFlist2() throws Exception {
-		assertEquals(4, RunUtil.compileAndRun(new File("test/varmo/flist2.puf")));
+		assertEquals(4, RunUtil.compileAndRun(new File("test/varmo/flist2.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testFlist3() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/flist3.puf")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/varmo/flist3.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testGcd() throws Exception {
-		assertEquals(2, RunUtil.compileAndRun(new File("test/varmo/gcd.puf")));
+		assertEquals(2, RunUtil.compileAndRun(new File("test/varmo/gcd.puf"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testSingletonList() throws Exception {
-		assertEquals(3, RunUtil.compileAndRun(new File("test/singeltonlist.fn")));
+		assertEquals(3, RunUtil.compileAndRun(new File("test/list/singeltonlist.fn"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testTupleLet() throws Exception {
-		assertEquals(10, RunUtil.compileAndRun(new File("test/tuple3.fn")));
+		assertEquals(10, RunUtil.compileAndRun(new File("test/tuple3.fn"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testSelect1() throws Exception {
-		assertEquals(2, RunUtil.compileAndRun(new File("test/select/select1.fn")));
+		assertEquals(2, RunUtil.compileAndRun(new File("test/select/select1.fn"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testSelect2() throws Exception {
-		assertEquals(2, RunUtil.compileAndRun(new File("test/select/select2.fn")));
+		assertEquals(2, RunUtil.compileAndRun(new File("test/select/select2.fn"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	@Test public void testSelect3() throws Exception {
-		assertEquals(2, RunUtil.compileAndRun(new File("test/select/select3.fn")));
+		assertEquals(2, RunUtil.compileAndRun(new File("test/select/select3.fn"), nodead, strictness, noSphagetti, tailcalls));
 	}
 	
 	 @Parameters
